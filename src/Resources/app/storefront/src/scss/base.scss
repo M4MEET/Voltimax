@@ -1,0 +1,25 @@
+.header-main{
+  background-color: $gray-200;
+}
+
+#mainNavigation {
+  background-color: $gray-200;
+}
+
+.footer-main,.footer-bottom
+{
+  background: $background-dark-sb;
+}
+
+.container
+{
+  max-width: 1400px;
+}
+
+.category-navigation {
+  &.level-0 > {
+    .category-navigation-entry {
+      border-bottom: none;
+    }
+  }
+}
