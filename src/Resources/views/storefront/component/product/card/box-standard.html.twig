@@ -8,9 +8,8 @@
         {% set variation = product.variation %}
 
         <div class="container-fluid product-box box-{{ layout }}">
-            {% block component_product_box_content %}
-                <div class="row align-items-center border rounded">
-
+     {% block component_product_box_content %}
+                <div class="row p-3 align-items-center border rounded">
                     {% block component_product_box_badges %}
                         {% sw_include '@Storefront/storefront/component/product/card/badges.html.twig' %}
                     {% endblock %}
@@ -21,7 +20,7 @@
                     {% endblock %}
 
                     {% block component_product_box_image %}
-                        <div class="product-image-wrapper col">
+                        <div class="product-image-wrapper col-4">
                             {# fallback if display mode is not set #}
                             {% set displayMode = displayMode ?: 'standard' %}
 
@@ -81,7 +80,7 @@
                     {% endblock %}
 
                     {% block component_product_box_info %}
-                        <div class="product-info col-6">
+                        <div class="product-info col-5">
 
                             {% block component_product_box_name %}
                                 <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
@@ -93,7 +92,7 @@
 
                             {#added custom block for the product properties to show on listing#}
                                 {% block component_product_box_sorted_properties %}
-                                    <table class="table-responsive  table-sm table-hover table-striped product-detail-properties-table">
+                                    <table class="table-responsive  table-sm table-hover table product-detail-properties-table">
                                        <tbody>
                                        {% for property in product.sortedProperties %}
                                             {% if property is not null %}
@@ -144,7 +143,7 @@
                                 </div>
                             {% endblock %}
 
-                            {#{% block component_product_box_description %}
+{#                            {% block component_product_box_description %}
                                 <div class="product-description">
                                     {{ product.translated.description|striptags|raw }}
                                 </div>
