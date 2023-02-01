@@ -91,39 +91,39 @@
                             {% endblock %}
 
                             {#added custom block for the product properties to show on listing#}
-                                {% block component_product_box_sorted_properties %}
-                                    <table class="table-responsive  table-sm table-hover table product-detail-properties-table">
-                                       <tbody>
-                                       {% for property in product.sortedProperties %}
-                                            {% if property is not null %}
-                                                <tr class="properties-row">
-                                                    {% block component_product_box_sorted_properties_list_item %}
-                                                        <th class="properties-label">
-                                                            {% block component_product_box_sorted_properties_list_item_name %}
-                                                                {{ property.translated.name | e }}
-                                                            {% endblock %}
-                                                        </th>
-                                                        <td class="properties-value">
-                                                            {% if property.options.elements | length > 0 %}
-                                                                {% block component_product_box_sorted_properties_list_item_options %}
-                                                                    {% apply spaceless %}
-                                                                        {% for option in property.options %}
-                                                                            {% set i = ( i | default(0) ) + 1 %}
-                                                                            {% block component_product_box_sorted_properties_list_item_option_name %}
-                                                                                {% if i > 1 %}, {% endif %}  {{ option.translated.name|e }}
-                                                                            {% endblock %}
-                                                                        {% endfor %}
-                                                                    {% endapply %}
-                                                                {% endblock %}
-                                                            {% endif %}
-                                                        </td>
-                                                    {% endblock %}
-                                                </tr>
-                                            {% endif %}
-                                        {% endfor %}
-                                        </tbody>
-                                    </table>
-                                {% endblock %}
+{#                                {% block component_product_box_sorted_properties %}#}
+{#                                    <table class="table-responsive  table-sm table-hover table product-detail-properties-table">#}
+{#                                       <tbody>#}
+{#                                       {% for property in product.sortedProperties %}#}
+{#                                            {% if property is not null %}#}
+{#                                                <tr class="properties-row">#}
+{#                                                    {% block component_product_box_sorted_properties_list_item %}#}
+{#                                                        <th class="properties-label">#}
+{#                                                            {% block component_product_box_sorted_properties_list_item_name %}#}
+{#                                                                {{ property.translated.name | e }}#}
+{#                                                            {% endblock %}#}
+{#                                                        </th>#}
+{#                                                        <td class="properties-value">#}
+{#                                                            {% if property.options.elements | length > 0 %}#}
+{#                                                                {% block component_product_box_sorted_properties_list_item_options %}#}
+{#                                                                    {% apply spaceless %}#}
+{#                                                                        {% for option in property.options %}#}
+{#                                                                            {% set i = ( i | default(0) ) + 1 %}#}
+{#                                                                            {% block component_product_box_sorted_properties_list_item_option_name %}#}
+{#                                                                                {% if i > 1 %}, {% endif %}  {{ option.translated.name|e }}#}
+{#                                                                            {% endblock %}#}
+{#                                                                        {% endfor %}#}
+{#                                                                    {% endapply %}#}
+{#                                                                {% endblock %}#}
+{#                                                            {% endif %}#}
+{#                                                        </td>#}
+{#                                                    {% endblock %}#}
+{#                                                </tr>#}
+{#                                            {% endif %}#}
+{#                                        {% endfor %}#}
+{#                                        </tbody>#}
+{#                                    </table>#}
+{#                                {% endblock %}#}
                             {#end block here for the product properties#}
 
                             {% block component_product_box_variant_characteristics %}
@@ -143,11 +143,11 @@
                                 </div>
                             {% endblock %}
 
-{#                            {% block component_product_box_description %}
+                            {% block component_product_box_description %}
                                 <div class="product-description">
                                     {{ product.translated.description|striptags|raw }}
                                 </div>
-                            {% endblock %}#}
+                            {% endblock %}
                         </div>
                     {% endblock %}
 
