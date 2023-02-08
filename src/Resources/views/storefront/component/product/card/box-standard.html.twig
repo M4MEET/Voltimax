@@ -126,26 +126,14 @@
 {#                                {% endblock %}#}
                             {#end block here for the product properties#}
 
-                            {% block component_product_box_variant_characteristics %}
-                                <div class="product-variant-characteristics">
-                                    <div class="product-variant-characteristics-text">
-                                        {% for variation in product.variation %}
-                                            {{ variation.group }}:
-                                            <span class="product-variant-characteristics-option">
-                                                {{ variation.option }}
-                                            </span>
-
-                                            {% if product.variation|last != variation %}
-                                                {{ " | " }}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            {% endblock %}
-
+                            {#temp fix in the template using plugin called essential charcteristics for the listing view#}
                             {% block component_product_box_description %}
                                 {{ parent() }}
+
                             {% endblock %}
+                            {# this block ends here : temp fix in the template using plugin called essential charcteristics for the listing view#}
+
+
                         </div>
                     {% endblock %}
 
