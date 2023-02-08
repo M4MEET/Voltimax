@@ -7,4 +7,8 @@ use Shopware\Storefront\Framework\ThemeInterface;
 
 class VoltimaxTheme extends Plugin implements ThemeInterface
 {
+    public function getThemeConfigPath(): string
+    {
+        return 'theme.json';
+    }
 }
