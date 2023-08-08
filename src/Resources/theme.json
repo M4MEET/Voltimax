@@ -65,7 +65,7 @@
           "de-DE": "Primärfarbe"
         },
         "type": "color",
-        "value": "#ED1F24",
+        "value": "#fd6565",
         "editable": true,
         "block": "themeColors",
         "order": 100
@@ -76,7 +76,7 @@
           "de-DE": "Sekundärfarbe"
         },
         "type": "color",
-        "value": "#526e7f",
+        "value": "#f0f0f0",
         "editable": true,
         "block": "themeColors",
         "order": 200
@@ -87,7 +87,7 @@
           "de-DE": "Rahmen"
         },
         "type": "color",
-        "value": "#bcc1c7",
+        "value": "#f0f0f0",
         "editable": true,
         "block": "themeColors",
         "order": 300
@@ -153,7 +153,7 @@
           "de-DE": "Schriftart Text"
         },
         "type": "fontFamily",
-        "value": "'Inter', sans-serif",
+        "value": "TT Mussels",
         "editable": true,
         "block": "typography",
         "order": 100
@@ -164,7 +164,7 @@
           "de-DE": "Textfarbe"
         },
         "type": "color",
-        "value": "#4a545b",
+        "value": "#474747",
         "editable": true,
         "block": "typography",
         "order": 200
@@ -175,7 +175,7 @@
           "de-DE": "Schriftart Überschrift"
         },
         "type": "fontFamily",
-        "value": "'Inter', sans-serif",
+        "value": "TT Mussels",
         "editable": true,
         "block": "typography",
         "order": 300
@@ -186,7 +186,7 @@
           "de-DE": "Überschriftfarbe"
         },
         "type": "color",
-        "value": "#4a545b",
+        "value": "#2A5B66 ",
         "editable": true,
         "block": "typography",
         "order": 400
@@ -197,7 +197,7 @@
           "de-DE": "Preis"
         },
         "type": "color",
-        "value": "#4a545b",
+        "value": "#474747",
         "editable": true,
         "block": "eCommerce",
         "order": 100
@@ -208,7 +208,7 @@
           "de-DE": "Kaufen-Button"
         },
         "type": "color",
-        "value": "#ff0008",
+        "value": "#fd6565",
         "editable": true,
         "block": "eCommerce",
         "order": 200
