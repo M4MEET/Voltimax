@@ -1,0 +1,17 @@
+{
+    "battron": {
+        "listing": {
+            "product": {
+                "showStock": "Auf Lager",
+                "limitedStock": "Nur noch %product.stock% Stück auf Lager",
+                "outOfStock": "Bald wieder da",
+                "deliveryTimeAvailable": "Lieferzeit %name%"
+            }
+        },
+        "sidebar": {
+            "category": {
+                "showAllCategory": "Alle"
+            }
+        }
+    }
+}

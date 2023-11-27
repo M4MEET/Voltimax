@@ -1,0 +1,18 @@
+{
+  "name": "voltimax/theme-voltimax",
+  "description": "Theme skeleton plugin",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "VoltimaxTheme\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "VoltimaxTheme\\VoltimaxTheme",
+    "label": {
+      "de-DE": "Theme VoltimaxTheme plugin",
+      "en-GB": "Theme VoltimaxTheme plugin"
+    }
+  }
+}
