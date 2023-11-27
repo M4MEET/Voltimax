@@ -14,8 +14,7 @@
                         {% endblock %}
 
                         {% block component_product_box_rich_snippets %}
-                            {# @deprecated tag:v6.5.0 - Block will be removed completely including the template it references #}
-                            {% sw_include '@Storefront/storefront/component/product/card/meta.html.twig' %}
+
                         {% endblock %}
 
                         {% block component_product_box_image %}
@@ -90,11 +89,11 @@
                                 {% endblock %}
 
 
-                                {#temp fix in the template using plugin called essential charcteristics for the listing view#}
+                                {# temp fix in the template using plugin called essential charcteristics for the listing view #}
                                 {% block component_product_box_description %}
                                     {{ parent() }}
                                 {% endblock %}
-                                {# this block ends here : temp fix in the template using plugin called essential charcteristics for the listing view#}
+                                {# this block ends here : temp fix in the template using plugin called essential charcteristics for the listing view #}
 
                             </div>
                         {% endblock %}

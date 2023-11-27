@@ -1,5 +1,14 @@
 {% sw_extends "@Storefront/storefront/component/product/card/price-unit.html.twig" %}
 {% block component_product_box_price_info %}
+    {% block page_product_listing_manufacturer_logo %}
+        <div class="d-flex align-items-center">
+            {# Display Manufacturer Logo if Available #}
+            {% if product.extensions.manufacturerMedia %}
+                <img src="{{ product.extensions.manufacturerMedia.url }}" alt="Manufacturer Logo" class="me-2" style="height: 30px; width: auto;">
+            {% endif %}
+        </div>
+    {% endblock %}
+
     {{ parent() }}
     {# added custom block to display tax information #}
     {% block page_product_detail_tax %}
@@ -11,13 +20,13 @@
             {% endif %}
 
             <p class="product-detail-tax">
-                {% block page_product_detail_tax_link %}
+            {% block page_product_detail_tax_link %}
                     <a class="product-detail-tax-link"
                        href="{{ path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') }) }}"
                        title="{{ taxText }}"
-                    {{ dataBsToggleAttr }}="modal"
-                    data-url="{{ path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') }) }}">
-                    {{ taxText }}
+                        {{ dataBsToggleAttr }}="modal"
+                        data-url="{{ path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') }) }}">
+                        {{ taxText }}
                     </a>
                 {% endblock %}
             </p>
