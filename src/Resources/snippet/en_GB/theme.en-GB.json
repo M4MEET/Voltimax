@@ -4,8 +4,7 @@
             "product": {
                 "showStock": "In Stock",
                 "limitedStock": "Only %product.stock% In Stock",
-                "outOfStock": "Not in Stock",
-                "deliveryTimeAvailable": "Delivery %name%"
+                "outOfStock": "Not in Stock"
             }
         },
         "sidebar": {

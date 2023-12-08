@@ -4,8 +4,7 @@
             "product": {
                 "showStock": "Auf Lager",
                 "limitedStock": "Nur noch %product.stock% Stück auf Lager",
-                "outOfStock": "Bald wieder da",
-                "deliveryTimeAvailable": "Lieferzeit %name%"
+                "outOfStock": "Bald wieder da"
             }
         },
         "sidebar": {

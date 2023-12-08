@@ -1,0 +1,10 @@
+{% sw_extends "@Storefront/storefront/component/product/card/action.html.twig" %}
+
+{% block page_product_detail_product_buy_button %}
+    <div class="d-grid">
+        <button class="btn btn-buy rounded"
+                title="{{ "listing.boxAddProduct"|trans|striptags }}">
+            {{ "listing.boxAddProduct"|trans|sw_sanitize }}
+        </button>
+    </div>
+{% endblock %}

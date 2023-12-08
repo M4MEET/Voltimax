@@ -1,6 +1,91 @@
 {% sw_extends "@Storefront/storefront/component/product/card/price-unit.html.twig" %}
 {% block component_product_box_price_info %}
-    {{ parent() }}
+    {% set cheapest = product.calculatedCheapestPrice %}
+
+    {% set real = product.calculatedPrice %}
+    {% if product.calculatedPrices.count > 0 %}
+        {% set real = product.calculatedPrices.last %}
+    {% endif %}
+
+    {% set referencePrice = real.referencePrice %}
+
+    {% set displayFrom = product.calculatedPrices.count > 1 %}
+    {% set displayParent = product.variantListingConfig.displayParent and product.parentId === null %}
+
+    {% if displayParent %}
+        {% set displayFromVariants = displayParent and real.unitPrice !== cheapest.unitPrice %}
+        {% set real = cheapest %}
+    {% endif %}
+
+    <div class="product-price-info">
+        {% block component_product_box_price %}
+            <div class="product-price-wrapper">
+                {% set price = real %}
+                {% set isListPrice = price.listPrice.percentage > 0 %}
+                {% set isRegulationPrice = price.regulationPrice != null %}
+                {% if displayFrom or (displayParent and displayFromVariants) %}
+                    {{ "listing.listingTextFrom"|trans|sw_sanitize }}
+                {% endif %}
+
+                <span class="product-price fs-3{% if isListPrice and not displayFrom and not displayFromVariants %} with-list-price{% endif %}">
+                    {{ price.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
+
+                    {% if isListPrice and not displayFrom and not displayFromVariants %}
+                        {% set afterListPriceSnippetExists = "listing.afterListPrice"|trans|length > 0 %}
+                        {% set beforeListPriceSnippetExists = "listing.beforeListPrice"|trans|length > 0 %}
+                        {% set hideStrikeTrough = beforeListPriceSnippetExists or afterListPriceSnippetExists %}
+
+                        <span class="list-price{% if hideStrikeTrough %} list-price-no-line-through{% endif %}">
+                            {% if beforeListPriceSnippetExists %}{{ "listing.beforeListPrice"|trans|trim|sw_sanitize }}{% endif %}
+                            <br>
+                            <span class="list-price-price">{{ price.listPrice.price|currency }}{{ "general.star"|trans|sw_sanitize }}</span>
+                            {% if afterListPriceSnippetExists %}{{ "listing.afterListPrice"|trans|trim|sw_sanitize }}{% endif %}
+                            <span class="list-price-percentage">{{ "detail.listPricePercentage"|trans({'%price%': price.listPrice.percentage })|sw_sanitize }}</span>
+                        </span>
+                    {% endif %}
+                </span>
+                {% if isRegulationPrice %}
+                    <br>
+                    <span class="product-price with-regulation-price">
+                        {% if isListPrice %}<br>{% endif %}<span class="regulation-price">{{ "general.listPricePreviously"|trans({'%price%': price.regulationPrice.price|currency }) }}{{ "general.star"|trans|sw_sanitize }}</span>
+
+                    </span>
+                    <br>
+                {% endif %}
+                <div class="product-cheapest-price{% if isListPrice and isRegulationPrice and not displayFrom and not displayFromVariants %} with-list-price{% endif %}{% if isRegulationPrice and not displayFrom and displayFromVariants %} with-regulation-price{% endif %}{% if displayFrom and isRegulationPrice %} with-from-price{% endif %}">
+                    {% if cheapest.unitPrice != real.unitPrice and cheapest.variantId != product.id %}
+                        <div>{{ "listing.cheapestPriceLabel"|trans|sw_sanitize }}<span class="product-cheapest-price-price"> {{ cheapest.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}</span></div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block component_product_box_price_unit %}
+            <p class="product-price-unit">
+                {# Price is based on the purchase unit #}
+                {% block component_product_box_price_purchase_unit %}
+                    {% if referencePrice and referencePrice.unitName %}
+                        <span class="product-unit-label">
+                            {{ "listing.boxUnitLabel"|trans|sw_sanitize }}
+                        </span>
+                        <span class="price-unit-content">
+                            {{ referencePrice.purchaseUnit }} {{ referencePrice.unitName }}
+                        </span>
+                    {% endif %}
+                {% endblock %}
+
+                {# Item price is based on a reference unit #}
+                {% block component_product_box_price_reference_unit %}
+                    {% if referencePrice is not null %}
+                        <span class="price-unit-reference">
+                            ({{ referencePrice.price|currency }}{{ "general.star"|trans|sw_sanitize }} / {{ referencePrice.referenceUnit }} {{ referencePrice.unitName }})
+                        </span>
+                    {% endif %}
+                {% endblock %}
+            </p>
+        {% endblock %}
+    </div>
+
     {# added custom block to display tax information #}
     {% block page_product_detail_tax %}
         <div class="product-detail-tax-container badge">
@@ -11,13 +96,13 @@
             {% endif %}
 
             <p class="product-detail-tax">
-                {% block page_product_detail_tax_link %}
+            {% block page_product_detail_tax_link %}
                     <a class="product-detail-tax-link"
                        href="{{ path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') }) }}"
                        title="{{ taxText }}"
-                    {{ dataBsToggleAttr }}="modal"
-                    data-url="{{ path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') }) }}">
-                    {{ taxText }}
+                        {{ dataBsToggleAttr }}="modal"
+                        data-url="{{ path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') }) }}">
+                        {{ taxText }}
                     </a>
                 {% endblock %}
             </p>
@@ -26,6 +111,8 @@
 
     {# added block to show delivery information #}
     {% block component_delivery_information %}
+        {% set downloadFlag = constant('Shopware\\Core\\Content\\Product\\State::IS_DOWNLOAD') %}
+
         {# @var product \Shopware\Core\Content\Product\ProductEntity #}
         {% if page is defined and page.product is defined %}
             {% set product = page.product %}
@@ -34,7 +121,7 @@
         <div class="product-delivery-information">
             {% if product.shippingFree %}
                 {% block component_delivery_information_shipping_free %}
-                    <p class="delivery-information delivery-shipping-free badge">
+                    <p class="delivery-information delivery-shipping-free">
                         <span class="delivery-status-indicator bg-info"></span>
                         {{ "general.deliveryShippingFree"|trans|sw_sanitize }}
                     </p>
@@ -44,36 +131,44 @@
             {% if not product.active %}
                 {% block component_delivery_information_not_available %}
                     <link itemprop="availability"
-                          href="http://schema.org/LimitedAvailability"/>
-                    <p class="delivery-information delivery-not-available badge">
+                          href="http://schema.org/LimitedAvailability">
+                    <p class="delivery-information delivery-not-available">
                         <span class="delivery-status-indicator bg-danger"></span>
                         {{ "general.deliveryNotAvailable"|trans|sw_sanitize }}
                     </p>
                 {% endblock %}
-
-            {% elseif product.availableStock >= product.minPurchase and product.deliveryTime %}
-                {#added custom snippet for the delivery time#}
+            {% elseif product.releaseDate and product.releaseDate|date('U') > "now"|date('U') %}
+                {% block component_delivery_information_pre_order %}
+                    <link itemprop="availability"
+                          href="http://schema.org/PreOrder">
+                    <p class="delivery-information delivery-preorder">
+                        <span class="delivery-status-indicator bg-warning"></span>
+                        {{ "general.deliveryShipping"|trans|sw_sanitize }} {{ product.releaseDate|format_date('long', locale=app.request.locale) }}
+                    </p>
+                {% endblock %}
+            {% elseif (product.availableStock >= product.minPurchase or (downloadFlag in product.states and not product.isCloseout)) and product.deliveryTime %}
                 {% block component_delivery_information_available %}
-                    <link itemprop="availability" href="http://schema.org/InStock"/>
-                    <p class="delivery-information delivery-available badge">
+                    <link itemprop="availability" href="http://schema.org/InStock">
+                    <p class="delivery-information delivery-available">
                         <span class="delivery-status-indicator bg-success"></span>
-                        {{ "battron.listing.product.deliveryTimeAvailable"|trans({
+
+                        {{ "detail.deliveryTimeAvailable"|trans({
                             '%name%': product.deliveryTime.translation('name')
                         })|sw_sanitize }}
                     </p>
                 {% endblock %}
             {% elseif product.isCloseout and product.availableStock < product.minPurchase %}
                 {% block component_delivery_information_soldout %}
-                    <link itemprop="availability" href="http://schema.org/OutOfStock"/>
-                    <p class="delivery-information delivery-soldout badge">
+                    <link itemprop="availability" href="http://schema.org/OutOfStock">
+                    <p class="delivery-information delivery-soldout">
                         <span class="delivery-status-indicator bg-danger"></span>
                         {{ "detail.soldOut"|trans|sw_sanitize }}
                     </p>
                 {% endblock %}
             {% elseif product.availableStock < product.minPurchase and product.deliveryTime and product.restockTime %}
                 {% block component_delivery_information_restock %}
-                    <link itemprop="availability" href="http://schema.org/LimitedAvailability"/>
-                    <p class="delivery-information delivery-restock badge">
+                    <link itemprop="availability" href="http://schema.org/LimitedAvailability">
+                    <p class="delivery-information delivery-restock">
                         <span class="delivery-status-indicator bg-warning"></span>
                         {{ "detail.deliveryTimeRestock"|trans({
                             '%count%': product.restockTime,
