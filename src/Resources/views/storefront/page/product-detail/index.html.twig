@@ -1,6 +1,5 @@
 {% sw_extends "@Storefront/storefront/page/product-detail/index.html.twig" %}
 
-
 {% block base_content %}
     {% block page_product_detail %}
         <div class="product-detail"
@@ -9,9 +8,7 @@
             {% block page_product_detail_inner %}
                 {% block page_product_detail_content %}
                     <div class="product-detail-content">
-
                         {% set mediaItems = page.product.media.media %}
-
                         {% block page_product_detail_main %}
                             <div class="row product-detail-main">
                                 {% block page_product_detail_media %}
@@ -55,6 +52,7 @@
 
                 {% block page_product_detail_tabs %}
                     <div class="product-detail-tabs">
+                          {{ parent() }}
                         {% sw_include '@Storefront/storefront/page/product-detail/tabs.html.twig' %}
                     </div>
                 {% endblock %}
