@@ -18,7 +18,7 @@
                                         {% if root.category.type == 'folder' %}
                                             {{ root.category.translated.name }}
                                         {% else %}
-                                            <a  class="text-white" href="{{ category_url(root.category) }}"
+                                            <a  class="text-primary" href="{{ category_url(root.category) }}"
                                                 {% if category_linknewtab(root.category) %}target="_blank"{% endif %}
                                                 title="{{ root.category.translated.name }}">
                                                 {{ root.category.translated.name }}
@@ -57,7 +57,7 @@
                                                                     {% if category.type == 'folder' %}
                                                                         <div>{{ name }}</div>
                                                                     {% else %}
-                                                                        <a class="footer-link text-white"
+                                                                        <a class="footer-link text-primary"
                                                                            href="{{ category_url(category) }}"
                                                                            {% if category_linknewtab(category) %}target="_blank"{% endif %}
                                                                            title="{{ name }}">
