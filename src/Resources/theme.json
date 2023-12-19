@@ -186,7 +186,7 @@
           "de-DE": "Überschriftfarbe"
         },
         "type": "color",
-        "value": "#2A5B66 ",
+        "value": "#474747",
         "editable": true,
         "block": "typography",
         "order": 400
