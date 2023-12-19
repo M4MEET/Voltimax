@@ -57,7 +57,7 @@
                                                                     {% if category.type == 'folder' %}
                                                                         <div>{{ name }}</div>
                                                                     {% else %}
-                                                                        <a class="footer-link text-primary"
+                                                                        <a class="footer-link"
                                                                            href="{{ category_url(category) }}"
                                                                            {% if category_linknewtab(category) %}target="_blank"{% endif %}
                                                                            title="{{ name }}">
@@ -120,6 +120,25 @@
                 {% endblock %}
             </div>
         {% endblock %}
+
+
+        {# added custom block for trust pilor and billiger logo to be displayed on footer right side box #}
+        {% block layout_footer_navigation_trustpilot_content %}
+            <div id="collapseFooterHotline"
+                 class="footer-column-content collapse js-footer-column-content footer-contact"
+                 aria-labelledby="collapseFooterHotlineTitle">
+                <div class="footer-column-content-inner text-white text-center">
+                    <!-- TrustBox widget - Mini -->
+                    <div class="trustpilot-widget " data-locale="de-DE" data-template-id="53aa8807dec7e10d38f59f32" data-businessunit-id="641844b25c3148d8e2f02d34" data-style-height="150px" data-style-width="100%" data-theme="dark">
+                        <a href="https://de.trustpilot.com/review/voltimax.de" target="_blank" rel="noopener">Trustpilot</a>
+                    </div>
+
+                    <!-- End TrustBox widget -->
+                    <a href="https://www.billiger.de/search?filter=f_shop_28529" target="_blank" rel="noopener"> <img src="https://cdn.billiger.com/partnerbutton/28529" alt="billiger.de - The price-comparison" title="billiger.de - The price-comparison" /> </a>
+                </div>
+            </div>
+        {% endblock %}
+        {# end of the custom block displayed in footer #}
 
         {% block layout_footer_payment_shipping_logos %}
             {{ parent() }}
