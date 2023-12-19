@@ -54,9 +54,10 @@
     background-color: $gray-200;
 }
 
-#mainNavigation {
-    background-color: $gray-200;
+.product-box:hover {
+  border-color: $sw-color-brand-primary;
 }
+
 .is-act-home .breadcrumb.container {
   display: none;
 }
@@ -72,7 +73,7 @@
 }
 
 .container-main {
-  padding: 0px;
+  padding: 0;
 }
 
 .category-navigation {
