@@ -7,7 +7,7 @@
         {% set variation = product.variation %}
         {% set displayParent = product.variantListingConfig.displayParent and product.parentId === null %}
 
-        <div class="card shadow product-box box-{{ layout }}">
+        <div class="card product-box box-{{ layout }}">
             {% block component_product_box_content %}
                 <div class="card-body">
                     {% block component_product_box_badges %}
