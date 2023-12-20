@@ -10,7 +10,7 @@
                         {% block layout_footer_navigation_column %}
                             <div class="col-md-3 footer-column js-footer-column">
                                 {% block layout_footer_navigation_information_headline %}
-                                    <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger text-white"
+                                    <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger text-primary"
                                          data-target="#collapseFooterTitle{{ loop.index }}"
                                          aria-expanded="true"
                                          aria-controls="collapseFooter{{ loop.index }}">
@@ -80,7 +80,7 @@
                 {% block layout_footer_navigation_hotline %}
                     <div class="col-md-3 footer-column js-footer-column">
                         {% block layout_footer_navigation_hotline_headline %}
-                            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger text-white"
+                            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger text-primary"
                                  id="collapseFooterHotlineTitle"
                                  data-target="#collapseFooterHotline"
                                  aria-expanded="true"
@@ -103,7 +103,7 @@
                             <div id="collapseFooterHotline"
                                  class="footer-column-content collapse js-footer-column-content footer-contact"
                                  aria-labelledby="collapseFooterHotlineTitle">
-                                <div class="footer-column-content-inner">
+                                <div class="footer-column-content-inner text-white">
                                     <p class="footer-contact-hotline">
                                         {{ 'footer.serviceHotline'|trans|sw_sanitize }}
                                     </p>
@@ -116,64 +116,60 @@
                                 </div>
                             </div>
                         {% endblock %}
-
+                    </div>
                 {% endblock %}
 
+                {# added custom block for trust pilor and billiger logo to be displayed on footer right side box #}
                 {% block layout_footer_navigation_custom_trustpilot %}
-                            <div class="col-md-3 footer-column js-footer-column">
-                                {% block layout_footer_navigation_headline_trustpilot %}
-                                    <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger text-primary"
-                                         id="collapseFooterHotlineTitle"
-                                         data-target="#collapseFooterHotline"
-                                         aria-expanded="true"
-                                         aria-controls="collapseFooterHotline">
-                                        Unsere Partner
-                                        {% block layout_footer_navigation_trustpilot_icons %}
-                                            <div class="footer-column-toggle">
+                    <div class="col-md-3 footer-column js-footer-column">
+                        {% block layout_footer_navigation_headline_trustpilot %}
+                            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger text-primary"
+                                 id="collapseFooterHotlineTitle"
+                                 data-target="#collapseFooterHotline"
+                                 aria-expanded="true"
+                                 aria-controls="collapseFooterHotline">
+                                Unsere Partner
+                                {% block layout_footer_navigation_trustpilot_icons %}
+                                    <div class="footer-column-toggle">
                                         <span class="footer-plus-icon">
                                             {% sw_icon 'plus' %}
                                         </span>
-                                                <span class="footer-minus-icon">
+                                        <span class="footer-minus-icon">
                                             {% sw_icon 'minus' %}
                                         </span>
-                                            </div>
-                                        {% endblock %}
                                     </div>
                                 {% endblock %}
-
-                                {# added custom block for trust pilor and billiger logo to be displayed on footer right side box #}
-                                {% block layout_footer_navigation_trustpilot_content %}
-                                    <div id="collapseFooterHotline"
-                                         class="footer-column-content collapse js-footer-column-content footer-contact"
-                                         aria-labelledby="collapseFooterHotlineTitle">
-                                        <div class="footer-column-content-inner text-white text-center">
-                                            <!-- TrustBox widget - Mini -->
-                                            <div class="trustpilot-widget " data-locale="de-DE" data-template-id="53aa8807dec7e10d38f59f32" data-businessunit-id="641844b25c3148d8e2f02d34" data-style-height="150px" data-style-width="100%" data-theme="dark">
-                                                <a href="https://de.trustpilot.com/review/voltimax.de" target="_blank" rel="noopener">Trustpilot</a>
-                                            </div>
-
-                                            <!-- End TrustBox widget -->
-                                            <a href="https://www.billiger.de/search?filter=f_shop_28529" target="_blank" rel="noopener"> <img src="https://cdn.billiger.com/partnerbutton/28529" alt="billiger.de - The price-comparison" title="billiger.de - The price-comparison" /> </a>
-                                        </div>
-                                    </div>
-                                {% endblock %}
-                                {# end of the custom block displayed in footer #}
                             </div>
                         {% endblock %}
 
+                        {% block layout_footer_navigation_trustpilot_content %}
+                            <div id="collapseFooterHotline"
+                                 class="footer-column-content collapse js-footer-column-content footer-contact"
+                                 aria-labelledby="collapseFooterHotlineTitle">
+                                <div class="footer-column-content-inner text-white text-center">
+                                    <!-- TrustBox widget - Mini -->
+                                    <div class="trustpilot-widget " data-locale="de-DE" data-template-id="53aa8807dec7e10d38f59f32" data-businessunit-id="641844b25c3148d8e2f02d34" data-style-height="150px" data-style-width="100%" data-theme="dark">
+                                        <a href="https://de.trustpilot.com/review/voltimax.de" target="_blank" rel="noopener">Trustpilot</a>
+                                    </div>
+
+                                    <!-- End TrustBox widget -->
+                                    <a href="https://www.billiger.de/search?filter=f_shop_28529" target="_blank" rel="noopener"> <img src="https://cdn.billiger.com/partnerbutton/28529" alt="billiger.de - The price-comparison" title="billiger.de - The price-comparison" /> </a>
+                                </div>
+                            </div>
+                        {% endblock %}
+                        {# end of the custom block displayed in footer #}
                     </div>
+                {% endblock %}
+            </div>
         {% endblock %}
-
-
 
         {% block layout_footer_payment_shipping_logos %}
             {{ parent() }}
         {% endblock %}
-
     </div>
 
     {% block layout_footer_bottom %}
-        <div class="footer-bottom text-white">
+        <div class="footer-bottom text-secondary">
             {% block layout_footer_service_menu %}
                 <div class="container">
                     {% block layout_footer_service_menu_content %}
