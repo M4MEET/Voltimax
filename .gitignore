@@ -1,3 +1,5 @@
 backup_*.zip
 sync_log_*.log
+.DS_Store
+
 
