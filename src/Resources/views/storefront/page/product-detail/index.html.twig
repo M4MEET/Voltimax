@@ -51,10 +51,7 @@
                 {% endblock %}
 
                 {% block page_product_detail_tabs %}
-                    <div class="product-detail-tabs">
-                          {{ parent() }}
-                        {% sw_include '@Storefront/storefront/page/product-detail/tabs.html.twig' %}
-                    </div>
+                      {{ parent() }}
                 {% endblock %}
 
                 {% block page_product_detail_cross_selling %}

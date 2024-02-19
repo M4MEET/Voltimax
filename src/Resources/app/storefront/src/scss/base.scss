@@ -1,12 +1,63 @@
-@import "fonts/bfont";
+
+@font-face {
+  font-family: 'TT Mussels';
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: url('#{$my-asset-path}/fonts/TTMussels-Regular.woff') format('woff'),
+  url('#{$my-asset-path}/fonts/TTMussels-Regular.woff2') format('woff2'),
+  url('#{$my-asset-path}/fonts/TTMussels-Regular.ttf') format('truetype'),
+  url('#{$my-asset-path}/fonts/TTMussels-Regular.eot') format('eot');
+}
+
+@font-face {
+  font-family: 'TT Mussels';
+  font-weight: 500;
+  font-style: normal;
+  src: url('#{$my-asset-path}/fonts/TTMussels-Medium.woff') format('woff'),
+  url('#{$my-asset-path}/fonts/TTMussels-Medium.woff2') format('woff2'),
+  url('#{$my-asset-path}/fonts/TTMussels-Medium.ttf') format('truetype'),
+  url('#{$my-asset-path}/fonts/TTMussels-Medium.eot') format('eot');
+}
+
+@font-face {
+  font-family: 'TT Mussels';
+  font-weight: bold;
+  font-style: normal;
+  src: url('#{$my-asset-path}/fonts/TTMussels-Bold.woff') format('woff'),
+  url('#{$my-asset-path}/fonts/TTMussels-Bold.woff2') format('woff2'),
+  url('#{$my-asset-path}/fonts/TTMussels-Bold.ttf') format('truetype'),
+  url('#{$my-asset-path}/fonts/TTMussels-Bold.eot') format('eot');
+}
+
+@font-face {
+  font-family: 'TT Mussels';
+  font-weight: 800;
+  font-style: normal;
+  src: url('#{$my-asset-path}/fonts/TTMussels-ExtraBold.woff') format('woff'),
+  url('#{$my-asset-path}/fonts/TTMussels-ExtraBold.woff2') format('woff2'),
+  url('#{$my-asset-path}/fonts/TTMussels-ExtraBold.ttf') format('truetype'),
+  url('#{$my-asset-path}/fonts/TTMussels-ExtraBold.eot') format('eot');
+}
+
+@font-face {
+  font-family: 'TT Mussels';
+  font-weight: normal;
+  font-style: italic;
+  src: url('#{$my-asset-path}/fonts/TTMussels-Italic.woff') format('woff'),
+  url('#{$my-asset-path}/fonts/TTMussels-Italic.woff2') format('woff2'),
+  url('#{$my-asset-path}/fonts/TTMussels-Italic.ttf') format('truetype'),
+  url('#{$my-asset-path}/fonts/TTMussels-Italic.eot') format('eot');
+}
 
 .header-main{
     background-color: $gray-200;
 }
 
-#mainNavigation {
-    background-color: $gray-200;
+.product-box:hover {
+  border-color: $sw-color-brand-primary;
 }
+
 .is-act-home .breadcrumb.container {
   display: none;
 }
@@ -20,13 +71,24 @@
 {
     max-width: 1400px;
 }
+
 .container-main {
-  padding: 0px;
+  padding: 0;
 }
+
 .category-navigation {
        &.level-0 > {
         .category-navigation-entry {
             border-bottom: none;
         }
     }
+}
+
+
+.payment-method-description > p {
+  color: $background-dark-sb;
+}
+
+.shipping-method-description > p {
+  color: $background-dark-sb;
 }
