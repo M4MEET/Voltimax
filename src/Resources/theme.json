@@ -44,17 +44,19 @@
           "en-GB": "Status messages",
           "de-DE": "Status-Ausgaben"
         }
-      },
+      }
+    },
+    "tabs": {
       "media": {
         "label": {
           "en-GB": "Media",
           "de-DE": "Medien"
         }
       },
-      "unordered": {
+      "footer": {
         "label": {
-          "en-GB": "Misc",
-          "de-DE": "Sonstige"
+          "en-GB": "Footer",
+          "de-DE": "Fußzeile"
         }
       }
     },
@@ -293,6 +295,70 @@
         "editable": true,
         "block": "media",
         "order": 500
+      },
+      "sw-footer-usp-first-media": {
+        "label": {
+          "en-GB": "USP First Media",
+          "de-DE": "Erstes USP Medium"
+        },
+        "helpText": {
+          "en-GB": "To add or edit the text for this USP, please use the snippet named 'battron.footer.usp.first' in Shop > Settings > Snippets. Ensure to clear the cache after editing snippet files.",
+          "de-DE": "Um den Text für dieses USP hinzuzufügen oder zu bearbeiten, verwenden Sie bitte den Snippet-Namen 'battron.footer.usp.first' unter Shop > Einstellungen > Snippets. Vergessen Sie nicht, den Cache nach dem Bearbeiten der Snippet-Dateien zu löschen."
+        },
+        "type": "media",
+        "value": "app/storefront/src/assets/footer-logo/Fastdelivery.png",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerUsp",
+        "order": 101
+      },
+      "sw-footer-usp-second-media": {
+        "label": {
+          "en-GB": "USP Second Media",
+          "de-DE": "Zweites USP Medium"
+        },
+        "helpText": {
+          "en-GB": "To add or edit the text for this USP, please use the snippet named 'battron.footer.usp.second' in Shop > Settings > Snippets. Ensure to clear the cache after editing snippet files.",
+          "de-DE": "Um den Text für dieses USP hinzuzufügen oder zu bearbeiten, verwenden Sie bitte den Snippet-Namen 'battron.footer.usp.second' unter Shop > Einstellungen > Snippets. Vergessen Sie nicht, den Cache nach dem Bearbeiten der Snippet-Dateien zu löschen."
+        },
+        "type": "media",
+        "value": "app/storefront/src/assets/footer-logo/Return.png",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerUsp",
+        "order": 201
+      },
+      "sw-footer-usp-third-media": {
+        "label": {
+          "en-GB": "USP Third Media",
+          "de-DE": "Drittes USP Medium"
+        },
+        "helpText": {
+          "en-GB": "To add or edit the text for this USP, please use the snippet named 'battron.footer.usp.third' in Shop > Settings > Snippets. Ensure to clear the cache after editing snippet files.",
+          "de-DE": "Um den Text für dieses USP hinzuzufügen oder zu bearbeiten, verwenden Sie bitte den Snippet-Namen 'battron.footer.usp.third' unter Shop > Einstellungen > Snippets. Vergessen Sie nicht, den Cache nach dem Bearbeiten der Snippet-Dateien zu löschen."
+        },
+        "type": "media",
+        "value": "app/storefront/src/assets/footer-logo/SicherShoppen.png",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerUsp",
+        "order": 301
+      },
+      "sw-footer-usp-fourth-media": {
+        "label": {
+          "en-GB": "USP Fourth Media",
+          "de-DE": "Viertes USP Medium"
+        },
+        "helpText": {
+          "en-GB": "To add or edit the text for this USP, please use the snippet named 'battron.footer.usp.fourth' in Shop > Settings > Snippets. Ensure to clear the cache after editing snippet files.",
+          "de-DE": "Um den Text für dieses USP hinzuzufügen oder zu bearbeiten, verwenden Sie bitte den Snippet-Namen 'battron.footer.usp.fourth' unter Shop > Einstellungen > Snippets. Vergessen Sie nicht, den Cache nach dem Bearbeiten der Snippet-Dateien zu löschen."
+        },
+        "type": "media",
+        "value": "app/storefront/src/assets/footer-logo/Clients.png",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerUsp",
+        "order": 401
       }
     }
   }

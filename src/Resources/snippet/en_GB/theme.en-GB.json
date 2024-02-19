@@ -11,6 +11,13 @@
             "category": {
                 "showAllCategory": "All"
             }
+        },
+        "footer": {
+            "usp": {
+                "first": "Fast Delivery Times",
+                "second": "30 Days Return Policy",
+                "third": "Secure Shopping",
+                "fourth": "200,000+ Customers"
+            }
         }
-    }
-}
+    },

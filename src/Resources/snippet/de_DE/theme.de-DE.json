@@ -11,6 +11,14 @@
             "category": {
                 "showAllCategory": "Alle"
             }
+        },
+        "footer": {
+            "usp": {
+                "first": "Schnelle Lieferzeiten",
+                "second": "30 Tage Widerrufsrecht",
+                "third": "Sicher Einkaufen",
+                "fourth": "200,000+ Kunden"
+            }
         }
     }
 }
