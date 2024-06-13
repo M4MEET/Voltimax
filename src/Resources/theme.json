@@ -359,6 +359,22 @@
         "tab": "footer",
         "block": "footerUsp",
         "order": 401
+      },
+      "taxInfoAlert": {
+        "label": {
+          "en-GB": "Show tax info alert on product detail page",
+          "de-DE": "Show tax info alert on product detail page"
+        },
+        "helpText": {
+          "en-GB": "To add or edit the text for this text field, please use the snippet named 'battron.detail.product.showTaxInfoAlert' in Shop > Settings > Snippets. Ensure to clear the cache after editing snippet files.",
+          "de-DE": "Um den Text für dieses text hinzuzufügen oder zu bearbeiten, verwenden Sie bitte den Snippet-Namen 'battron.detail.product.showTaxInfoAlert' unter Shop > Einstellungen > Snippets. Vergessen Sie nicht, den Cache nach dem Bearbeiten der Snippet-Dateien zu löschen."
+        },
+        "type": "switch",
+        "editable": true,
+        "value": true,
+        "tab": "taxInfoAlert",
+        "block": "Tax info on detail page",
+        "order": 100
       }
     }
   }
