@@ -5,52 +5,6 @@
             <div id="footerColumns"
                  class="row footer-columns"
                  data-collapse-footer="true">
-                {% block layout_footer_navigation_usps %}
-                    <div class="col-md-12  pt-3 footer-column js-footer-column">
-                        {% block layout_footer_navigation_inner_usp_headline %}
-                            <div class="footer-column-headline footer-headline d-md-none js-footer-column-headline js-collapse-footer-column-trigger text-primary"
-                                 id="collapseFooterUspTitle"
-                                 data-target="#collapseFooterUsp"
-                                 aria-expanded="true"
-                                 aria-controls="collapseFooterUsp">
-                                Our Services
-                                {% block layout_footer_navigation_service_usp_icons %}
-                                    <div class="footer-column-toggle">
-                                        <span class="footer-plus-icon">
-                                            {% sw_icon 'plus' %}
-                                        </span>
-                                        <span class="footer-minus-icon">
-                                            {% sw_icon 'minus' %}
-                                        </span>
-                                    </div>
-                                {% endblock %}
-                            </div>
-                        {% endblock %}
-                        {% block layout_footer_navigation_inner_service_usps %}
-                            <div id="collapseFooterUsp"
-                                 class="footer-column-content js-footer-column-content footer-usp"
-                                 aria-labelledby="collapseFooterUspTitle">
-                                <div class="row gy-0">
-                                    {% set usps = [
-                                        {'key': 'first', 'media': theme_config('sw-footer-usp-first-media')},
-                                        {'key': 'second', 'media': theme_config('sw-footer-usp-second-media')},
-                                        {'key': 'third', 'media': theme_config('sw-footer-usp-third-media')},
-                                        {'key': 'fourth', 'media': theme_config('sw-footer-usp-fourth-media')}
-                                    ] %}
-                                    {% for usp in usps %}
-                                        {% if usp.media %}
-                                            <div class="usp-item col-6 col-sm-6 col-lg-3 d-flex align-items-center">
-                                                <img src="{{ usp.media|sw_encode_url }}" alt="{{ ('battron.footer.usp.' ~ usp.key)|trans }}" class="img-fluid me-2" style="height: auto; max-width: 20%;">
-                                                <h4 class="text-primary mb-0 fs-6 fs-md-3">{{ ('battron.footer.usp.' ~ usp.key)|trans }}</h4>
-                                            </div>
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        {% endblock %}
-                    </div>
-                {% endblock %}
-
                 {% block layout_footer_navigation_columns %}
                     {% for root in page.footer.navigation.tree %}
                         {% block layout_footer_navigation_column %}
@@ -121,8 +75,58 @@
                                 {% endblock %}
                             </div>
                         {% endblock %}
+
+                        {# After the fourth category, insert your custom block #}
+                        {% if loop.index == 4 %}
+                            {% block layout_footer_navigation_usps %}
+                                <div class="col-md-12  p-3 footer-column js-footer-column">
+                                    {% block layout_footer_navigation_inner_usp_headline %}
+                                        <div class="footer-column-headline footer-headline d-md-none js-footer-column-headline js-collapse-footer-column-trigger text-primary"
+                                             id="collapseFooterUspTitle"
+                                             data-target="#collapseFooterUsp"
+                                             aria-expanded="true"
+                                             aria-controls="collapseFooterUsp">
+                                            Our Services
+                                            {% block layout_footer_navigation_service_usp_icons %}
+                                                <div class="footer-column-toggle">
+                                        <span class="footer-plus-icon">
+                                            {% sw_icon 'plus' %}
+                                        </span>
+                                                    <span class="footer-minus-icon">
+                                            {% sw_icon 'minus' %}
+                                        </span>
+                                                </div>
+                                            {% endblock %}
+                                        </div>
+                                    {% endblock %}
+                                    {% block layout_footer_navigation_inner_service_usps %}
+                                        <div id="collapseFooterUsp"
+                                             class="footer-column-content js-footer-column-content footer-usp"
+                                             aria-labelledby="collapseFooterUspTitle">
+                                            <div class="row gy-0">
+                                                {% set usps = [
+                                                    {'key': 'first', 'media': theme_config('sw-footer-usp-first-media')},
+                                                    {'key': 'second', 'media': theme_config('sw-footer-usp-second-media')},
+                                                    {'key': 'third', 'media': theme_config('sw-footer-usp-third-media')},
+                                                    {'key': 'fourth', 'media': theme_config('sw-footer-usp-fourth-media')}
+                                                ] %}
+                                                {% for usp in usps %}
+                                                    {% if usp.media %}
+                                                        <div class="usp-item col-6 col-sm-6 col-lg-3 d-flex align-items-center">
+                                                            <img src="{{ usp.media|sw_encode_url }}" alt="{{ ('battron.footer.usp.' ~ usp.key)|trans }}" class="img-fluid me-2" style="height: auto; max-width: 20%;">
+                                                            <h4 class="text-primary mb-0 fs-6 fs-md-3">{{ ('battron.footer.usp.' ~ usp.key)|trans }}</h4>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
+                        {% endif %}
                     {% endfor %}
                 {% endblock %}
+
                 {% block layout_footer_navigation_hotline %}
                     <div class="col-md-3 footer-column js-footer-column">
                         {% block layout_footer_navigation_hotline_headline %}
@@ -165,7 +169,7 @@
                     </div>
                 {% endblock %}
 
-                {# added custom block for trust pilor and billiger logo to be displayed on footer right side box #}
+                {# added custom block for trustpilot and billiger logo to be displayed on footer right side box #}
                 {% block layout_footer_navigation_custom_trustpilot %}
                     <div class="col-md-3 footer-column js-footer-column">
                         {% block layout_footer_navigation_headline_trustpilot %}
@@ -203,9 +207,10 @@
                                 </div>
                             </div>
                         {% endblock %}
-                        {# end of the custom block displayed in footer #}
                     </div>
                 {% endblock %}
+                {# end of the custom block displayed in footer #}
+
                 {% block layout_footer_payment_shipping_logos %}
                     {{ parent() }}
                 {% endblock %}
@@ -258,6 +263,7 @@
 
             {% block layout_footer_copyright %}
                 <div class="footer-copyright">
+                    {% sw_icon 'shopware' style {'size':'xs'} %}
                     {{ "footer.copyrightInfo"|trans|sw_sanitize }}
                 </div>
             {% endblock %}

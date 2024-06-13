@@ -1,23 +1,23 @@
 {
-    "battron": {
-        "listing": {
-            "product": {
-                "showStock": "In Stock",
-                "limitedStock": "Only %product.stock% In Stock",
-                "outOfStock": "Not in Stock"
-            }
-        },
-        "sidebar": {
-            "category": {
-                "showAllCategory": "All"
-            }
-        },
-        "footer": {
-            "usp": {
-                "first": "Fast Delivery Times",
-                "second": "30 Days Return Policy",
-                "third": "Secure Shopping",
-                "fourth": "200,000+ Customers"
-            }
-        }
+  "battron": {
+    "listing": {
+      "product": {
+        "showStock": "In Stock",
+        "limitedStock": "Only %product.stock% In Stock",
+        "outOfStock": "Not in Stock"
+      }
     },
+    "sidebar": {
+      "category": {
+        "showAllCategory": "All"
+      }
+    },
+    "footer": {
+      "usp": {
+        "first": "Fast Delivery Times",
+        "second": "30 Days Return Policy",
+        "third": "Secure Shopping",
+        "fourth": "200,000+ Customers"
+      }
+    }
+  },
