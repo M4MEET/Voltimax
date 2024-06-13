@@ -211,7 +211,7 @@
                 {% endblock %}
                 {# end of the custom block displayed in footer #}
 
-                {% block layout_footer_payment_shipping_logos %}
+                {% block  layout_footer_payment_shipping_logos %}
                     {{ parent() }}
                 {% endblock %}
             </div>
@@ -263,7 +263,6 @@
 
             {% block layout_footer_copyright %}
                 <div class="footer-copyright">
-                    {% sw_icon 'shopware' style {'size':'xs'} %}
                     {{ "footer.copyrightInfo"|trans|sw_sanitize }}
                 </div>
             {% endblock %}

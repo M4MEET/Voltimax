@@ -5,6 +5,30 @@
         <div class="product-detail"
              itemscope
              itemtype="https://schema.org/Product">
+
+            {# Retrieve theme configuration values #}
+            {% set taxInfoAlert = theme_config('taxInfoAlert') %}
+            {% set showTaxAlertInfo = theme_config('battron.detail.product.showTaxAlertInfo') %}
+            {% set configProductTaxId = page.extensions.configProductTaxId.getTaxEntity() %}
+            {% set productTaxId = page.product.taxId %}
+
+            {# Display the custom tax banner if conditions are met #}
+            {% if taxInfoAlert == 1 and productTaxId == configProductTaxId %}
+                {% block voltimax_custom_tax_banner %}
+                    <div class="voltimax-custom-banner">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <div class="alert alert-warning" role="alert">
+                                        {{ "battron.detail.product.showTaxAlertInfo" | trans | sw_sanitize }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endblock %}
+            {% endif %}
+
             {% block page_product_detail_inner %}
                 {% block page_product_detail_content %}
                     <div class="product-detail-content">

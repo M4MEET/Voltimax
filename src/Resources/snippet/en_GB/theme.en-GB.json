@@ -1,5 +1,10 @@
 {
   "battron": {
+    "detail": {
+      "product": {
+        "showTaxAlertInfo" : "0% VAT The VAT exemption only applies to components if they are used in accordance with Section 12 (3) UstG."
+      }
+    },
     "listing": {
       "product": {
         "showStock": "In Stock",
