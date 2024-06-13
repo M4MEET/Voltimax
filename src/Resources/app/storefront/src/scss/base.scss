@@ -50,9 +50,9 @@
   url('#{$my-asset-path}/fonts/TTMussels-Italic.eot') format('eot');
 }
 
-.header-main{
+.header-main {
     background-color: $gray-200;
-}
+ }
 
 .product-box:hover {
   border-color: $sw-color-brand-primary;
@@ -91,4 +91,10 @@
 
 .shipping-method-description > p {
   color: $background-dark-sb;
+}
+
+@include media-breakpoint-up(md) {
+  .footer-column {
+    border-bottom: 1px solid $border-color;
+  }
 }
