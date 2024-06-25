@@ -2,7 +2,7 @@
     {% block element_product_listing_col %}
         {% for product in searchResult %}
             <div class="cms-listing-col col-12">
-                {#// TODO find a better way to replace  {{ listingColumns }} col-12 in div#}
+                {# // TODO find a better way to replace  {{ listingColumns }} col-12 in div #}
                 {% block element_product_listing_box %}
                     {{ parent() }}
                 {% endblock %}

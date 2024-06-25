@@ -3,11 +3,34 @@
         xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
 
     <card>
-        <title>Choose tax id for displaying tax banner</title>
+        <title>Tax Information Settings</title>
+
+        <input-field type="bool">
+            <name>taxInfoAlert</name>
+            <label>Enable Tax Info Alert</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
         <component name="sw-entity-single-select">
             <name>taxEntity</name>
             <entity>tax</entity>
-            <label>Select taxID</label>
+            <label>Select Tax ID</label>
+        </component>
+        <component name="sw-snippet-field">
+            <name>taxInfoText</name>
+            <label>Tax Info Text on above BuyBox</label>
+            <snippet>VoltimaxTheme.config.taxInfoText</snippet>
+        </component>
+        <component name="sw-snippet-field">
+            <name>taxInfoTextDetail</name>
+            <label>Tax Info Text in BuyBox</label>
+            <snippet>VoltimaxTheme.config.taxInfoTextDetail</snippet>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>taxInfoCmsPage</name>
+            <entity>cms_page</entity>
+            <label>Select CMS Page for Tax Info</label>
         </component>
     </card>
 </config>

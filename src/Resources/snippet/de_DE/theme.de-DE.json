@@ -1,33 +1,51 @@
 {
-    "battron": {
-        "detail": {
-            "product": {
-                "showTaxAlertInfo": "0%-MwSt Die MwSt-Befreiung gilt nur für Komponenten, wenn sie gemäß des § 12 Abs. 3 UstG verwendet werden."
-            }
-        },
-        "listing": {
-            "product": {
-                "showStock": "Auf Lager",
-                "limitedStock": "Nur noch %product.stock% Stück auf Lager",
-                "outOfStock": "Bald wieder da"
-            }
-        },
-        "sidebar": {
-            "category": {
-                "showAllCategory": "Alle"
-            }
-        },
-        "footer": {
-            "payment": {
-                "title": "Zahlungsmethoden",
-                "description": "Wir akzeptieren folgende Zahlungsmethoden"
-            },
-            "usp": {
-                "first": "Schnelle Lieferzeiten",
-                "second": "30 Tage Widerrufsrecht",
-                "third": "Sicher Einkaufen",
-                "fourth": "200,000+ Kunden"
-            }
-        }
+  "battron": {
+    "detail": {
+      "product": {
+        "showTaxAlertInfo": "0%-MwSt Die MwSt-Befreiung gilt nur für Komponenten, wenn sie gemäß des § 12 Abs. 3 UstG verwendet werden."
+      }
+    },
+    "listing": {
+      "product": {
+        "showStock": "Auf Lager",
+        "limitedStock": "Nur noch %product.stock% Stück auf Lager",
+        "outOfStock": "Bald wieder da"
+      }
+    },
+    "sidebar": {
+      "category": {
+        "showAllCategory": "Alle"
+      }
+    },
+    "footer": {
+      "payment": {
+        "title": "Zahlungsmethoden",
+        "description": "Wir akzeptieren folgende Zahlungsmethoden"
+      },
+      "usp": {
+        "first": "Schnelle Lieferzeiten",
+        "second": "30 Tage Widerrufsrecht",
+        "third": "Sicher Einkaufen",
+        "fourth": "200,000+ Kunden"
+      }
     }
+  },
+  "VoltimaxTheme": {
+    "config": {
+      "taxInfoText": "0%-MwSt Die MwSt-Befreiung gilt nur für Komponenten, wenn sie gemäß des § 12 Abs. 3 UstG verwendet werden",
+      "taxInfoTextDetail": "Der Verkauf unterliegt der Differenzbesteuerung gem. § 25a UStG (Gebrauchtgegenstände/Sonderregelung). Ein gesonderter Ausweis der Umsatzsteuer für gebrauchte oder wiederaufbereitete Gegenstände ist nicht zulässig."
+    },
+    "listing": {
+      "product": {
+        "grossTaxInformation": " inkl. %product.taxRate%%   MwSt. zzgl. Versandkosten",
+        "netTaxInformation": " zzgl. %product.taxRate%% MwSt. zzgl. Versandkosten"
+      }
+    },
+    "detail": {
+      "product": {
+        "grossTaxInformation": " inkl. %product.taxRate%%   MwSt. zzgl. Versandkosten",
+        "netTaxInformation": " zzgl. %product.taxRate%% MwSt. zzgl. Versandkosten"
+      }
+    }
+  }
 }

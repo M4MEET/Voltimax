@@ -34,3 +34,41 @@
         {% endblock %}
     </div>
 {% endblock %}
+
+{% block page_product_detail_tax %}
+    <div class="product-detail-tax-container">
+        {% if context.taxState == "gross" %}
+            {% set taxText = "VoltimaxTheme.detail.product.grossTaxInformation"|trans({'%product.taxRate%':page.product.tax.taxRate}) |sw_sanitize %}
+        {% else %}
+            {% set taxText = "VoltimaxTheme.detail.product.netTaxInformation"|trans({'%product.taxRate%':page.product.tax.taxRate}) |sw_sanitize %}
+        {% endif %}
+
+        <p class="product-detail-tax">
+            {% block page_product_detail_tax_link %}
+                <a class="product-detail-tax-link"
+                   href="{{ path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) }}"
+                   title="{{ taxText }}"
+                   data-ajax-modal="true"
+                   data-url="{{ path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) }}">
+                    {{ taxText }}
+                </a>
+            {% endblock %}
+        </p>
+    </div>
+
+    {% set taxInfoAlert = config('VoltimaxTheme.config.taxInfoAlert') %}
+    {% set configProductTaxId = page.extensions.configProductTaxId.getTaxEntity() %}
+    {% set productTaxId = page.product.taxId %}
+    {% set showBanner = taxInfoAlert and productTaxId == configProductTaxId %}
+
+    {% if showBanner %}
+        {% block voltimax_custom_banner_detail_info_box %}
+            {% set taxInfoTextDetail = "VoltimaxTheme.config.taxInfoTextDetail" | trans | sw_sanitize %}
+            {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                type: 'info',
+                content: taxInfoTextDetail,
+                icon: 'info'
+            } %}
+        {% endblock %}
+    {% endif %}
+{% endblock %}}

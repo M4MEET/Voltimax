@@ -7,16 +7,18 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Shopware\Storefront\Page\Product\ProductPageLoadedEvent;
 use VoltimaxTheme\Struct\TaxInfoConfigStruct;
 use Psr\Log\LoggerInterface;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
 
-class TaxInfoAlertSubscriber implements EventSubscriberInterface
+class TaxInfoAlertSubscriber implements EventSubscriberInterface, LoggerAwareInterface
 {
-    private SystemConfigService $systemConfigService;
-    private LoggerInterface $logger;
+    use LoggerAwareTrait;
 
-    public function __construct(SystemConfigService $systemConfigService, LoggerInterface $logger)
+    private SystemConfigService $systemConfigService;
+
+    public function __construct(SystemConfigService $systemConfigService)
     {
         $this->systemConfigService = $systemConfigService;
-        $this->logger = $logger;
     }
 
     public static function getSubscribedEvents(): array
@@ -28,15 +30,21 @@ class TaxInfoAlertSubscriber implements EventSubscriberInterface
 
     public function onProductPageLoaded(ProductPageLoadedEvent $event): void
     {
+        $taxInfoAlert = $this->systemConfigService->get('VoltimaxTheme.config.taxInfoAlert');
         $configProductTaxId = $this->systemConfigService->get('VoltimaxTheme.config.taxEntity');
-        $this->logger->info('Config Product Tax ID:', ['configProductTaxId' => $configProductTaxId]);
+        $taxInfoText = $this->systemConfigService->get('VoltimaxTheme.config.taxInfoText');
 
-        if ($configProductTaxId) {
-            $taxInfoConfigStruct = new TaxInfoConfigStruct($configProductTaxId);
+        // Use the custom logger
+        $this->logger->info('Tax Info Alert Enabled:', ['taxInfoAlert' => $taxInfoAlert]);
+        $this->logger->info('Config Product Tax ID:', ['configProductTaxId' => $configProductTaxId]);
+        $this->logger->info('Tax Info Text:', ['taxInfoText' => $taxInfoText]);
+
+        if ($taxInfoAlert && $configProductTaxId) {
+            $taxInfoConfigStruct = new TaxInfoConfigStruct($configProductTaxId, $taxInfoText);
             $event->getPage()->addExtension('configProductTaxId', $taxInfoConfigStruct);
             $this->logger->info('TaxInfoConfigStruct added:', ['taxInfoConfigStruct' => $taxInfoConfigStruct]);
         } else {
-            $this->logger->warning('Config Product Tax ID is null or not set.');
+            $this->logger->warning('Tax Info Alert is disabled or Config Product Tax ID is null.');
         }
     }
 }

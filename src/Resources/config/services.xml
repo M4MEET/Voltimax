@@ -1,15 +1,30 @@
-<?xml version="1.0" ?>
-
+<?xml version="1.0" encoding="UTF-8" ?>
 <container xmlns="http://symfony.com/schema/dic/services"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
-
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+                               http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <defaults autowire="true" autoconfigure="true"/>
 
-        <service id="VoltimaxTheme\Subscriber\TaxInfoAlertSubscriber" public="true">
+        <!-- Define the custom log channel for the theme -->
+        <service id="monolog.logger.voltimax_theme" class="Monolog\Logger">
+            <argument>voltimax_theme</argument>
+            <tag name="monolog.logger" channel="voltimax_theme"/>
+        </service>
+
+        <!-- Define the TaxInfoAlertSubscriber service -->
+        <service id="VoltimaxTheme\Subscriber\TaxInfoAlertSubscriber">
             <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <call method="setLogger">
+                <argument type="service" id="monolog.logger.voltimax_theme"/>
+            </call>
             <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- Register the plugin with SystemConfigService dependency -->
+        <service id="VoltimaxTheme\VoltimaxTheme" autowire="true">
+            <argument>%kernel.project_dir%/custom/plugins/VoltimaxTheme</argument>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
         </service>
     </services>
 </container>

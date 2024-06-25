@@ -7,11 +7,11 @@
                 {% endblock %}
 
                 {% block component_product_box_rich_snippets %}
-                {{ parent() }}
+                    {{ parent() }}
                 {% endblock %}
 
                 {% block component_product_box_image %}
-                    <div class="product-image-wrapper col-md-4">
+                    <div class="product-image-wrapper col-md-4 m-2">
                         {# fallback if display mode is not set #}
                         {% set displayMode = displayMode ?: 'standard' %}
 
@@ -70,7 +70,7 @@
                 {% endblock %}
 
                 {% block component_product_box_info %}
-                    <div class="product-info col-md-5 p-3">
+                    <div class="product-info col-md-5 m-2">
                         <div class="card-body align-items-center p-0">
                             <div class="row g-0">
                                 {% block component_product_box_name %}
@@ -93,14 +93,14 @@
                 {% endblock %}
 
 
-                <div class="col-md-3 p-3 text-end">
+                <div class="col-md-3 m-2 text-end">
                     {# added condition to display own confTemp @include custom-price-unit.html.twig for imageLayout #}
                     {% if layout == 'image' %}
                         {% block component_product_box_custom_price %}
                             {% sw_include '@Storefront/storefront/component/product/card/custom-price-unit.html.twig' %}
                         {% endblock %}
                     {% else %}
-                        {#default shopware template#}
+                        {# default shopware template #}
                         {% block component_product_box_price %}
                             {% sw_include '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
                         {% endblock %}

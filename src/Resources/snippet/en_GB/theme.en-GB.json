@@ -25,5 +25,23 @@
         "fourth": "200,000+ Customers"
       }
     }
+  },
+  "VoltimaxTheme": {
+    "config": {
+      "taxInfoText": "0% VAT. The VAT exemption only applies to components if they are used according to § 12 para. 3 UstG.",
+      "taxInfoTextDetail": " The sale is subject to differential taxation according to § 25a UStG (used items/special regulation). A separate identification of the sales tax for used or reprocessed items is not permitted"
+    },
+    "listing": {
+      "product": {
+        "grossTaxInformation": "incl. %product.taxRate%% VAT plus shipping costs",
+        "netTaxInformation": "excl. %product.taxRate%% VAT plus shipping costs"
+      }
+    },
+    "detail": {
+      "product": {
+        "grossTaxInformation": "incl. %product.taxRate%% VAT plus shipping costs",
+        "netTaxInformation": "excl. %product.taxRate%% VAT plus shipping costs"
+      }
+    }
   }
 }

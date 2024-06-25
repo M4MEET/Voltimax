@@ -37,11 +37,11 @@
                 {% set isListPrice = price.listPrice.percentage > 0 %}
                 {% set isRegulationPrice = price.regulationPrice != null %}
 
-                {#<div class="product-cheapest-price{% if isListPrice and isRegulationPrice and not displayFrom and not displayFromVariants %} with-list-price{% endif %}{% if isRegulationPrice and not displayFrom and displayFromVariants %} with-regulation-price{% endif %}{% if displayFrom and isRegulationPrice %} with-from-price{% endif %}">
+                {# <div class="product-cheapest-price{% if isListPrice and isRegulationPrice and not displayFrom and not displayFromVariants %} with-list-price{% endif %}{% if isRegulationPrice and not displayFrom and displayFromVariants %} with-regulation-price{% endif %}{% if displayFrom and isRegulationPrice %} with-from-price{% endif %}">
                     {% if cheapest.unitPrice != real.unitPrice %}
                         <div>{{ "listing.cheapestPriceLabel"|trans|sw_sanitize }}<span class="product-cheapest-price-price"> {{ cheapest.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}</span></div>
                     {% endif %}
-                </div>#}
+                </div> #}
 
                 {% if displayFrom or (displayParent and displayFromVariants) %}
                     {{ "listing.listingTextFrom"|trans|sw_sanitize }}
@@ -62,13 +62,14 @@
 
                             {% if afterListPriceSnippetExists %}{{ "listing.afterListPrice"|trans|trim|sw_sanitize }}{% endif %}
 
-                            {#<span class="list-price-percentage">{{ "detail.listPricePercentage"|trans({'%price%': price.listPrice.percentage })|sw_sanitize }}</span>#}
+                            {# <span class="list-price-percentage">{{ "detail.listPricePercentage"|trans({'%price%': price.listPrice.percentage })|sw_sanitize }}</span> #}
                         </span>
                     {% endif %}
                 </span>
                 {% if isRegulationPrice %}
                     <span class="product-price with-regulation-price">
-                        {% if isListPrice %}<br/>{% endif %}<span class="regulation-price">{{ "general.listPricePreviously"|trans({'%price%': price.regulationPrice.price|currency }) }}{{ "general.star"|trans|sw_sanitize }}</span>
+                        {% if isListPrice %}<br/>{% endif %}<span
+                                class="regulation-price">{{ "general.listPricePreviously"|trans({'%price%': price.regulationPrice.price|currency }) }}{{ "general.star"|trans|sw_sanitize }}</span>
                     </span>
                 {% endif %}
             </div>

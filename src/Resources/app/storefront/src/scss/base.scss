@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: 'TT Mussels';
   font-weight: normal;
@@ -51,8 +50,8 @@
 }
 
 .header-main {
-    background-color: $gray-200;
- }
+  background-color: $gray-200;
+}
 
 .product-box:hover {
   border-color: $sw-color-brand-primary;
@@ -62,14 +61,12 @@
   display: none;
 }
 
-.footer-main,.footer-bottom
-{
-    background: $background-dark-sb;
+.footer-main, .footer-bottom {
+  background: $background-dark-sb;
 }
 
-.container
-{
-    max-width: 1400px;
+.container {
+  max-width: 1400px;
 }
 
 .container-main {
@@ -77,11 +74,11 @@
 }
 
 .category-navigation {
-       &.level-0 > {
-        .category-navigation-entry {
-            border-bottom: none;
-        }
+  &.level-0 > {
+    .category-navigation-entry {
+      border-bottom: none;
     }
+  }
 }
 
 

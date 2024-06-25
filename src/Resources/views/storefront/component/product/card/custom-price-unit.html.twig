@@ -47,14 +47,17 @@
                 {% if isRegulationPrice %}
                     <br>
                     <span class="product-price with-regulation-price">
-                        {% if isListPrice %}<br>{% endif %}<span class="regulation-price">{{ "general.listPricePreviously"|trans({'%price%': price.regulationPrice.price|currency }) }}{{ "general.star"|trans|sw_sanitize }}</span>
+                        {% if isListPrice %}<br>{% endif %}<span
+                                class="regulation-price">{{ "general.listPricePreviously"|trans({'%price%': price.regulationPrice.price|currency }) }}{{ "general.star"|trans|sw_sanitize }}</span>
 
                     </span>
                     <br>
                 {% endif %}
                 <div class="product-cheapest-price{% if isListPrice and isRegulationPrice and not displayFrom and not displayFromVariants %} with-list-price{% endif %}{% if isRegulationPrice and not displayFrom and displayFromVariants %} with-regulation-price{% endif %}{% if displayFrom and isRegulationPrice %} with-from-price{% endif %}">
                     {% if cheapest.unitPrice != real.unitPrice and cheapest.variantId != product.id %}
-                        <div>{{ "listing.cheapestPriceLabel"|trans|sw_sanitize }}<span class="product-cheapest-price-price"> {{ cheapest.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}</span></div>
+                        <div>{{ "listing.cheapestPriceLabel"|trans|sw_sanitize }}<span
+                                    class="product-cheapest-price-price"> {{ cheapest.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}</span>
+                        </div>
                     {% endif %}
                 </div>
             </div>
@@ -90,19 +93,19 @@
     {% block page_product_detail_tax %}
         <div class="product-detail-tax-container badge">
             {% if context.taxState == "gross" %}
-                {% set taxText = "general.grossTaxInformation"|trans|sw_sanitize %}
+                {% set taxText = "VoltimaxTheme.listing.product.grossTaxInformation"|trans({'%product.taxRate%':product.tax.taxRate}) |sw_sanitize  %}
             {% else %}
-                {% set taxText = "general.netTaxInformation"|trans|sw_sanitize %}
+                {% set taxText = "VoltimaxTheme.listing.product.netTaxInformation"|trans({'%product.taxRate%':product.tax.taxRate}) |sw_sanitize %}
             {% endif %}
 
             <p class="product-detail-tax">
-            {% block page_product_detail_tax_link %}
+                {% block page_product_detail_tax_link %}
                     <a class="product-detail-tax-link"
                        href="{{ path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') }) }}"
                        title="{{ taxText }}"
-                        {{ dataBsToggleAttr }}="modal"
-                        data-url="{{ path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') }) }}">
-                        {{ taxText }}
+                    {{ dataBsToggleAttr }}="modal"
+                    data-url="{{ path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') }) }}">
+                    {{ taxText }}
                     </a>
                 {% endblock %}
             </p>
@@ -182,7 +185,7 @@
             {% endif %}
         </div>
     {% endblock %}
-    {#end of the custom delivery information block#}
+    {# end of the custom delivery information block #}
 
     {% block battron_component_product_box_stock_info %}
         <div class="product-stock-action">
@@ -191,7 +194,7 @@
             {% elseif product.stock > 0 and product.stock <= 2 %}
                 <span class="badge rounded-pill bg-warning text-dark">{{ "battron.listing.product.limitedStock"|trans ({'%product.stock%': product.stock}) }}</span>
             {% elseif  product.stock <=0 %}
-                <span class="badge rounded-pill bg-danger text-white">{{  "battron.listing.product.outOfStock"|trans }}</span>
+                <span class="badge rounded-pill bg-danger text-white">{{ "battron.listing.product.outOfStock"|trans }}</span>
             {% endif %}
         </div>
     {% endblock %}
