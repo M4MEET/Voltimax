@@ -1,0 +1,9 @@
+monolog:
+  channels: ['voltimax_theme']
+
+  handlers:
+    voltimaxThemeLogHandler:
+      type: rotating_file
+      path: "%kernel.logs_dir%/voltimax_theme_%kernel.environment%.log"
+      level: error
+      channels: ["voltimax_theme"]

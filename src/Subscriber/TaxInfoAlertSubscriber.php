@@ -7,18 +7,19 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Shopware\Storefront\Page\Product\ProductPageLoadedEvent;
 use VoltimaxTheme\Struct\TaxInfoConfigStruct;
 use Psr\Log\LoggerInterface;
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-class TaxInfoAlertSubscriber implements EventSubscriberInterface, LoggerAwareInterface
+class TaxInfoAlertSubscriber implements EventSubscriberInterface
 {
-    use LoggerAwareTrait;
-
     private SystemConfigService $systemConfigService;
+    private TranslatorInterface $translator;
+    private LoggerInterface $logger;
 
-    public function __construct(SystemConfigService $systemConfigService)
+    public function __construct(SystemConfigService $systemConfigService, TranslatorInterface $translator, LoggerInterface $logger)
     {
         $this->systemConfigService = $systemConfigService;
+        $this->translator = $translator;
+        $this->logger = $logger;
     }
 
     public static function getSubscribedEvents(): array
@@ -32,12 +33,20 @@ class TaxInfoAlertSubscriber implements EventSubscriberInterface, LoggerAwareInt
     {
         $taxInfoAlert = $this->systemConfigService->get('VoltimaxTheme.config.taxInfoAlert');
         $configProductTaxId = $this->systemConfigService->get('VoltimaxTheme.config.taxEntity');
-        $taxInfoText = $this->systemConfigService->get('VoltimaxTheme.config.taxInfoText');
+        $taxInfoCmsPage = $this->systemConfigService->get('VoltimaxTheme.config.taxInfoCmsPage');
 
-        // Use the custom logger
-        $this->logger->info('Tax Info Alert Enabled:', ['taxInfoAlert' => $taxInfoAlert]);
-        $this->logger->info('Config Product Tax ID:', ['configProductTaxId' => $configProductTaxId]);
-        $this->logger->info('Tax Info Text:', ['taxInfoText' => $taxInfoText]);
+        // Fetch snippets using the translator service
+        $taxInfoText = $this->translator->trans('VoltimaxTheme.config.taxInfoText');
+        $taxInfoTextDetail = $this->translator->trans('VoltimaxTheme.config.taxInfoTextDetail');
+
+        // Debug logging to ensure configuration values are fetched correctly
+        $this->logger->debug('Raw Configuration Values', [
+            'taxInfoAlert' => $taxInfoAlert,
+            'configProductTaxId' => $configProductTaxId,
+            'taxInfoText' => $taxInfoText,
+            'taxInfoTextDetail' => $taxInfoTextDetail,
+            'taxInfoCmsPage' => $taxInfoCmsPage,
+        ]);
 
         if ($taxInfoAlert && $configProductTaxId) {
             $taxInfoConfigStruct = new TaxInfoConfigStruct($configProductTaxId, $taxInfoText);
