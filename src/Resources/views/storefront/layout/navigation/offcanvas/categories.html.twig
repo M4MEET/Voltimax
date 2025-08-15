@@ -18,7 +18,7 @@
             {# Custom headline for root level #}
             <div class="navigation-offcanvas-headline voltimax-nav-headline p-3 mb-2 bg-light rounded">
                 <span class="navigation-offcanvas-headline-icon text-primary me-2">
-                    {% sw_icon 'stack' %}
+                    {% sw_icon 'stack' style { 'pack': 'solid' } %}
                 </span>
                 <span class="text-dark fw-bold">{{ "general.categories"|trans|sw_sanitize }}</span>
             </div>
@@ -37,7 +37,7 @@
                        itemprop="url"
                        title="{{ "general.homeLink"|trans|striptags }}">
                         <span class="navigation-offcanvas-link-icon text-primary me-2">
-                            {% sw_icon 'house' %}
+                            {% sw_icon 'house' style { 'pack': 'solid' } %}
                         </span>
                         <span itemprop="name" class="text-dark">{{ "general.homeLink"|trans|sw_sanitize }}</span>
                     </a>

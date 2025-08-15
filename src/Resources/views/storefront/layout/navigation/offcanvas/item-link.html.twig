@@ -28,7 +28,7 @@
                                 data-href="{{ path('frontend.menu.offcanvas', {navigationId: item.category.id}) }}"
                                 aria-label="Show subcategories for {{ name }}">
                             <span class="navigation-offcanvas-link-icon js-navigation-offcanvas-loading-icon voltimax-nav-arrow">
-                                {% sw_icon 'arrow-medium-right' %}
+                                {% sw_icon 'arrow-medium-right' style { 'pack': 'solid', 'size': 'sm' } %}
                             </span>
                         </button>
                     {% endblock %}
