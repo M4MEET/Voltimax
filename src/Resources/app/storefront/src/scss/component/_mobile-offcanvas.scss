@@ -47,10 +47,12 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
     }
   }
   
-  // Body styling
+  // Body styling with more transparency
   .offcanvas-body {
     padding: 0;
-    background: $voltimax-bg-secondary;
+    background: rgba($voltimax-bg-secondary, 0.3) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 }
 
