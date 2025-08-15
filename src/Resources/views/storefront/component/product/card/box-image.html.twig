@@ -6,9 +6,6 @@
                     {% sw_include '@Storefront/storefront/component/product/card/badges.html.twig' %}
                 {% endblock %}
 
-                {% block component_product_box_rich_snippets %}
-                    {{ parent() }}
-                {% endblock %}
 
                 {% block component_product_box_image %}
                     <div class="product-image-wrapper col-md-4 m-2">
@@ -74,7 +71,23 @@
                         <div class="card-body align-items-center p-0">
                             <div class="row g-0">
                                 {% block component_product_box_name %}
-                                    {{ parent() }}
+                                    {% block voltimax_product_listing_manufacturer_logo %}
+                                        <div class="col-4 d-flex justify-content-end align-items-center border-end pe-3 py-2">
+                                            {% if product.extensions.manufacturerMedia %}
+                                                <img src="{{ product.extensions.manufacturerMedia.url }}" 
+                                                     alt="Manufacturer Logo" 
+                                                     class="img-fluid manufacturer-logo" 
+                                                     style="height: 30px; max-width: 80px;">
+                                            {% endif %}
+                                        </div>
+                                    {% endblock %}
+                                    <div class="col-8 ps-3 py-2">
+                                        <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
+                                           class="product-name"
+                                           title="{{ name }}">
+                                            {{ name }}
+                                        </a>
+                                    </div>
                                 {% endblock %}
                             </div>
                             <hr class="my-2"> <!-- Horizontal line -->

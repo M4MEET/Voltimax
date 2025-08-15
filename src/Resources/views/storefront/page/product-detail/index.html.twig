@@ -1,62 +1,22 @@
 {% sw_extends "@Storefront/storefront/page/product-detail/index.html.twig" %}
 
-{% block base_content %}
-    {% block page_product_detail %}
-        <div class="product-detail"
-             itemscope
-             itemtype="https://schema.org/Product">
-
-            {# Include the custom banner block for the tax info alert #}
-            {% block voltimax_product_detail_custom_banner_text_info %}
-                {% set taxInfoAlert = config('VoltimaxTheme.config.taxInfoAlert') %}
-                {% set configProductTaxId = page.extensions.configProductTaxId.getTaxEntity() %}
-                {% set taxInfoText = "VoltimaxTheme.config.taxInfoText" | trans %}
-                {% set productTaxId = page.product.taxId %}
-                {% set cmsPageId = config('VoltimaxTheme.config.taxInfoCmsPage') %}
-                {% set cmsPageUrl = path('frontend.cms.page', { id: cmsPageId }) %}
-
-                {# Check and display the condition result #}
-                {% set showBanner = taxInfoAlert and productTaxId == configProductTaxId %}
-                {% if showBanner %}
-                    {% block custom_banner %}
-                        <div class="custom-banner">
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-12">
-                                        <div class="alert alert-info text-center d-flex align-items-center justify-content-center" role="alert" style="gap: 10px;">
-                                            {% sw_icon 'info'  %}
-                                            <strong class="text-primary mb-0 d-inline-flex align-items-center">
-                                                <a href="{{ cmsPageUrl }}"
-                                                   title="{{ taxInfoText }}"
-                                                   data-ajax-modal="true"
-                                                   data-url="{{ cmsPageUrl }}"
-                                                   class="text-dark">
-                                                    {{ taxInfoText | sw_sanitize }}
-                                                </a>
-                                            </strong>
-                                            <a href="{{ cmsPageUrl }}"
-                                               title="{{ taxInfoText }}"
-                                               data-ajax-modal="true"
-                                               data-url="{{ cmsPageUrl }}">
-                                                {% sw_icon 'help' style { 'size': 'sm', 'pack': 'solid', 'color' : 'dark' } %}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endblock %}
-                {% endif %}
-            {% endblock %}
-
-            {% block page_product_detail_inner %}
+{# Shopware 6.6 compatibility: Handle both CMS and traditional layouts #}
+{% block page_product_detail %}
+    <div class="product-detail" itemscope itemtype="https://schema.org/Product">
+        {% block page_product_detail_inner %}
+            {# Check if we're using CMS layout (Shopware 6.6) or traditional layout #}
+            {% if page.cmsPage %}
+                {# Shopware 6.6: CMS-based product page #}
+                {{ parent() }}
+            {% else %}
+                {# Traditional product detail layout for backward compatibility #}
                 {% block page_product_detail_content %}
                     <div class="product-detail-content">
                         {% set mediaItems = page.product.media.media %}
                         {% block page_product_detail_main %}
                             <div class="row product-detail-main">
                                 {% block page_product_detail_media %}
-                                    <div class="col-lg-7 product-detail-media">
+                                    <div class="col-12 col-md-6 col-lg-7 mb-4 mb-md-0 product-detail-media">
                                         {% if page.product.media %}
                                             {% sw_include '@Storefront/storefront/element/cms-element-image-gallery.html.twig' with {
                                                 'mediaItems': mediaItems,
@@ -79,8 +39,7 @@
                                 {% endblock %}
 
                                 {% block page_product_detail_buy %}
-                                    <div class="col-lg-5 bg-secondary  border rounded shadow product-detail-buy">
-
+                                    <div class="col-12 col-md-6 col-lg-5 bg-secondary border rounded shadow product-detail-buy">
                                         {% block page_product_detail_headline %}
                                             <div class="row mt-3 align-items-center product-detail-headline mb-0">
                                                 {% sw_include '@Storefront/storefront/page/product-detail/headline.html.twig' %}
@@ -92,6 +51,9 @@
                             </div>
                         {% endblock %}
                     </div>
+
+                    {# Call parent to ensure CheaperAd and other plugin blocks are rendered #}
+                    {{ parent() }}
                 {% endblock %}
 
                 {% block page_product_detail_tabs %}
@@ -107,7 +69,7 @@
                         </div>
                     {% endif %}
                 {% endblock %}
-            {% endblock %}
-        </div>
-    {% endblock %}
+            {% endif %}
+        {% endblock %}
+    </div>
 {% endblock %}

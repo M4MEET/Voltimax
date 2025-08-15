@@ -1,0 +1,24 @@
+{% sw_extends '@Storefront/storefront/page/checkout/index.html.twig' %}
+
+{% block base_head %}
+    {{ parent() }}
+    
+    {% block voltimax_checkout_scripts %}
+        {# Voltimax Checkout-Specific Scripts - Only load on checkout pages #}
+        
+        {# Checkout Script 1 - Conversion Tracking #}
+        {% if theme_config('voltimaxCheckoutScript1Active') and theme_config('voltimaxCheckoutScript1') %}
+            {{ theme_config('voltimaxCheckoutScript1')|raw }}
+        {% endif %}
+        
+        {# Checkout Script 2 - Enhanced E-commerce #}
+        {% if theme_config('voltimaxCheckoutScript2Active') and theme_config('voltimaxCheckoutScript2') %}
+            {{ theme_config('voltimaxCheckoutScript2')|raw }}
+        {% endif %}
+        
+        {# Checkout Script 3 - Order Confirmation/Thank You Page #}
+        {% if theme_config('voltimaxCheckoutScript3Active') and theme_config('voltimaxCheckoutScript3') %}
+            {{ theme_config('voltimaxCheckoutScript3')|raw }}
+        {% endif %}
+    {% endblock %}
+{% endblock %}

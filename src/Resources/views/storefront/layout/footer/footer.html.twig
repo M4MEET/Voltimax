@@ -1,35 +1,43 @@
 {% sw_extends "@Storefront/storefront/layout/footer/footer.html.twig" %}
+
 {% block layout_footer_inner_container %}
     <div class="container">
         {% block layout_footer_navigation %}
-            <div id="footerColumns"
-                 class="row footer-columns"
-                 data-collapse-footer="true">
+            <div id="footerColumns" 
+                 class="row footer-columns voltimax-footer-main text-white py-1"
+                 data-collapse-footer-columns="true"
+                 role="list">
+                
                 {% block layout_footer_navigation_columns %}
                     {% for root in page.footer.navigation.tree %}
                         {% block layout_footer_navigation_column %}
-                            <div class="col-md-3 footer-column js-footer-column">
+                            <div class="col-12 col-md-6 col-lg-3 footer-column js-footer-column mb-1 mb-lg-0">
                                 {% block layout_footer_navigation_information_headline %}
-                                    <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger text-primary"
-                                         data-target="#collapseFooterTitle{{ loop.index }}"
+                                    <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger fw-bold mb-1"
+                                         data-bs-target="#collapseFooter{{ loop.index }}"
+                                         data-bs-toggle="collapse"
                                          aria-expanded="true"
-                                         aria-controls="collapseFooter{{ loop.index }}">
+                                         aria-controls="collapseFooter{{ loop.index }}"
+                                         id="collapseFooterTitle{{ loop.index }}"
+                                         role="listitem">
 
                                         {% if root.category.type == 'folder' %}
-                                            {{ root.category.translated.name }}
+                                            <span class="text-primary fw-bold">{{ root.category.translated.name }}</span>
                                         {% else %}
-                                            <a class="text-primary" href="{{ category_url(root.category) }}"
+                                            <a class="text-primary text-decoration-none fw-bold"
+                                               href="{{ category_url(root.category) }}"
                                                {% if category_linknewtab(root.category) %}target="_blank"{% endif %}
                                                title="{{ root.category.translated.name }}">
                                                 {{ root.category.translated.name }}
                                             </a>
                                         {% endif %}
+                                        
                                         {% block layout_footer_navigation_information_icons %}
-                                            <div class="footer-column-toggle">
-                                                <span class="footer-plus-icon">
+                                            <div class="footer-column-toggle float-end d-lg-none">
+                                                <span class="footer-plus-icon text-white">
                                                     {% sw_icon 'plus' %}
                                                 </span>
-                                                <span class="footer-minus-icon">
+                                                <span class="footer-minus-icon text-white">
                                                     {% sw_icon 'minus' %}
                                                 </span>
                                             </div>
@@ -40,24 +48,22 @@
                                 {% block layout_footer_navigation_information_content %}
                                     <div id="collapseFooter{{ loop.index }}"
                                          class="footer-column-content collapse js-footer-column-content"
-                                         aria-labelledby="collapseFooterTitle{{ loop.index }}">
+                                         aria-labelledby="collapseFooterTitle{{ loop.index }}"
+                                         role="listitem">
                                         <div class="footer-column-content-inner">
                                             {% block layout_footer_navigation_information_links %}
-                                                <ul class="list-unstyled">
+                                                <ul class="list-unstyled mb-0">
                                                     {% for treeItem in root.children %}
                                                         {% set category = treeItem.category %}
                                                         {% set name = category.translated.name %}
-
-                                                        {# @deprecated tag:v6.5.0 - Use "category.translated.externalLink" directly or category_url function instead. #}
-                                                        {% set externalLink = category.translated.externalLink %}
 
                                                         {% block layout_footer_navigation_information_link_item %}
                                                             <li class="footer-link-item">
                                                                 {% block layout_footer_navigation_information_link %}
                                                                     {% if category.type == 'folder' %}
-                                                                        <div>{{ name }}</div>
+                                                                        <span class="text-white fw-medium">{{ name }}</span>
                                                                     {% else %}
-                                                                        <a class="footer-link text-white"
+                                                                        <a class="footer-link text-white text-decoration-none d-inline-block hover-primary"
                                                                            href="{{ category_url(category) }}"
                                                                            {% if category_linknewtab(category) %}target="_blank"{% endif %}
                                                                            title="{{ name }}">
@@ -76,75 +82,88 @@
                             </div>
                         {% endblock %}
 
-                        {# After the fourth category, insert your custom block #}
+                        {# USP Services Section - After 4th category #}
                         {% if loop.index == 4 %}
                             {% block layout_footer_navigation_usps %}
-                                <div class="col-md-12  p-3 footer-column js-footer-column">
-                                    {% block layout_footer_navigation_inner_usp_headline %}
-                                        <div class="footer-column-headline footer-headline d-md-none js-footer-column-headline js-collapse-footer-column-trigger text-primary"
-                                             id="collapseFooterUspTitle"
-                                             data-target="#collapseFooterUsp"
-                                             aria-expanded="true"
-                                             aria-controls="collapseFooterUsp">
-                                            Our Services
-                                            {% block layout_footer_navigation_service_usp_icons %}
-                                                <div class="footer-column-toggle">
-                                        <span class="footer-plus-icon">
-                                            {% sw_icon 'plus' %}
-                                        </span>
-                                                    <span class="footer-minus-icon">
-                                            {% sw_icon 'minus' %}
-                                        </span>
-                                                </div>
-                                            {% endblock %}
-                                        </div>
-                                    {% endblock %}
-                                    {% block layout_footer_navigation_inner_service_usps %}
-                                        <div id="collapseFooterUsp"
-                                             class="footer-column-content js-footer-column-content footer-usp"
-                                             aria-labelledby="collapseFooterUspTitle">
-                                            <div class="row gy-0">
-                                                {% set usps = [
-                                                    {'key': 'first', 'media': theme_config('sw-footer-usp-first-media')},
-                                                    {'key': 'second', 'media': theme_config('sw-footer-usp-second-media')},
-                                                    {'key': 'third', 'media': theme_config('sw-footer-usp-third-media')},
-                                                    {'key': 'fourth', 'media': theme_config('sw-footer-usp-fourth-media')}
-                                                ] %}
-                                                {% for usp in usps %}
-                                                    {% if usp.media %}
-                                                        <div class="usp-item col-6 col-sm-6 col-lg-3 d-flex align-items-center">
-                                                            <img src="{{ usp.media|sw_encode_url }}"
-                                                                 alt="{{ ('battron.footer.usp.' ~ usp.key)|trans }}"
-                                                                 class="img-fluid me-2"
-                                                                 style="height: auto; max-width: 20%;">
-                                                            <h4 class="text-primary mb-0 fs-6 fs-md-3">{{ ('battron.footer.usp.' ~ usp.key)|trans }}</h4>
-                                                        </div>
-                                                    {% endif %}
-                                                {% endfor %}
+                                <div class="col-12 mb-1 footer-column js-footer-column">
+                                    <div class="footer-usp-section rounded-3">
+                                        {% block layout_footer_navigation_inner_usp_headline %}
+                                            <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger text-primary fw-bold d-lg-none"
+                                                 id="collapseFooterUspTitle"
+                                                 data-bs-target="#collapseFooterUsp"
+                                 data-bs-toggle="collapse"
+                                                 aria-expanded="true"
+                                                 aria-controls="collapseFooterUsp"
+                                                 role="button"
+                                                 tabindex="0">
+                                                <span class="text-primary">{{ 'VoltimaxTheme.footer.services'|trans }}</span>
+                                                {% block layout_footer_navigation_service_usp_icons %}
+                                                    <div class="footer-column-toggle float-end">
+                                                        <span class="footer-plus-icon text-white">
+                                                            {% sw_icon 'plus' %}
+                                                        </span>
+                                                        <span class="footer-minus-icon text-white">
+                                                            {% sw_icon 'minus' %}
+                                                        </span>
+                                                    </div>
+                                                {% endblock %}
                                             </div>
-                                        </div>
-                                    {% endblock %}
+                                        {% endblock %}
+                                        
+                                        {% block layout_footer_navigation_inner_service_usps %}
+                                            <div id="collapseFooterUsp"
+                                                 class="footer-column-content show js-footer-column-content footer-usp"
+                                                 aria-labelledby="collapseFooterUspTitle">
+                                                <div class="row g-3 pb-2">
+                                                    {% set usps = [
+                                                        {'key': 'first', 'media': theme_config('sw-footer-usp-first-media')},
+                                                        {'key': 'second', 'media': theme_config('sw-footer-usp-second-media')},
+                                                        {'key': 'third', 'media': theme_config('sw-footer-usp-third-media')},
+                                                        {'key': 'fourth', 'media': theme_config('sw-footer-usp-fourth-media')}
+                                                    ] %}
+                                                    {% for usp in usps %}
+                                                        {% if usp.media %}
+                                                            <div class="col-6 col-md-3">
+                                                                <div class="usp-item text-center h-100 rounded-2 voltimax-usp-card hover-lift">
+                                                                    <div class="p-2">
+                                                                        <img src="{{ usp.media|sw_encode_url }}"
+                                                                             alt="{{ ('battron.footer.usp.' ~ usp.key)|trans }}"
+                                                                             class="img-fluid"
+                                                                             style="max-height: 50px; width: auto;">
+                                                                        <div class="text-primary fs-7 fw-medium">{{ ('battron.footer.usp.' ~ usp.key)|trans }}</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        {% endblock %}
+                                    </div>
                                 </div>
                             {% endblock %}
                         {% endif %}
                     {% endfor %}
                 {% endblock %}
 
+                {# Hotline/Contact Section #}
                 {% block layout_footer_navigation_hotline %}
-                    <div class="col-md-3 footer-column js-footer-column">
+                    <div class="col-12 col-md-6 col-lg-3 footer-column js-footer-column mb-1 mb-lg-0">
                         {% block layout_footer_navigation_hotline_headline %}
-                            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger text-primary"
+                            <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger text-primary fw-bold mb-1"
                                  id="collapseFooterHotlineTitle"
-                                 data-target="#collapseFooterHotline"
+                                 data-bs-target="#collapseFooterHotline"
+                                 data-bs-toggle="collapse"
                                  aria-expanded="true"
-                                 aria-controls="collapseFooterHotline">
-                                {{ 'footer.serviceHotlineHeadline'|trans|sw_sanitize }}
+                                 aria-controls="collapseFooterHotline"
+                                 role="listitem">
+                                <span class="text-primary">{{ 'footer.serviceHotlineHeadline'|trans|sw_sanitize }}</span>
                                 {% block layout_footer_navigation_hotline_icons %}
-                                    <div class="footer-column-toggle">
-                                        <span class="footer-plus-icon">
+                                    <div class="footer-column-toggle float-end d-lg-none">
+                                        <span class="footer-plus-icon text-white">
                                             {% sw_icon 'plus' %}
                                         </span>
-                                        <span class="footer-minus-icon">
+                                        <span class="footer-minus-icon text-white">
                                             {% sw_icon 'minus' %}
                                         </span>
                                     </div>
@@ -155,39 +174,42 @@
                         {% block layout_footer_navigation_hotline_content %}
                             <div id="collapseFooterHotline"
                                  class="footer-column-content collapse js-footer-column-content footer-contact"
-                                 aria-labelledby="collapseFooterHotlineTitle">
+                                 aria-labelledby="collapseFooterHotlineTitle"
+                                 role="listitem">
                                 <div class="footer-column-content-inner text-white">
-                                    <p class="footer-contact-hotline">
+                                    <p class="footer-contact-hotline mb-3">
                                         {{ 'footer.serviceHotline'|trans|sw_sanitize }}
                                     </p>
-                                </div>
-
-                                <div class="footer-contact-form text-white">
-                                    {{ 'footer.serviceContactLink'|trans({
-                                        '%url%': path('frontend.cms.page', { id: config('core.basicInformation.contactPage') })
-                                    })|raw }}
+                                    <div class="footer-contact-form">
+                                        {{ 'footer.serviceContactLink'|trans({
+                                            '%url%': path('frontend.cms.page', { id: config('core.basicInformation.contactPage') })
+                                        })|raw }}
+                                    </div>
                                 </div>
                             </div>
                         {% endblock %}
                     </div>
                 {% endblock %}
 
-                {# added custom block for trustpilot and billiger logo to be displayed on footer right side box #}
+                {# Partners Section - Trustpilot & Billiger.de #}
                 {% block layout_footer_navigation_custom_trustpilot %}
-                    <div class="col-md-3 footer-column js-footer-column">
+                    <div class="col-12 col-md-6 col-lg-3 footer-column js-footer-column mb-1 mb-lg-0">
                         {% block layout_footer_navigation_headline_trustpilot %}
-                            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger text-primary"
-                                 id="collapseFooterHotlineTitle"
-                                 data-target="#collapseFooterHotline"
+                            <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger text-primary fw-bold mb-1"
+                                 id="collapseFooterPartnersTitle"
+                                 data-bs-target="#collapseFooterPartners"
+                                 data-bs-toggle="collapse"
                                  aria-expanded="true"
-                                 aria-controls="collapseFooterHotline">
-                                Unsere Partner
+                                 aria-controls="collapseFooterPartners"
+                                 role="button"
+                                 tabindex="0">
+                                <span class="text-primary">{{ 'VoltimaxTheme.footer.partners'|trans }}</span>
                                 {% block layout_footer_navigation_trustpilot_icons %}
-                                    <div class="footer-column-toggle">
-                                        <span class="footer-plus-icon">
+                                    <div class="footer-column-toggle float-end d-lg-none">
+                                        <span class="footer-plus-icon text-white">
                                             {% sw_icon 'plus' %}
                                         </span>
-                                        <span class="footer-minus-icon">
+                                        <span class="footer-minus-icon text-white">
                                             {% sw_icon 'minus' %}
                                         </span>
                                     </div>
@@ -196,49 +218,203 @@
                         {% endblock %}
 
                         {% block layout_footer_navigation_trustpilot_content %}
-                            <div id="collapseFooterHotline"
-                                 class="footer-column-content collapse js-footer-column-content footer-contact"
-                                 aria-labelledby="collapseFooterHotlineTitle">
-                                <div class="footer-column-content-inner text-white text-center">
-                                    <!-- TrustBox widget - Mini -->
-                                    <div class="trustpilot-widget " data-locale="de-DE"
-                                         data-template-id="53aa8807dec7e10d38f59f32"
-                                         data-businessunit-id="641844b25c3148d8e2f02d34" data-style-height="150px"
-                                         data-style-width="100%" data-theme="dark">
-                                        <a href="https://de.trustpilot.com/review/voltimax.de" target="_blank"
-                                           rel="noopener">Trustpilot</a>
-                                    </div>
+                            <div id="collapseFooterPartners"
+                                 class="footer-column-content collapse js-footer-column-content footer-partners"
+                                 aria-labelledby="collapseFooterPartnersTitle">
+                                <div class="footer-column-content-inner text-white">
+                                    <div class="partner-widgets">
+                                        {# Trustpilot Widget #}
+                                        {% if theme_config('voltimaxPartnerTrustpilotActive') and theme_config('voltimaxPartnerTrustpilotScript') %}
+                                            <div class="trustpilot-widget-container mb-2 p-1 voltimax-partner-card rounded-2 text-center">
+                                                {{ theme_config('voltimaxPartnerTrustpilotScript')|raw }}
+                                            </div>
+                                        {% endif %}
 
-                                    <!-- End TrustBox widget -->
-                                    <a href="https://www.billiger.de/search?filter=f_shop_28529" target="_blank"
-                                       rel="noopener"> <img src="https://cdn.billiger.com/partnerbutton/28529"
-                                                            alt="billiger.de - The price-comparison"
-                                                            title="billiger.de - The price-comparison"/> </a>
+                                        {# Billiger.de and Idealo.de Partner Widgets - Side by Side #}
+                                        {% set billigerActive = theme_config('voltimaxPartnerBilligerActive') and theme_config('voltimaxPartnerBilligerScript') %}
+                                        {% set idealoActive = theme_config('voltimaxPartnerIdealoActive') and theme_config('voltimaxPartnerIdealoScript') %}
+                                        
+                                        {% if billigerActive or idealoActive %}
+                                            <div class="row mb-2 g-2">
+                                                {% if billigerActive %}
+                                                    <div class="{{ idealoActive ? 'col-6' : 'col-12' }} text-center">
+                                                        <div class="billiger-partner-widget">
+                                                            {{ theme_config('voltimaxPartnerBilligerScript')|raw }}
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                                {% if idealoActive %}
+                                                    <div class="{{ billigerActive ? 'col-6' : 'col-12' }} text-center">
+                                                        <div class="idealo-partner-widget">
+                                                            {{ theme_config('voltimaxPartnerIdealoScript')|raw }}
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+
+                                        {# Amazon Partner Widget #}
+                                        {% if theme_config('voltimaxPartnerAmazonActive') and theme_config('voltimaxPartnerAmazonScript') %}
+                                            <div class="amazon-partner-widget mb-2">
+                                                {{ theme_config('voltimaxPartnerAmazonScript')|raw }}
+                                            </div>
+                                        {% endif %}
+
+                                        {# eBay Partner Widget #}
+                                        {% if theme_config('voltimaxPartnerEbayActive') and theme_config('voltimaxPartnerEbayScript') %}
+                                            <div class="ebay-partner-widget mb-2">
+                                                {{ theme_config('voltimaxPartnerEbayScript')|raw }}
+                                            </div>
+                                        {% endif %}
+
+                                        {# Custom Partner 1 Widget #}
+                                        {% if theme_config('voltimaxPartnerCustom1Active') and theme_config('voltimaxPartnerCustom1Script') %}
+                                            <div class="custom-partner-1-widget mb-2">
+                                                {% if theme_config('voltimaxPartnerCustom1Name') %}
+                                                    <div class="text-primary small fw-bold mb-1">{{ theme_config('voltimaxPartnerCustom1Name') }}</div>
+                                                {% endif %}
+                                                {{ theme_config('voltimaxPartnerCustom1Script')|raw }}
+                                            </div>
+                                        {% endif %}
+
+                                        {# Custom Partner 2 Widget #}
+                                        {% if theme_config('voltimaxPartnerCustom2Active') and theme_config('voltimaxPartnerCustom2Script') %}
+                                            <div class="custom-partner-2-widget mb-2">
+                                                {% if theme_config('voltimaxPartnerCustom2Name') %}
+                                                    <div class="text-primary small fw-bold mb-1">{{ theme_config('voltimaxPartnerCustom2Name') }}</div>
+                                                {% endif %}
+                                                {{ theme_config('voltimaxPartnerCustom2Script')|raw }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         {% endblock %}
                     </div>
                 {% endblock %}
-                {# end of the custom block displayed in footer #}
 
-                {% block  layout_footer_payment_shipping_logos %}
-                    {{ parent() }}
+                {# Payment & Shipping Logos #}
+                {% block layout_footer_payment_shipping_logos %}
+                    {% block layout_voltimax_footer_payment_shipping_logos %}
+                        <div class="col-12 voltimax-footer-divider">
+                            <div class="row">
+                                {# Payment Logos #}
+                                {% block layout_footer_payment_logos_custom %}
+                                    <div class="col-12 col-lg-6 mb-1 mb-lg-0 footer-column js-footer-column">
+                                        {% block layout_footer_navigation_payment_service_headline %}
+                                            <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger text-primary fw-bold mb-1"
+                                                 id="collapseFooterPaymentTitle"
+                                                 data-bs-target="#collapseFooterPayment"
+                                 data-bs-toggle="collapse"
+                                                 aria-expanded="true"
+                                                 aria-controls="collapseFooterPayment"
+                                                 role="button"
+                                                 tabindex="0">
+                                                <span class="text-primary">Einfach Bezahlen</span>
+                                                {% block layout_footer_navigation_payment_service_icons %}
+                                                    <div class="footer-column-toggle float-end d-lg-none">
+                                                        <span class="footer-plus-icon text-white">
+                                                            {% sw_icon 'plus' %}
+                                                        </span>
+                                                        <span class="footer-minus-icon text-white">
+                                                            {% sw_icon 'minus' %}
+                                                        </span>
+                                                    </div>
+                                                {% endblock %}
+                                            </div>
+                                        {% endblock %}
+
+                                        {% block layout_footer_navigation_payment_service_content %}
+                                            <div id="collapseFooterPayment"
+                                                 class="footer-column-content collapse js-footer-column-content footer-payment"
+                                                 aria-labelledby="collapseFooterPaymentTitle">
+                                                <div class="row g-0">
+                                                    {% for i in 1..9 %}
+                                                        {% set logoUrl = theme_config('voltimax-payment-logo-' ~ i) %}
+                                                        {% if logoUrl %}
+                                                            <div class="col-3 col-md-2">
+                                                                <div class="payment-logo-container rounded-2 text-center h-100 d-flex align-items-center justify-content-center">
+                                                                    <img src="{{ logoUrl|sw_encode_url }}" 
+                                                                         alt="Payment Method {{ i }}" 
+                                                                         class="img-fluid"
+                                                                         style="max-height: 35px; max-width: 100%; object-fit: contain;">
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        {% endblock %}
+                                    </div>
+                                {% endblock %}
+
+                                {# Shipping Logos #}
+                                {% block layout_footer_shipping_logos %}
+                                    <div class="col-12 col-lg-6 footer-column js-footer-column">
+                                        {% block layout_footer_navigation_shipping_service_headline %}
+                                            <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger text-primary fw-bold mb-1"
+                                                 id="collapseFooterShippingTitle"
+                                                 data-bs-target="#collapseFooterShipping"
+                                 data-bs-toggle="collapse"
+                                                 aria-expanded="true"
+                                                 aria-controls="collapseFooterShipping"
+                                                 role="button"
+                                                 tabindex="0">
+                                                <span class="text-primary">Professioneller Versand</span>
+                                                <div class="footer-column-toggle float-end d-lg-none">
+                                                    <span class="footer-plus-icon text-white">
+                                                        {% sw_icon 'plus' %}
+                                                    </span>
+                                                    <span class="footer-minus-icon text-white">
+                                                        {% sw_icon 'minus' %}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        {% endblock %}
+
+                                        {% block layout_footer_navigation_shipping_service_content %}
+                                            <div id="collapseFooterShipping"
+                                                 class="footer-column-content collapse js-footer-column-content footer-shipping"
+                                                 aria-labelledby="collapseFooterShippingTitle">
+                                                <div class="row g-0">
+                                                    {% for i in 1..5 %}
+                                                        {% set logoUrl = theme_config('voltimax-shipping-logo-' ~ i) %}
+                                                        {% if logoUrl %}
+                                                            <div class="col-4 col-md-3">
+                                                                <div class="shipping-logo-container rounded-2 text-center h-100 d-flex align-items-center justify-content-center">
+                                                                    <img src="{{ logoUrl|sw_encode_url }}" 
+                                                                         alt="Shipping Method {{ i }}" 
+                                                                         class="img-fluid"
+                                                                         style="max-height: 35px; max-width: 100%; object-fit: contain;">
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        {% endblock %}
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        </div>
+                    {% endblock %}
                 {% endblock %}
             </div>
         {% endblock %}
     </div>
 
+    {# Footer Bottom Section #}
     {% block layout_footer_bottom %}
-        <div class="footer-bottom text-secondary">
+        <div class="footer-bottom text-white-50 py-1">
             {% block layout_footer_service_menu %}
                 <div class="container">
                     {% block layout_footer_service_menu_content %}
                         {% apply spaceless %}
-                            <ul class="footer-service-menu-list list-unstyled">
+                            <ul class="footer-service-menu-list list-unstyled d-flex flex-wrap justify-content-center mb-1">
                                 {% for serviceMenuItem in page.header.serviceMenu %}
                                     {% block layout_footer_service_menu_item %}
-                                        <li class="footer-service-menu-item">
-                                            <a class="footer-service-menu-link"
+                                        <li class="footer-service-menu-item me-3 mb-1">
+                                            <a class="footer-service-menu-link text-white-50 text-decoration-none small hover-primary"
                                                href="{{ category_url(serviceMenuItem) }}"
                                                {% if category_linknewtab(serviceMenuItem) %}target="_blank"{% endif %}
                                                title="{{ serviceMenuItem.translated.name }}">
@@ -254,26 +430,32 @@
             {% endblock %}
 
             {% block layout_footer_vat %}
-                <div class="footer-vat">
-                    {% if context.taxState == "gross" %}
-                        <p>
-                            {{ "footer.includeVat"|trans({
-                                '%url%': path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') })
-                            })|raw }}
-                        </p>
-                    {% else %}
-                        <p>
-                            {{ "footer.excludeVat"|trans({
-                                '%url%': path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') })
-                            })|raw }}
-                        </p>
-                    {% endif %}
+                <div class="container">
+                    <div class="footer-vat text-center text-md-start mb-1">
+                        {% if context.taxState == "gross" %}
+                            <p class="mb-0 small text-white-50">
+                                {{ "footer.includeVat"|trans({
+                                    '%url%': path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') })
+                                })|raw }}
+                            </p>
+                        {% else %}
+                            <p class="mb-0 small text-white-50">
+                                {{ "footer.excludeVat"|trans({
+                                    '%url%': path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') })
+                                })|raw }}
+                            </p>
+                        {% endif %}
+                    </div>
                 </div>
             {% endblock %}
 
             {% block layout_footer_copyright %}
-                <div class="footer-copyright">
-                    {{ "footer.copyrightInfo"|trans|sw_sanitize }}
+                <div class="container">
+                    <div class="footer-copyright text-center text-md-start">
+                        <small class="text-white-50">
+                            {{ "footer.copyrightInfo"|trans({'%year%': "now"|date("Y")})|sw_sanitize }}
+                        </small>
+                    </div>
                 </div>
             {% endblock %}
         </div>

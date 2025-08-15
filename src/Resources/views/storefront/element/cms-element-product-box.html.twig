@@ -1,0 +1,8 @@
+{% sw_extends "@Storefront/storefront/element/cms-element-product-box.html.twig" %}
+
+{# Apply Voltimax styling to CMS product buy box #}
+{% block element_product_box %}
+    <div class="cms-element-product-box bg-secondary border rounded shadow p-3">
+        {{ parent() }}
+    </div>
+{% endblock %}

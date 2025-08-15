@@ -172,7 +172,7 @@
                 {% block component_delivery_information_restock %}
                     <link itemprop="availability" href="http://schema.org/LimitedAvailability">
                     <p class="delivery-information delivery-restock">
-                        <span class="delivery-status-indicator bg-warning"></span>
+                        <span class="delivery-status-indicator bg-danger"></span>
                         {{ "detail.deliveryTimeRestock"|trans({
                             '%count%': product.restockTime,
                             '%restockTime%': product.restockTime,
@@ -189,11 +189,11 @@
 
     {% block battron_component_product_box_stock_info %}
         <div class="product-stock-action">
-            {% if product.stock >= 3 %}
+            {% if product.availableStock >= 3 %}
                 <span class="badge rounded-pill bg-success text-white">{{ 'battron.listing.product.showStock'  | trans }}</span>
-            {% elseif product.stock > 0 and product.stock <= 2 %}
-                <span class="badge rounded-pill bg-warning text-dark">{{ "battron.listing.product.limitedStock"|trans ({'%product.stock%': product.stock}) }}</span>
-            {% elseif  product.stock <=0 %}
+            {% elseif product.availableStock > 0 and product.availableStock <= 2 %}
+                <span class="badge rounded-pill bg-warning text-dark">{{ "battron.listing.product.limitedStock"|trans ({'%product.availableStock%': product.availableStock}) }}</span>
+            {% elseif  product.availableStock <=0 %}
                 <span class="badge rounded-pill bg-danger text-white">{{ "battron.listing.product.outOfStock"|trans }}</span>
             {% endif %}
         </div>
