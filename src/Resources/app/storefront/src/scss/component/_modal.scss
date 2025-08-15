@@ -1,0 +1,139 @@
+/*
+ * Voltimax Modal Component Styles
+ * ========================================
+ * Ensures all modals have consistent rounded borders
+ * and proper Bootstrap styling across the theme
+ */
+
+// ==============================================
+// MODAL BASE STYLES
+// ==============================================
+
+// Main modal container with specific selectors for higher specificity
+.modal .modal-dialog .modal-content {
+  border-radius: 0.5rem;
+  border: none;
+  overflow: hidden;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+// Modal header
+.modal .modal-dialog .modal-header {
+  background-color: lighten($voltimax-bg-secondary, 10%);
+  border-bottom: 1px solid rgba($voltimax-border-light, 0.5);
+  padding: 1rem 1.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  
+  .modal-title {
+    font-weight: 600;
+    color: $sw-text-color;
+  }
+  
+  .btn-close,
+  .close {
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+    
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+// Modal body
+.modal .modal-dialog .modal-body {
+  padding: 1.5rem;
+}
+
+// Modal footer
+.modal .modal-dialog .modal-footer {
+  background-color: lighten($voltimax-bg-secondary, 10%);
+  border-top: 1px solid rgba($voltimax-border-light, 0.5);
+  padding: 1rem 1.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+// ==============================================
+// SHOPWARE SPECIFIC MODALS
+// ==============================================
+
+// Ajax modals (shipping info, etc.)
+.ajax-modal .modal-dialog .modal-content,
+.js-ajax-modal .modal-dialog .modal-content {
+  border-radius: 0.5rem;
+}
+
+// Product quick view modal
+.product-quick-view-modal .modal-dialog .modal-content,
+.js-zoom-modal .modal-dialog .modal-content {
+  border-radius: 0.5rem;
+}
+
+// Off-canvas modals (cart, menu) - these should NOT be rounded
+.offcanvas.modal .modal-dialog .modal-content,
+.offcanvas-cart.modal .modal-dialog .modal-content {
+  border-radius: 0; // Off-canvas should not be rounded
+}
+
+// Pseudo modals (different structure)
+.pseudo-modal.modal-content {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+// ==============================================
+// MODAL SIZES
+// ==============================================
+
+// Small modals
+.modal-sm .modal-content {
+  border-radius: 0.375rem;
+}
+
+// Large modals
+.modal-lg .modal-content,
+.modal-xl .modal-content {
+  border-radius: 0.625rem;
+}
+
+// ==============================================
+// MODAL ANIMATIONS
+// ==============================================
+
+// Smooth fade in/out
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out;
+}
+
+// ==============================================
+// RESPONSIVE ADJUSTMENTS
+// ==============================================
+
+@include media-breakpoint-down(sm) {
+  .modal .modal-dialog {
+    margin: 0.5rem;
+    
+    .modal-content {
+      border-radius: 0.375rem;
+    }
+  }
+}
+
+// ==============================================
+// DARK MODE SUPPORT (if needed)
+// ==============================================
+
+.dark-mode {
+  .modal-content {
+    background-color: #2d3748;
+    color: #e2e8f0;
+  }
+  
+  .modal-header,
+  .modal-footer {
+    background-color: #1a202c;
+    border-color: #4a5568;
+  }
+}
