@@ -1,0 +1,39 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/offcanvas/item-link.html.twig' %}
+
+{% set isActive = item.category.id == activeId %}
+{% set hasChildren = item.category.visibleChildCount > 0 %}
+{% set url = category_url(item.category) %}
+{% set name = item.category.translated.name %}
+
+{% block layout_navigation_offcanvas_navigation_category_item_link %}
+    <li class="navigation-offcanvas-list-item voltimax-nav-item mb-1{% if hasChildren %} has-children{% endif %}">
+        {% block layout_navigation_offcanvas_navigation_categories_list_category_item_link %}
+            <div class="voltimax-nav-item-wrapper d-flex align-items-stretch rounded-pill border">
+                {# Main link - always navigates to category page #}
+                <a class="navigation-offcanvas-link nav-item nav-link voltimax-nav-link flex-fill d-flex align-items-center px-3 py-2 text-decoration-none rounded-start{% if isActive %} active bg-primary text-white{% else %} text-dark{% endif %}"
+                   href="{{ url }}"
+                   itemprop="url"
+                   {% if category_linknewtab(item.category) %}target="_blank"{% endif %}
+                   title="{{ name }}">
+                    {% block layout_navigation_offcanvas_navigation_categories_list_category_item_link_text %}
+                        <span itemprop="name" class="voltimax-nav-text{% if isActive %} text-white{% else %} text-dark{% endif %}">{{ name }}</span>
+                    {% endblock %}
+                </a>
+                
+                {# Separate arrow button for loading children #}
+                {% if hasChildren %}
+                    {% block layout_navigation_offcanvas_navigation_categories_list_category_item_link_icon %}
+                        <button type="button" 
+                                class="btn navigation-offcanvas-arrow-btn js-navigation-offcanvas-link voltimax-nav-arrow-btn border-0 rounded-end px-3{% if isActive %} btn-primary{% else %} btn-outline-primary{% endif %}"
+                                data-href="{{ path('frontend.menu.offcanvas', {navigationId: item.category.id}) }}"
+                                aria-label="Show subcategories for {{ name }}">
+                            <span class="navigation-offcanvas-link-icon js-navigation-offcanvas-loading-icon voltimax-nav-arrow">
+                                {% sw_icon 'arrow-medium-right' %}
+                            </span>
+                        </button>
+                    {% endblock %}
+                {% endif %}
+            </div>
+        {% endblock %}
+    </li>
+{% endblock %}

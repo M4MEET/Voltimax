@@ -1,0 +1,57 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/offcanvas/categories.html.twig' %}
+
+{# Voltimax Mobile Navigation Categories #}
+{# @var navigation \Shopware\Core\Content\Category\Tree\Tree #}
+
+{% set activeId = shopware.navigation.id ?? context.salesChannel.navigationCategoryId %}
+{% set isRoot = activeId == context.salesChannel.navigationCategoryId %}
+{% set children = navigation.getChildren(activeId) %}
+{% set active = navigation.active %}
+
+{% block layout_navigation_offcanvas_navigation_categories %}
+    <div class="navigation-offcanvas-content voltimax-mobile-categories{% if isRoot %} navigation-offcanvas-root{% endif %}">
+        {% if not isRoot %}
+            {% sw_include '@Storefront/storefront/layout/navigation/offcanvas/show-all-link.html.twig' %}
+            {% sw_include '@Storefront/storefront/layout/navigation/offcanvas/active-item-link.html.twig' with { item: active } %}
+            {% sw_include '@Storefront/storefront/layout/navigation/offcanvas/back-link.html.twig' with { item: active } %}
+        {% else %}
+            {# Custom headline for root level #}
+            <div class="navigation-offcanvas-headline voltimax-nav-headline p-3 mb-2 bg-light rounded">
+                <span class="navigation-offcanvas-headline-icon text-primary me-2">
+                    {% sw_icon 'stack' %}
+                </span>
+                <span class="text-dark fw-bold">{{ "general.categories"|trans|sw_sanitize }}</span>
+            </div>
+        {% endif %}
+
+        <ul class="list-unstyled navigation-offcanvas-list voltimax-nav-list">
+            {% if not isRoot and active.type != 'folder' %}
+                {% sw_include '@Storefront/storefront/layout/navigation/offcanvas/show-active-link.html.twig' with { item: active } %}
+            {% endif %}
+
+            {# Add home link at root level #}
+            {% if isRoot %}
+                <li class="navigation-offcanvas-list-item voltimax-nav-item mb-2">
+                    <a class="navigation-offcanvas-link nav-item nav-link voltimax-nav-home btn btn-outline-primary rounded-pill d-flex align-items-center"
+                       href="{{ path('frontend.home.page') }}"
+                       itemprop="url"
+                       title="{{ "general.homeLink"|trans|striptags }}">
+                        <span class="navigation-offcanvas-link-icon text-primary me-2">
+                            {% sw_icon 'house' %}
+                        </span>
+                        <span itemprop="name" class="text-dark">{{ "general.homeLink"|trans|sw_sanitize }}</span>
+                    </a>
+                </li>
+            {% endif %}
+
+            {# Category items #}
+            {# @var item \Shopware\Core\Content\Category\Tree\TreeItem #}
+            {% for item in children.tree %}
+                {% sw_include '@Storefront/storefront/layout/navigation/offcanvas/item-link.html.twig' with { 
+                    item: item, 
+                    activeId: activeId 
+                } %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
