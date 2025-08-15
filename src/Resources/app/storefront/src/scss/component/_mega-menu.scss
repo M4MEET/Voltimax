@@ -1,0 +1,607 @@
+/*
+ * Voltimax Mega Menu - Complete Rewrite
+ * ========================================
+ * Responsive mega menu for H1webMegaMenu plugin
+ */
+
+// Variables
+$megamenu-gap: 20px;
+$megamenu-padding: 0.75rem;
+$megamenu-radius: 18px;
+$megamenu-sidebar-width: 180px;
+$megamenu-breakpoint: 992px;
+
+// ==============================================
+// BASE NAVIGATION BAR
+// ==============================================
+
+.megamenu {
+  background-color: $voltimax-bg-secondary;
+  padding: 0;
+  position: relative;
+  
+  .megamenu-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .megamenu-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    
+    // Invisible bridge to keep dropdown open
+    &::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: $megamenu-gap;
+      z-index: 999;
+    }
+    
+    // Navigation links
+    > a,
+    > button {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 0.85rem;
+      color: $voltimax-bg-secondary-dark;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+      transition: all 0.2s ease;
+      border: none;
+      background: transparent;
+      white-space: nowrap;
+      text-decoration: none;
+      cursor: pointer;
+      
+      // Animated underline
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background-color: $voltimax-brand-primary;
+        transition: width 0.3s ease;
+        transform: translateX(-50%);
+      }
+      
+      &:hover {
+        color: $voltimax-brand-primary;
+        background-color: rgba($voltimax-brand-primary, 0.05);
+        text-decoration: none;
+        
+        &::after {
+          width: 80%;
+        }
+      }
+    }
+    
+    // Active states
+    &.active > a,
+    &.active > button,
+    &.is-open > a,
+    &.is-open > button {
+      color: $voltimax-brand-primary;
+      
+      &::after {
+        width: 80%;
+      }
+    }
+  }
+}
+
+// ==============================================
+// DROPDOWN CONTAINER
+// ==============================================
+
+.megamenu-foldout {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100vw;
+  z-index: 1000;
+  box-sizing: border-box;
+  
+  // Transparent background
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none;
+  border: none;
+  box-shadow: none !important;
+  border-radius: 0;
+  
+  // Display control
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  
+  &.is-open {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  
+  // Container wrapper
+  .container {
+    width: 100%;
+    max-width: min(1400px, calc(100vw - 2rem));
+    padding: 0 1rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+}
+
+// ==============================================
+// DROPDOWN CONTENT WRAPPER
+// ==============================================
+
+.megamenu-subs {
+  display: flex;
+  flex-direction: row;
+  padding: $megamenu-padding;
+  gap: $megamenu-padding;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  
+  // Glass morphism effect
+  background: rgb(255 255 255 / 15%) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: $megamenu-radius;
+  border: 1px solid rgba($voltimax-brand-primary, 0.15);
+  border-bottom: 2px solid rgba($voltimax-brand-primary, 0.7);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+// ==============================================
+// LEFT SIDEBAR (Categories)
+// ==============================================
+
+.megamenu-sub-1 {
+  flex: 0 0 $megamenu-sidebar-width;
+  padding: $megamenu-padding;
+  background: rgba($voltimax-bg-secondary, 0.9) !important;
+  border-radius: 12px;
+  border-right: 1px solid rgba($voltimax-brand-primary, 0.15);
+  
+  .megamenu-sub-item {
+    margin-bottom: 0.25rem;
+    
+    > a,
+    > button,
+    > span {
+      display: flex;
+      align-items: center;
+      padding: 0.4rem 0.6rem;
+      color: $voltimax-bg-secondary-dark;
+      font-weight: 500;
+      font-size: 0.8rem;
+      border-radius: 0.25rem;
+      transition: all 0.15s ease;
+      background: transparent;
+      border: 1px solid transparent;
+      text-decoration: none;
+      width: 100%;
+      
+      &:hover {
+        background: rgba($voltimax-brand-primary, 0.12);
+        border-color: rgba($voltimax-brand-primary, 0.5);
+        color: darken($voltimax-brand-primary, 10%);
+        transform: translateX(3px);
+        text-decoration: none;
+      }
+    }
+    
+    &.is-open > a {
+      background: $voltimax-brand-primary;
+      color: white;
+      border-color: $voltimax-brand-primary;
+    }
+  }
+}
+
+// ==============================================
+// RIGHT CONTENT AREA (Subcategories)
+// ==============================================
+
+.megamenu-sub-2 {
+  flex: 1;
+  padding: 0.5rem;
+  background: rgba($voltimax-bg-secondary, 0.7);
+  border-radius: 12px;
+  display: none;
+  
+  &.is-open,
+  &.megamenu-full {
+    display: block;
+  }
+  
+  // Grid layout
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -0.15rem;
+  }
+  
+  [class*="col-"] {
+    padding: 0.15rem;
+    flex: 0 0 25%;
+    max-width: 25%;
+    box-sizing: border-box;
+  }
+}
+
+// Category cards
+.megamenu-sub-2-link {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 0.5rem;
+  margin-bottom: 0.25rem;
+  width: 100%;
+  min-height: 32px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  border-left: 3px solid rgba($voltimax-brand-primary, 0.3);
+  border: 1px solid rgba($voltimax-brand-primary, 0.1);
+  transition: all 0.15s ease;
+  text-decoration: none;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  
+  // Categories without subcategories - more prominent
+  &.no-subcategories,
+  &:last-child {
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba($voltimax-brand-primary, 0.2);
+    border-left: 3px solid rgba($voltimax-brand-primary, 0.5);
+    
+    span {
+      font-weight: 800;
+    }
+  }
+  
+  &:hover {
+    background: rgba($voltimax-brand-primary, 0.4);
+    border-left: 4px solid $voltimax-brand-primary;
+    border-color: $voltimax-brand-primary;
+    text-decoration: none;
+    box-shadow: 0 3px 8px rgba($voltimax-brand-primary, 0.4);
+    transform: translateX(2px);
+    
+    span {
+      color: white;
+      font-weight: 700;
+    }
+    
+    img {
+      opacity: 1;
+      filter: brightness(0) invert(1);
+    }
+  }
+  
+  img {
+    width: 14px !important;
+    height: 14px !important;
+    margin-right: 0.4rem;
+    opacity: 0.9;
+    flex-shrink: 0;
+  }
+  
+  span {
+    font-weight: 700;
+    color: darken($voltimax-bg-secondary-dark, 10%);
+    font-size: 0.75rem;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.3;
+    text-transform: capitalize;
+    flex: 1;
+    hyphens: auto;
+  }
+  
+  &.active {
+    background: rgba($voltimax-brand-primary, 0.2);
+    border-left: 3px solid $voltimax-brand-primary;
+    border-color: rgba($voltimax-brand-primary, 0.4);
+    
+    span {
+      color: darken($voltimax-brand-primary, 10%);
+      font-weight: 800;
+    }
+  }
+}
+
+// Subcategory lists
+.megamenu-sub-2 ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.15rem 0 0;
+  
+  li {
+    margin: 0;
+  }
+  
+  li a {
+    display: block;
+    padding: 0.15rem 0.3rem 0.15rem 1rem;
+    color: lighten($voltimax-bg-secondary-dark, 10%);
+    font-size: 0.65rem;
+    border-radius: 0.2rem;
+    transition: all 0.15s ease;
+    position: relative;
+    text-decoration: none;
+    line-height: 1.4;
+    
+    &::before {
+      content: '›';
+      position: absolute;
+      left: 0.3rem;
+      color: rgba($voltimax-brand-primary, 0.5);
+      transition: all 0.15s ease;
+    }
+    
+    &:hover {
+      background: rgba($voltimax-brand-primary, 0.15);
+      color: darken($voltimax-brand-primary, 5%);
+      text-decoration: none;
+      padding-left: 1.2rem;
+      transform: translateX(2px);
+      
+      &::before {
+        color: $voltimax-brand-primary;
+        transform: translateX(2px);
+      }
+    }
+  }
+  
+  li.showall a {
+    color: $voltimax-brand-primary;
+    font-weight: 500;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    
+    &::before {
+      content: '→';
+    }
+  }
+}
+
+// ==============================================
+// FULL WIDTH LAYOUT (No sidebar)
+// ==============================================
+
+.megamenu-full {
+  display: block !important;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  max-width: 100%;
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  ul.mt-0 {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+// ==============================================
+// CLOSE BUTTON
+// ==============================================
+
+.megamenu-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba($voltimax-brand-primary, 0.1);
+  border: 2px solid $voltimax-brand-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  
+  &:hover {
+    background: $voltimax-brand-primary;
+    transform: rotate(90deg);
+    
+    &::before,
+    &::after {
+      background: white;
+    }
+  }
+  
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 2px;
+    background: $voltimax-brand-primary;
+    transition: all 0.3s ease;
+  }
+  
+  &::before {
+    transform: rotate(45deg);
+  }
+  
+  &::after {
+    transform: rotate(-45deg);
+  }
+}
+
+// ==============================================
+// UTILITIES
+// ==============================================
+
+// Icon animations
+.megamenu-item .icon {
+  transition: transform 0.3s ease;
+  margin-left: 0.5rem;
+  
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+// Megamenu link if used by plugin
+.megamenu-link {
+  font-size: 0.85rem;
+  color: $voltimax-bg-secondary-dark;
+  text-decoration: none;
+  
+  &:hover {
+    color: $voltimax-brand-primary;
+    text-decoration: none;
+  }
+}
+
+// ==============================================
+// RESPONSIVE DESIGN
+// ==============================================
+
+// Large screens (1200px - 1400px)
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .megamenu-subs {
+    padding: 0.6rem;
+  }
+  
+  .megamenu-sub-1 {
+    flex: 0 0 160px;
+  }
+  
+  .megamenu-sub-2 [class*="col-"] {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+// Medium screens (992px - 1199px)
+@media (min-width: 992px) and (max-width: 1199px) {
+  .megamenu .megamenu-item > a,
+  .megamenu .megamenu-item > button {
+    padding: 0.3rem 0.4rem !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  
+  .megamenu-link {
+    padding: 0.2rem 0.3rem;
+    font-size: 0.6rem;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  
+  .megamenu-subs {
+    padding: 0.4rem;
+    gap: 0.4rem;
+  }
+  
+  .megamenu-sub-1 {
+    flex: 0 0 130px;
+    padding: 0.35rem;
+    
+    .megamenu-sub-item > a,
+    .megamenu-sub-item > button,
+    .megamenu-sub-item > span {
+      padding: 0.25rem 0.35rem;
+      font-size: 0.65rem;
+    }
+  }
+  
+  .megamenu-sub-2 {
+    padding: 0.35rem;
+    
+    // 4 columns for medium screens
+    [class*="col-"] {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+  }
+  
+  .megamenu-sub-2-link {
+    padding: 0.25rem 0.35rem;
+    margin-bottom: 0.15rem;
+    
+    img {
+      width: 10px !important;
+      height: 10px !important;
+      margin-right: 0.25rem;
+    }
+    
+    span {
+      font-size: 0.65rem;
+      font-weight: 600;
+    }
+  }
+  
+  .megamenu-sub-2 ul li a {
+    padding: 0.1rem 0.25rem 0.1rem 0.8rem;
+    font-size: 0.6rem;
+    
+    &:hover {
+      padding-left: 1rem;
+    }
+  }
+  
+  .megamenu-close {
+    width: 30px;
+    height: 30px;
+    
+    &::before,
+    &::after {
+      width: 14px;
+    }
+  }
+}
+
+// Hide on tablets and mobile (below 992px)
+@media (max-width: 991px) {
+  .megamenu {
+    display: none !important;
+  }
+}
+
+// ==============================================
+// OVERRIDE CONFLICTING STYLES
+// ==============================================
+
+// Ensure transparent background
+.megamenu-foldout,
+.megamenu-foldout.is-open {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
