@@ -1,0 +1,116 @@
+/*
+ * Voltimax Topbar Header - Theme Configuration Driven
+ * ====================================================
+ * These variables are injected from theme.json configuration
+ */
+
+// Since Shopware 6.6 Bootstrap utilities don't use !important,
+// we can rely on them directly without custom overrides
+
+.voltimax-topbar-header {
+  // Use theme config variables with fallbacks
+  background-color: var(--voltimax-topbar-background, #{$voltimax-bg-secondary-dark});
+  font-size: var(--voltimax-topbar-font-size, 0.875rem);
+  min-height: var(--voltimax-topbar-height, 35px);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid $voltimax-border-light;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .topbar-text {
+    color: var(--voltimax-topbar-text-color, #{$voltimax-text-on-dark});
+    font-weight: 500;
+    
+    &:hover {
+      color: $voltimax-hover-primary;
+    }
+  }
+
+  // Equal width columns - 5 columns layout (excluding Trustpilot)
+  .topbar-item {
+    text-align: center;
+    padding: 0 0.75rem;
+    align-items: center;
+    justify-content: center;
+    min-height: 24px;
+    flex: 1;
+  }
+  
+  // Trustpilot placeholder - ready for custom implementation
+  .trustpilot-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 24px;
+    
+    a {
+      color: $voltimax-text-on-dark;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      
+      &:hover {
+        color: $voltimax-hover-primary;
+      }
+    }
+  }
+}
+
+// Utility class to force white text (for overriding Bootstrap)
+.text-white-on-dark {
+  color: #ffffff !important;
+}
+
+// Trustpilot placeholder styling - can be easily replaced
+.voltimax-topbar-header {
+  #trustpilot-topbar-placeholder {
+    // Ready for custom Trustpilot widget replacement
+    // This element can be targeted by ID for custom implementation
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// Clean sticky container approach
+.voltimax-sticky-container {
+  background-color: $voltimax-bg-secondary;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  
+  // When scrolled, add stronger shadow
+  &.is-scrolled {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Individual header sections
+.voltimax-topbar-header {
+  // No need for sticky-top as parent container handles it
+  position: relative;
+}
+
+.header-main {
+  position: relative;
+  background-color: $voltimax-bg-secondary !important;
+}
+
+.nav-main {
+  position: relative;
+  border-bottom: 3px solid $voltimax-brand-primary; // Add primary border to nav container
+  
+  // Mega menu specific fixes
+  .megamenu {
+    position: relative;
+    
+    .megamenu-foldout {
+      // Ensure dropdown works within sticky container
+      position: absolute;
+      z-index: 9999; // High z-index for dropdown
+    }
+  }
+}
+
+// Removed viewport-specific optimizations - let Shopware handle responsive behavior

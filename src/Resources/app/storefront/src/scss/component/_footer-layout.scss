@@ -1,0 +1,117 @@
+// =========================================================================
+// VOLTIMAX FOOTER - THEME VARIABLE BASED DESIGN
+// =========================================================================
+// Uses only Bootstrap classes and theme variables for full customization
+// through theme settings
+
+// Main Footer Container - Theme Variable Background
+.voltimax-footer-main {
+  background-color: $voltimax-bg-footer;
+}
+
+// Footer Bottom Section - Darker shade using theme variables  
+.voltimax-footer-bottom {
+  background-color: darken($voltimax-bg-footer, 10%);
+  border-top: 1px solid $voltimax-brand-primary;
+}
+
+
+// USP Cards - No background, only hover effect
+.voltimax-usp-card {
+  background-color: transparent;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: rgba($voltimax-brand-primary, 0.12);
+  }
+}
+
+// Partner Cards - No background, only hover effect
+.voltimax-partner-card {
+  background-color: transparent;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: rgba($voltimax-brand-primary, 0.1);
+  }
+}
+
+// Logo Cards - No background, minimal border, hover effect only
+.voltimax-logo-card {
+  background-color: transparent;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: rgba($voltimax-brand-primary, 0.08);
+    border-color: rgba($voltimax-brand-primary, 0.3);
+  }
+}
+
+
+// Override any existing footer link colors to ensure Bootstrap classes work
+.footer-link,
+.footer-contact-hotline a {
+  color: #ffffff !important;
+  
+  &:hover {
+    color: $voltimax-brand-primary !important;
+  }
+  
+  &:visited {
+    color: #ffffff !important;
+  }
+}
+
+// Service menu link colors
+.footer-service-menu-link {
+  &:hover {
+    color: $voltimax-brand-primary !important;
+  }
+}
+
+// Ensure primary color works with Bootstrap text-primary class
+.text-primary {
+  color: $voltimax-brand-primary !important;
+}
+
+// Specifically target footer headlines to ensure primary color
+.footer-column-headline {
+  .text-primary,
+  span.text-primary,
+  a.text-primary {
+    color: $voltimax-brand-primary !important;
+  }
+}
+
+// Override any existing footer headline colors
+.footer-headline,
+.footer-column-headline {
+  color: $voltimax-brand-primary !important;
+  
+  span,
+  a {
+    color: $voltimax-brand-primary !important;
+  }
+}
+
+// Footer divider - Subtle border using theme variable
+.voltimax-footer-divider {
+  border-top: 1px solid rgba($voltimax-text-secondary, 0.3);
+}
+
+// Mobile-specific dividers
+@media (max-width: 991.98px) {
+  .voltimax-footer-usp-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+}
+
+// Override default Storefront theme padding for footer headlines
+@media (min-width: 768px) {
+  .footer-column-headline {
+    padding: 1rem 0 0.5rem 0 !important;
+  }
+}
