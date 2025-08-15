@@ -13,7 +13,7 @@
   ],
   "script": [
     "@Storefront",
-    "app/storefront/dist/storefront/js/voltimax-theme.js"
+    "app/storefront/dist/storefront/js/voltimax-theme/voltimax-theme.js"
   ],
   "asset": [
     "@Storefront",
@@ -44,6 +44,180 @@
           "en-GB": "Status messages",
           "de-DE": "Status-Ausgaben"
         }
+      },
+      "topbarGeneral": {
+        "label": {
+          "en-GB": "⚙️ General Settings",
+          "de-DE": "⚙️ Allgemeine Einstellungen"
+        }
+      },
+      "topbarTrustpilot": {
+        "label": {
+          "en-GB": "⭐ Trustpilot Reviews",
+          "de-DE": "⭐ Trustpilot Bewertungen"
+        }
+      },
+      "topbarLeft": {
+        "label": {
+          "en-GB": "◀️ Left Section",
+          "de-DE": "◀️ Linker Bereich"
+        }
+      },
+      "topbarMiddle": {
+        "label": {
+          "en-GB": "⬛ Middle Section",
+          "de-DE": "⬛ Mittlerer Bereich"
+        }
+      },
+      "topbarRight": {
+        "label": {
+          "en-GB": "▶️ Right Section",
+          "de-DE": "▶️ Rechter Bereich"
+        }
+      },
+      "topbarRightEnd": {
+        "label": {
+          "en-GB": "⏩ Right End Section",
+          "de-DE": "⏩ Rechts Ende Bereich"
+        }
+      },
+      "footerPayment": {
+        "label": {
+          "en-GB": "💳 Payment Methods",
+          "de-DE": "💳 Zahlungsmethoden"
+        }
+      },
+      "footerShipping": {
+        "label": {
+          "en-GB": "📦 Shipping Methods",
+          "de-DE": "📦 Versandmethoden"
+        }
+      },
+      "footerUsp": {
+        "label": {
+          "en-GB": "Footer USPs",
+          "de-DE": "Footer USPs"
+        }
+      },
+      "footerPartnerScripts": {
+        "label": {
+          "en-GB": "🌟 Partner & Review Scripts",
+          "de-DE": "🌟 Partner & Bewertung Skripte"
+        }
+      },
+      "marketingScript1": {
+        "label": {
+          "en-GB": "🥇 Script 1 - Google Tag Manager (Highest Priority)",
+          "de-DE": "🥇 Skript 1 - Google Tag Manager (Höchste Priorität)"
+        }
+      },
+      "marketingScript2": {
+        "label": {
+          "en-GB": "🥈 Script 2 - Facebook Pixel (High Priority)",
+          "de-DE": "🥈 Skript 2 - Facebook Pixel (Hohe Priorität)"
+        }
+      },
+      "marketingScript3": {
+        "label": {
+          "en-GB": "🥉 Script 3 - Google Analytics (Medium Priority)",
+          "de-DE": "🥉 Skript 3 - Google Analytics (Mittlere Priorität)"
+        }
+      },
+      "marketingScript4": {
+        "label": {
+          "en-GB": "💬 Script 4 - Chat Widgets (Low Priority)",
+          "de-DE": "💬 Skript 4 - Chat Widgets (Niedrige Priorität)"
+        }
+      },
+      "marketingScript5": {
+        "label": {
+          "en-GB": "🔧 Script 5 - Additional Tools (Lowest Priority)",
+          "de-DE": "🔧 Skript 5 - Zusätzliche Tools (Niedrigste Priorität)"
+        }
+      },
+      "checkoutScript1": {
+        "label": {
+          "en-GB": "🎯 Checkout Script 1 - Conversion Tracking",
+          "de-DE": "🎯 Checkout Skript 1 - Conversion Tracking"
+        }
+      },
+      "checkoutScript2": {
+        "label": {
+          "en-GB": "📊 Checkout Script 2 - Enhanced E-commerce",
+          "de-DE": "📊 Checkout Skript 2 - Enhanced E-commerce"
+        }
+      },
+      "checkoutScript3": {
+        "label": {
+          "en-GB": "✅ Checkout Script 3 - Order Confirmation",
+          "de-DE": "✅ Checkout Skript 3 - Bestellbestätigung"
+        }
+      },
+      "checkoutScripts": {
+        "label": {
+          "en-GB": "🛒 Checkout & Conversion Tracking",
+          "de-DE": "🛒 Checkout & Conversion Tracking"
+        }
+      },
+      "marketingSettings": {
+        "label": {
+          "en-GB": "⚙️ Script Settings",
+          "de-DE": "⚙️ Skript-Einstellungen"
+        }
+      },
+      "marketingInfo": {
+        "label": {
+          "en-GB": "ℹ️ Information & Help",
+          "de-DE": "ℹ️ Information & Hilfe"
+        }
+      },
+      "productCard": {
+        "label": {
+          "en-GB": "Product Cards",
+          "de-DE": "Produktkarten"
+        }
+      },
+      "manufacturerLogo": {
+        "label": {
+          "en-GB": "Manufacturer Logos",
+          "de-DE": "Hersteller-Logos"
+        }
+      },
+      "buttonStyles": {
+        "label": {
+          "en-GB": "Button Styles",
+          "de-DE": "Schaltflächen-Stile"
+        }
+      },
+      "formStyles": {
+        "label": {
+          "en-GB": "Form Styles",
+          "de-DE": "Formular-Stile"
+        }
+      },
+      "navigationGeneral": {
+        "label": {
+          "en-GB": "Navigation Settings",
+          "de-DE": "Navigationseinstellungen"
+        }
+      },
+      "footerGeneral": {
+        "label": {
+          "en-GB": "Footer General",
+          "de-DE": "Fußzeile Allgemein"
+        }
+      },
+      "footerCards": {
+        "label": {
+          "en-GB": "Footer Cards",
+          "de-DE": "Fußzeilen-Karten"
+        }
+      },
+      "footerLinks": {
+        "label": {
+          "en-GB": "Footer Links",
+          "de-DE": "Fußzeilen-Links"
+        }
       }
     },
     "tabs": {
@@ -53,10 +227,22 @@
           "de-DE": "Medien"
         }
       },
+      "topbar": {
+        "label": {
+          "en-GB": "Top-bar",
+          "de-DE": "Top-bar"
+        }
+      },
       "footer": {
         "label": {
           "en-GB": "Footer",
           "de-DE": "Fußzeile"
+        }
+      },
+      "marketing": {
+        "label": {
+          "en-GB": "🚀 Marketing & Analytics",
+          "de-DE": "🚀 Marketing & Analytics"
         }
       }
     },
@@ -100,7 +286,7 @@
           "de-DE": "Hintergrund"
         },
         "type": "color",
-        "value": "#fff",
+        "value": "#ffffff",
         "editable": true,
         "block": "themeColors",
         "order": 400
@@ -359,6 +545,1150 @@
         "tab": "footer",
         "block": "footerUsp",
         "order": 401
+      },
+      "voltimaxTopbarBackground": {
+        "label": {
+          "en-GB": "Background Color",
+          "de-DE": "Hintergrundfarbe"
+        },
+        "type": "color",
+        "value": "#474747",
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarGeneral",
+        "section": "topbarStyling",
+        "order": 100
+      },
+      "voltimaxTopbarTextColor": {
+        "label": {
+          "en-GB": "Text Color",
+          "de-DE": "Textfarbe"
+        },
+        "type": "color",
+        "value": "#ffffff",
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarGeneral",
+        "section": "topbarStyling",
+        "order": 110
+      },
+      "voltimaxTopbarHeight": {
+        "label": {
+          "en-GB": "Height (px)",
+          "de-DE": "Höhe (px)"
+        },
+        "helpText": {
+          "en-GB": "Minimum height of the topbar in pixels",
+          "de-DE": "Minimale Höhe der Topbar in Pixeln"
+        },
+        "type": "number",
+        "value": 35,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarGeneral",
+        "section": "topbarStyling",
+        "order": 120
+      },
+      "voltimaxTopbarFontSize": {
+        "label": {
+          "en-GB": "Font Size (px)",
+          "de-DE": "Schriftgröße (px)"
+        },
+        "type": "number",
+        "value": 13,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarGeneral",
+        "section": "topbarStyling",
+        "order": 130
+      },
+      "voltimaxCustomHeaderTextLeft": {
+        "label": {
+          "en-GB": "Text Content",
+          "de-DE": "Textinhalt"
+        },
+        "type": "text",
+        "value": "QUALITÄTSVERSPRECHEN",
+        "scss": false,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarLeft",
+        "order": 100,
+        "helpText": {
+          "en-GB": "Enter custom text or leave empty to use snippet 'VoltimaxTheme.topbar.left' (Default: QUALITY PROMISE)",
+          "de-DE": "Geben Sie benutzerdefinierten Text ein oder lassen Sie leer für Snippet 'VoltimaxTheme.topbar.left' (Standard: QUALITÄTSVERSPRECHEN)"
+        }
+      },
+      "voltimaxCustomHeaderTextMiddle": {
+        "label": {
+          "en-GB": "Text Content",
+          "de-DE": "Textinhalt"
+        },
+        "type": "text",
+        "value": "KAUF AUF RECHNUNG",
+        "scss": false,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarMiddle",
+        "order": 100,
+        "helpText": {
+          "en-GB": "Enter custom text or leave empty to use snippet 'VoltimaxTheme.topbar.middle' (Default: Phone number with hours)",
+          "de-DE": "Geben Sie benutzerdefinierten Text ein oder lassen Sie leer für Snippet 'VoltimaxTheme.topbar.middle' (Standard: Telefonnummer mit Öffnungszeiten)"
+        }
+      },
+      "voltimaxCustomHeaderTextRight": {
+        "label": {
+          "en-GB": "Text Content",
+          "de-DE": "Textinhalt"
+        },
+        "type": "text",
+        "value": "☎ 0895 419 6384 (8:00 - 12:00)",
+        "scss": false,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarRight",
+        "order": 100,
+        "helpText": {
+          "en-GB": "Enter custom text or leave empty to use snippet 'VoltimaxTheme.topbar.right' (Default: Free shipping info)",
+          "de-DE": "Geben Sie benutzerdefinierten Text ein oder lassen Sie leer für Snippet 'VoltimaxTheme.topbar.right' (Standard: Kostenloser Versand Info)"
+        }
+      },
+      "voltimaxCustomHeaderTextRightEnd": {
+        "label": {
+          "en-GB": "Text Content",
+          "de-DE": "Textinhalt"
+        },
+        "type": "text",
+        "value": "⭐ ÜBER 200.000 ZUFRIEDENE KUNDEN",
+        "scss": false,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarRightEnd",
+        "order": 100,
+        "helpText": {
+          "en-GB": "Enter custom text or leave empty to use snippet 'VoltimaxTheme.topbar.rightend' (Default: Customer satisfaction)",
+          "de-DE": "Geben Sie benutzerdefinierten Text ein oder lassen Sie leer für Snippet 'VoltimaxTheme.topbar.rightend' (Standard: Kundenzufriedenheit)"
+        }
+      },
+      "voltimaxTopbarLeftHideMobile": {
+        "label": {
+          "en-GB": "Hide Left Section on Mobile",
+          "de-DE": "Linken Bereich auf Mobil verbergen"
+        },
+        "type": "switch",
+        "value": true,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarLeft",
+        "section": "topbarVisibility",
+        "order": 200,
+        "scss": false
+      },
+      "voltimaxTopbarLeftHideTablet": {
+        "label": {
+          "en-GB": "Hide Left Section on Tablet",
+          "de-DE": "Linken Bereich auf Tablet verbergen"
+        },
+        "type": "switch",
+        "value": false,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarLeft",
+        "section": "topbarVisibility",
+        "order": 300,
+        "scss": false
+      },
+      "voltimaxTopbarMiddleHideMobile": {
+        "label": {
+          "en-GB": "Hide Middle Section on Mobile",
+          "de-DE": "Mittleren Bereich auf Mobil verbergen"
+        },
+        "type": "switch",
+        "value": true,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarMiddle",
+        "section": "topbarVisibility",
+        "order": 200,
+        "scss": false
+      },
+      "voltimaxTopbarMiddleHideTablet": {
+        "label": {
+          "en-GB": "Hide Middle Section on Tablet",
+          "de-DE": "Mittleren Bereich auf Tablet verbergen"
+        },
+        "type": "switch",
+        "value": false,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarMiddle",
+        "section": "topbarVisibility",
+        "order": 300,
+        "scss": false
+      },
+      "voltimaxTopbarRightHideMobile": {
+        "label": {
+          "en-GB": "Hide Right Section on Mobile",
+          "de-DE": "Rechten Bereich auf Mobil verbergen"
+        },
+        "type": "switch",
+        "value": false,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarRight",
+        "section": "topbarVisibility",
+        "order": 200,
+        "scss": false
+      },
+      "voltimaxTopbarRightHideTablet": {
+        "label": {
+          "en-GB": "Hide Right Section on Tablet",
+          "de-DE": "Rechten Bereich auf Tablet verbergen"
+        },
+        "type": "switch",
+        "value": false,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarRight",
+        "section": "topbarVisibility",
+        "order": 300,
+        "scss": false
+      },
+      "voltimaxTopbarRightEndHideMobile": {
+        "label": {
+          "en-GB": "Hide Right End Section on Mobile",
+          "de-DE": "Rechten End-Bereich auf Mobil verbergen"
+        },
+        "type": "switch",
+        "value": true,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarRightEnd",
+        "section": "topbarVisibility",
+        "order": 200,
+        "scss": false
+      },
+      "voltimaxTopbarRightEndHideTablet": {
+        "label": {
+          "en-GB": "Hide Right End Section on Tablet",
+          "de-DE": "Rechten End-Bereich auf Tablet verbergen"
+        },
+        "type": "switch",
+        "value": false,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarRightEnd",
+        "section": "topbarVisibility",
+        "order": 300,
+        "scss": false
+      },
+      "voltimaxTrustpilotWidget": {
+        "label": {
+          "en-GB": "Trustpilot Widget Code",
+          "de-DE": "Trustpilot Widget Code"
+        },
+        "helpText": {
+          "en-GB": "Paste your complete Trustpilot widget HTML code here. Get it from your Trustpilot Business account. Leave empty to disable Trustpilot.",
+          "de-DE": "Fügen Sie hier Ihren vollständigen Trustpilot-Widget-HTML-Code ein. Sie erhalten ihn von Ihrem Trustpilot Business-Konto. Leer lassen zum Deaktivieren."
+        },
+        "type": "textarea",
+        "value": "<!-- TrustBox widget - Horizontal -->\n<div class=\"trustpilot-widget\" data-locale=\"en-US\" data-template-id=\"5406e65db0d04a09e042d5fc\" data-businessunit-id=\"641844b25c3148d8e2f02d34\" data-style-height=\"28px\" data-style-width=\"100%\" data-theme=\"dark\">\n  <a href=\"https://www.trustpilot.com/review/voltimax.de\" target=\"_blank\" rel=\"noopener\">Trustpilot</a>\n</div>\n<!-- End TrustBox widget -->",
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarTrustpilot",
+        "section": "topbarContent",
+        "order": 50,
+        "scss": false,
+        "fullWidth": true
+      },
+      "voltimaxTopbarTrustpilotHideMobile": {
+        "label": {
+          "en-GB": "Hide Trustpilot Widget on Mobile",
+          "de-DE": "Trustpilot Widget auf Mobil verbergen"
+        },
+        "type": "switch",
+        "value": true,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarTrustpilot",
+        "section": "topbarVisibility",
+        "order": 100,
+        "scss": false
+      },
+      "voltimaxTopbarTrustpilotHideTablet": {
+        "label": {
+          "en-GB": "Hide Trustpilot Widget on Tablet",
+          "de-DE": "Trustpilot Widget auf Tablet verbergen"
+        },
+        "type": "switch",
+        "value": false,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarTrustpilot",
+        "section": "topbarVisibility",
+        "order": 200,
+        "scss": false
+      },
+      "voltimaxMarketingScript1": {
+        "label": {
+          "en-GB": "📝 Script Content",
+          "de-DE": "📝 Skript Inhalt"
+        },
+        "helpText": {
+          "en-GB": "📌 Recommended for: Google Tag Manager (GTM-XXXXXX)\n⚡ Loads first in HEAD section\n✅ Include <script> tags\n💡 Example: <script>(function(w,d,s,l,i){...})(window,document,'script','dataLayer','GTM-XXXXXX');</script>",
+          "de-DE": "📌 Empfohlen für: Google Tag Manager (GTM-XXXXXX)\n⚡ Lädt zuerst im HEAD-Bereich\n✅ <script> Tags einschließen\n💡 Beispiel: <script>(function(w,d,s,l,i){...})(window,document,'script','dataLayer','GTM-XXXXXX');</script>"
+        },
+        "type": "textarea",
+        "value": "",
+        "editable": true,
+        "tab": "marketing",
+        "block": "marketingScript1",
+        "order": 100,
+        "scss": false
+      },
+      "voltimaxMarketingScript1Active": {
+        "label": {
+          "en-GB": "✅ Enable Script 1",
+          "de-DE": "✅ Skript 1 aktivieren"
+        },
+        "helpText": {
+          "en-GB": "Toggle to activate/deactivate this script on your storefront",
+          "de-DE": "Aktivieren/Deaktivieren Sie dieses Skript in Ihrem Shop"
+        },
+        "type": "bool",
+        "value": false,
+        "editable": true,
+        "tab": "marketing",
+        "block": "marketingScript1",
+        "order": 110
+      },
+      "voltimaxMarketingScript1Async": {
+        "label": {
+          "en-GB": "⚡ Load Asynchronously",
+          "de-DE": "⚡ Asynchron laden"
+        },
+        "helpText": {
+          "en-GB": "Enable for better performance (recommended unless script requires synchronous loading)",
+          "de-DE": "Aktivieren für bessere Performance (empfohlen, außer das Skript erfordert synchrones Laden)"
+        },
+        "type": "bool",
+        "value": true,
+        "editable": true,
+        "tab": "marketing",
+        "block": "marketingScript1",
+        "order": 120
+      },
+      "voltimaxMarketingScript2": {
+        "label": {
+          "en-GB": "📝 Script Content",
+          "de-DE": "📝 Skript Inhalt"
+        },
+        "helpText": {
+          "en-GB": "📌 Recommended for: Facebook Pixel, LinkedIn Insight Tag\n⚡ Loads second in HEAD section\n✅ Include <script> tags\n💡 Replace YOUR_PIXEL_ID with actual ID",
+          "de-DE": "📌 Empfohlen für: Facebook Pixel, LinkedIn Insight Tag\n⚡ Lädt als zweites im HEAD-Bereich\n✅ <script> Tags einschließen\n💡 Ersetzen Sie YOUR_PIXEL_ID mit der tatsächlichen ID"
+        },
+        "type": "textarea",
+        "value": "",
+        "editable": true,
+        "tab": "marketing",
+        "block": "marketingScript2",
+        "order": 200,
+        "scss": false
+      },
+      "voltimaxMarketingScript2Active": {
+        "label": {
+          "en-GB": "✅ Enable Script 2",
+          "de-DE": "✅ Skript 2 aktivieren"
+        },
+        "helpText": {
+          "en-GB": "Toggle to activate/deactivate this script on your storefront",
+          "de-DE": "Aktivieren/Deaktivieren Sie dieses Skript in Ihrem Shop"
+        },
+        "type": "bool",
+        "value": false,
+        "editable": true,
+        "tab": "marketing",
+        "block": "marketingScript2",
+        "order": 210
+      },
+      "voltimaxMarketingScript2Async": {
+        "label": {
+          "en-GB": "⚡ Load Asynchronously",
+          "de-DE": "⚡ Asynchron laden"
+        },
+        "helpText": {
+          "en-GB": "Enable for better performance (recommended unless script requires synchronous loading)",
+          "de-DE": "Aktivieren für bessere Performance (empfohlen, außer das Skript erfordert synchrones Laden)"
+        },
+        "type": "bool",
+        "value": true,
+        "editable": true,
+        "tab": "marketing",
+        "block": "marketingScript2",
+        "order": 220
+      },
+      "voltimaxMarketingScript3": {
+        "label": {
+          "en-GB": "📝 Script Content",
+          "de-DE": "📝 Skript Inhalt"
+        },
+        "helpText": {
+          "en-GB": "📌 Recommended for: Google Analytics 4, Matomo, Plausible\n⚡ Loads third in HEAD section\n✅ Include <script> tags\n💡 Replace G-XXXXXXXXXX with your measurement ID",
+          "de-DE": "📌 Empfohlen für: Google Analytics 4, Matomo, Plausible\n⚡ Lädt als drittes im HEAD-Bereich\n✅ <script> Tags einschließen\n💡 Ersetzen Sie G-XXXXXXXXXX mit Ihrer Mess-ID"
+        },
+        "type": "textarea",
+        "value": "",
+        "editable": true,
+        "tab": "marketing",
+        "block": "marketingScript3",
+        "order": 300,
+        "scss": false
+      },
+      "voltimaxMarketingScript3Active": {
+        "label": {
+          "en-GB": "✅ Enable Script 3",
+          "de-DE": "✅ Skript 3 aktivieren"
+        },
+        "helpText": {
+          "en-GB": "Toggle to activate/deactivate this script on your storefront",
+          "de-DE": "Aktivieren/Deaktivieren Sie dieses Skript in Ihrem Shop"
+        },
+        "type": "bool",
+        "value": false,
+        "editable": true,
+        "tab": "marketing",
+        "block": "marketingScript3",
+        "order": 310
+      },
+      "voltimaxMarketingScript3Async": {
+        "label": {
+          "en-GB": "⚡ Load Asynchronously",
+          "de-DE": "⚡ Asynchron laden"
+        },
+        "helpText": {
+          "en-GB": "Enable for better performance (recommended unless script requires synchronous loading)",
+          "de-DE": "Aktivieren für bessere Performance (empfohlen, außer das Skript erfordert synchrones Laden)"
+        },
+        "type": "bool",
+        "value": true,
+        "editable": true,
+        "tab": "marketing",
+        "block": "marketingScript3",
+        "order": 320
+      },
+      "voltimaxMarketingScript4": {
+        "label": {
+          "en-GB": "📝 Script Content",
+          "de-DE": "📝 Skript Inhalt"
+        },
+        "helpText": {
+          "en-GB": "📌 Recommended for: Intercom, Drift, Zendesk Chat, Crisp\n⚡ Loads fourth - won't slow down critical content\n✅ Include <script> tags\n💡 Perfect for chat widgets and support tools",
+          "de-DE": "📌 Empfohlen für: Intercom, Drift, Zendesk Chat, Crisp\n⚡ Lädt als viertes - verlangsamt kritische Inhalte nicht\n✅ <script> Tags einschließen\n💡 Perfekt für Chat-Widgets und Support-Tools"
+        },
+        "type": "textarea",
+        "value": "",
+        "editable": true,
+        "tab": "marketing",
+        "block": "marketingScript4",
+        "order": 400,
+        "scss": false
+      },
+      "voltimaxMarketingScript4Active": {
+        "label": {
+          "en-GB": "✅ Enable Script 4",
+          "de-DE": "✅ Skript 4 aktivieren"
+        },
+        "helpText": {
+          "en-GB": "Toggle to activate/deactivate this script on your storefront",
+          "de-DE": "Aktivieren/Deaktivieren Sie dieses Skript in Ihrem Shop"
+        },
+        "type": "bool",
+        "value": false,
+        "editable": true,
+        "tab": "marketing",
+        "block": "marketingScript4",
+        "order": 410
+      },
+      "voltimaxMarketingScript4Async": {
+        "label": {
+          "en-GB": "⚡ Load Asynchronously",
+          "de-DE": "⚡ Asynchron laden"
+        },
+        "helpText": {
+          "en-GB": "Enable for better performance (recommended unless script requires synchronous loading)",
+          "de-DE": "Aktivieren für bessere Performance (empfohlen, außer das Skript erfordert synchrones Laden)"
+        },
+        "type": "bool",
+        "value": true,
+        "editable": true,
+        "tab": "marketing",
+        "block": "marketingScript4",
+        "order": 420
+      },
+      "voltimaxMarketingScript5": {
+        "label": {
+          "en-GB": "📝 Script Content",
+          "de-DE": "📝 Skript Inhalt"
+        },
+        "helpText": {
+          "en-GB": "📌 Recommended for: Hotjar, FullStory, Custom Scripts\n⚡ Loads last - optimal for non-critical scripts\n✅ Include <script> tags\n💡 Use for heatmaps, session recording, A/B testing",
+          "de-DE": "📌 Empfohlen für: Hotjar, FullStory, Benutzerdefinierte Skripte\n⚡ Lädt zuletzt - optimal für nicht-kritische Skripte\n✅ <script> Tags einschließen\n💡 Verwenden Sie für Heatmaps, Session-Aufzeichnung, A/B-Tests"
+        },
+        "type": "textarea",
+        "value": "",
+        "editable": true,
+        "tab": "marketing",
+        "block": "marketingScript5",
+        "order": 500,
+        "scss": false
+      },
+      "voltimaxMarketingScript5Active": {
+        "label": {
+          "en-GB": "✅ Enable Script 5",
+          "de-DE": "✅ Skript 5 aktivieren"
+        },
+        "helpText": {
+          "en-GB": "Toggle to activate/deactivate this script on your storefront",
+          "de-DE": "Aktivieren/Deaktivieren Sie dieses Skript in Ihrem Shop"
+        },
+        "type": "bool",
+        "value": false,
+        "editable": true,
+        "tab": "marketing",
+        "block": "marketingScript5",
+        "order": 510
+      },
+      "voltimaxMarketingScript5Async": {
+        "label": {
+          "en-GB": "⚡ Load Asynchronously",
+          "de-DE": "⚡ Asynchron laden"
+        },
+        "helpText": {
+          "en-GB": "Enable for better performance (recommended unless script requires synchronous loading)",
+          "de-DE": "Aktivieren für bessere Performance (empfohlen, außer das Skript erfordert synchrones Laden)"
+        },
+        "type": "bool",
+        "value": true,
+        "editable": true,
+        "tab": "marketing",
+        "block": "marketingScript5",
+        "order": 520
+      },
+      "voltimaxCheckoutScript1": {
+        "label": {
+          "en-GB": "📝 Script Content",
+          "de-DE": "📝 Skript Inhalt"
+        },
+        "helpText": {
+          "en-GB": "📌 Loads ONLY on checkout pages\n💳 Perfect for: Google Ads Conversion, Facebook Conversion API\n✅ Include <script> tags\n🔒 Tracks purchase completions and checkout events",
+          "de-DE": "📌 Lädt NUR auf Checkout-Seiten\n💳 Perfekt für: Google Ads Conversion, Facebook Conversion API\n✅ <script> Tags einschließen\n🔒 Verfolgt Kaufabschlüsse und Checkout-Ereignisse"
+        },
+        "type": "textarea",
+        "value": "",
+        "editable": true,
+        "tab": "marketing",
+        "block": "checkoutScript1",
+        "order": 600,
+        "scss": false
+      },
+      "voltimaxCheckoutScript1Active": {
+        "label": {
+          "en-GB": "✅ Enable Checkout Script 1",
+          "de-DE": "✅ Checkout Skript 1 aktivieren"
+        },
+        "helpText": {
+          "en-GB": "Toggle to activate/deactivate this script on checkout pages",
+          "de-DE": "Aktivieren/Deaktivieren Sie dieses Skript auf Checkout-Seiten"
+        },
+        "type": "bool",
+        "value": false,
+        "editable": true,
+        "tab": "marketing",
+        "block": "checkoutScript1",
+        "order": 610
+      },
+      "voltimaxCheckoutScript2": {
+        "label": {
+          "en-GB": "📝 Script Content",
+          "de-DE": "📝 Skript Inhalt"
+        },
+        "helpText": {
+          "en-GB": "📌 Loads ONLY on checkout pages\n📊 Perfect for: Enhanced E-commerce tracking, Cart abandonment tools\n✅ Include <script> tags\n🛒 Tracks cart value, items, and checkout steps",
+          "de-DE": "📌 Lädt NUR auf Checkout-Seiten\n📊 Perfekt für: Enhanced E-commerce Tracking, Warenkorbabbruch-Tools\n✅ <script> Tags einschließen\n🛒 Verfolgt Warenkorbwert, Artikel und Checkout-Schritte"
+        },
+        "type": "textarea",
+        "value": "",
+        "editable": true,
+        "tab": "marketing",
+        "block": "checkoutScript2",
+        "order": 620,
+        "scss": false
+      },
+      "voltimaxCheckoutScript2Active": {
+        "label": {
+          "en-GB": "✅ Enable Checkout Script 2",
+          "de-DE": "✅ Checkout Skript 2 aktivieren"
+        },
+        "helpText": {
+          "en-GB": "Toggle to activate/deactivate this script on checkout pages",
+          "de-DE": "Aktivieren/Deaktivieren Sie dieses Skript auf Checkout-Seiten"
+        },
+        "type": "bool",
+        "value": false,
+        "editable": true,
+        "tab": "marketing",
+        "block": "checkoutScript2",
+        "order": 630
+      },
+      "voltimaxCheckoutScript3": {
+        "label": {
+          "en-GB": "📝 Script Content",
+          "de-DE": "📝 Skript Inhalt"
+        },
+        "helpText": {
+          "en-GB": "📌 Loads ONLY on order confirmation/thank you page\n✨ Perfect for: Purchase confirmation pixels, Affiliate tracking\n✅ Include <script> tags\n🎉 Fires only after successful order completion",
+          "de-DE": "📌 Lädt NUR auf Bestellbestätigung/Danke-Seite\n✨ Perfekt für: Kaufbestätigungs-Pixel, Affiliate-Tracking\n✅ <script> Tags einschließen\n🎉 Wird nur nach erfolgreichem Bestellabschluss ausgelöst"
+        },
+        "type": "textarea",
+        "value": "",
+        "editable": true,
+        "tab": "marketing",
+        "block": "checkoutScript3",
+        "order": 640,
+        "scss": false
+      },
+      "voltimaxCheckoutScript3Active": {
+        "label": {
+          "en-GB": "✅ Enable Order Confirmation Script",
+          "de-DE": "✅ Bestellbestätigung Skript aktivieren"
+        },
+        "helpText": {
+          "en-GB": "Toggle to activate/deactivate this script on order confirmation page",
+          "de-DE": "Aktivieren/Deaktivieren Sie dieses Skript auf der Bestellbestätigungsseite"
+        },
+        "type": "bool",
+        "value": false,
+        "editable": true,
+        "tab": "marketing",
+        "block": "checkoutScript3",
+        "order": 650
+      },
+      "voltimax-payment-logo-1": {
+        "label": {
+          "en-GB": "Payment Logo 1",
+          "de-DE": "Bezahlung Logo 1"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPayment",
+        "order": 100
+      },
+      "voltimax-payment-logo-2": {
+        "label": {
+          "en-GB": "Payment Logo 2",
+          "de-DE": "Bezahlung Logo 2"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPayment",
+        "order": 200
+      },
+      "voltimax-payment-logo-3": {
+        "label": {
+          "en-GB": "Payment Logo 3",
+          "de-DE": "Bezahlung Logo 3"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPayment",
+        "order": 300
+      },
+      "voltimax-payment-logo-4": {
+        "label": {
+          "en-GB": "Payment Logo 4",
+          "de-DE": "Bezahlung Logo 4"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPayment",
+        "order": 400
+      },
+      "voltimax-payment-logo-5": {
+        "label": {
+          "en-GB": "Payment Logo 5",
+          "de-DE": "Bezahlung Logo 5"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPayment",
+        "order": 500
+      },
+      "voltimax-payment-logo-6": {
+        "label": {
+          "en-GB": "Payment Logo 6",
+          "de-DE": "Bezahlung Logo 6"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPayment",
+        "order": 600
+      },
+      "voltimax-payment-logo-7": {
+        "label": {
+          "en-GB": "Payment Logo 7",
+          "de-DE": "Bezahlung Logo 7"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPayment",
+        "order": 700
+      },
+      "voltimax-payment-logo-8": {
+        "label": {
+          "en-GB": "Payment Logo 8",
+          "de-DE": "Bezahlung Logo 8"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPayment",
+        "order": 800
+      },
+      "voltimax-payment-logo-9": {
+        "label": {
+          "en-GB": "Payment Logo 9",
+          "de-DE": "Bezahlung Logo 9"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPayment",
+        "order": 900
+      },
+      "voltimax-shipping-logo-1": {
+        "label": {
+          "en-GB": "Shipping Logo 1",
+          "de-DE": "Versand Logo 1"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerShipping",
+        "order": 100
+      },
+      "voltimax-shipping-logo-2": {
+        "label": {
+          "en-GB": "Shipping Logo 2",
+          "de-DE": "Versand Logo 2"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerShipping",
+        "order": 200
+      },
+      "voltimax-shipping-logo-3": {
+        "label": {
+          "en-GB": "Shipping Logo 3",
+          "de-DE": "Versand Logo 3"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerShipping",
+        "order": 300
+      },
+      "voltimax-shipping-logo-4": {
+        "label": {
+          "en-GB": "Shipping Logo 4",
+          "de-DE": "Versand Logo 4"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerShipping",
+        "order": 400
+      },
+      "voltimax-shipping-logo-5": {
+        "label": {
+          "en-GB": "Shipping Logo 5",
+          "de-DE": "Versand Logo 5"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerShipping",
+        "order": 500
+      },
+      "voltimaxTopbarBorderBottom": {
+        "label": {
+          "en-GB": "Topbar Bottom Border Width",
+          "de-DE": "Topbar Untere Rahmenbreite"
+        },
+        "helpText": {
+          "en-GB": "Width of bottom border in pixels",
+          "de-DE": "Breite des unteren Rahmens in Pixeln"
+        },
+        "type": "number",
+        "value": 1,
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarGeneral",
+        "section": "topbarStyling",
+        "order": 500
+      },
+      "voltimaxTopbarBorderColor": {
+        "label": {
+          "en-GB": "Topbar Border Color",
+          "de-DE": "Topbar Rahmenfarbe"
+        },
+        "type": "color",
+        "value": "#e0e0e0",
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarGeneral",
+        "section": "topbarStyling",
+        "order": 510
+      },
+      "voltimaxTopbarPadding": {
+        "label": {
+          "en-GB": "Topbar Padding",
+          "de-DE": "Topbar Innenabstand"
+        },
+        "helpText": {
+          "en-GB": "Padding in rem (e.g., '0.5rem 0')",
+          "de-DE": "Innenabstand in rem (z.B. '0.5rem 0')"
+        },
+        "type": "text",
+        "value": "0.5rem 0",
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarGeneral",
+        "section": "topbarStyling",
+        "order": 520,
+        "scss": false
+      },
+      "voltimaxTopbarTextWeight": {
+        "label": {
+          "en-GB": "Topbar Text Weight",
+          "de-DE": "Topbar Textgewicht"
+        },
+        "type": "text",
+        "value": "500",
+        "custom": {
+          "componentName": "sw-single-select",
+          "options": [
+            {
+              "value": "300",
+              "label": {
+                "en-GB": "Light",
+                "de-DE": "Leicht"
+              }
+            },
+            {
+              "value": "400",
+              "label": {
+                "en-GB": "Normal",
+                "de-DE": "Normal"
+              }
+            },
+            {
+              "value": "500",
+              "label": {
+                "en-GB": "Medium",
+                "de-DE": "Mittel"
+              }
+            },
+            {
+              "value": "600",
+              "label": {
+                "en-GB": "Semibold",
+                "de-DE": "Halbfett"
+              }
+            },
+            {
+              "value": "700",
+              "label": {
+                "en-GB": "Bold",
+                "de-DE": "Fett"
+              }
+            }
+          ]
+        },
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarGeneral",
+        "section": "topbarStyling",
+        "order": 530
+      },
+      "voltimaxTopbarTextHoverColor": {
+        "label": {
+          "en-GB": "Topbar Text Hover Color",
+          "de-DE": "Topbar Text Hover-Farbe"
+        },
+        "type": "color",
+        "value": "#F3B664",
+        "editable": true,
+        "tab": "topbar",
+        "block": "topbarGeneral",
+        "section": "topbarStyling",
+        "order": 540
+      },
+      "voltimaxPartnerTrustpilotActive": {
+        "label": {
+          "en-GB": "Show Trustpilot Widget",
+          "de-DE": "Trustpilot Widget anzeigen"
+        },
+        "type": "switch",
+        "value": true,
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 20,
+        "fullWidth": true
+      },
+      "voltimaxPartnerTrustpilotScript": {
+        "label": {
+          "en-GB": "Trustpilot Widget Content",
+          "de-DE": "Trustpilot Widget Inhalt"
+        },
+        "helpText": {
+          "en-GB": "Paste your Trustpilot TrustBox widget code here. Default widget is pre-configured.",
+          "de-DE": "Fügen Sie hier Ihren Trustpilot TrustBox Widget-Code ein. Standard-Widget ist vorkonfiguriert."
+        },
+        "type": "text",
+        "value": "<script type=\"text/javascript\" src=\"//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js\" async></script>\n<!-- TrustBox widget - Mini -->\n<div class=\"trustpilot-widget\" data-locale=\"en-US\" data-template-id=\"53aa8807dec7e10d38f59f32\" data-businessunit-id=\"641844b25c3148d8e2f02d34\" data-style-height=\"150px\" data-style-width=\"100%\" data-theme=\"dark\" data-token=\"cb9f9358-f3ca-402f-8dd3-df1dd14807f2\">\n  <a href=\"https://www.trustpilot.com/review/voltimax.de\" target=\"_blank\" rel=\"noopener\">Trustpilot</a>\n</div>\n<!-- End TrustBox widget -->",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 10,
+        "scss": false,
+        "fullWidth": true
+      },
+      "voltimaxPartnerBilligerActive": {
+        "label": {
+          "en-GB": "Show Billiger.de Widget",
+          "de-DE": "Billiger.de Widget anzeigen"
+        },
+        "type": "switch",
+        "value": true,
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 110,
+        "fullWidth": true
+      },
+      "voltimaxPartnerBilligerScript": {
+        "label": {
+          "en-GB": "Billiger.de Widget Content",
+          "de-DE": "Billiger.de Widget Inhalt"
+        },
+        "helpText": {
+          "en-GB": "Paste the complete Billiger.de widget or script code here. Default widget is pre-configured.",
+          "de-DE": "Fügen Sie hier den vollständigen Billiger.de Widget- oder Skriptcode ein. Standard-Widget ist vorkonfiguriert."
+        },
+        "type": "text",
+        "value": "<a href=\"https://www.billiger.de/search?filter=f_shop_28529\" target=\"_blank\" rel=\"noopener\" class=\"d-inline-block hover-lift\">\n  <img src=\"https://cdn.billiger.com/partnerbutton/28529\" alt=\"billiger.de - The price-comparison\" title=\"billiger.de - The price-comparison\" class=\"img-fluid\" style=\"max-height: 50px;\">\n</a>",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 100,
+        "scss": false,
+        "fullWidth": true
+      },
+      "voltimaxPartnerIdealoActive": {
+        "label": {
+          "en-GB": "Show Idealo.de Widget",
+          "de-DE": "Idealo.de Widget anzeigen"
+        },
+        "type": "switch",
+        "value": true,
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 210,
+        "fullWidth": true
+      },
+      "voltimaxPartnerIdealoScript": {
+        "label": {
+          "en-GB": "Idealo.de Widget Content",
+          "de-DE": "Idealo.de Widget Inhalt"
+        },
+        "helpText": {
+          "en-GB": "Paste the complete Idealo.de widget or script code here. Default widget is pre-configured.",
+          "de-DE": "Fügen Sie hier den vollständigen Idealo.de Widget- oder Skriptcode ein. Standard-Widget ist vorkonfiguriert."
+        },
+        "type": "text",
+        "value": "<a href=\"https://www.idealo.de/preisvergleich/Shop/335056.html#i\">\n  <img src=\"https://img.idealo.com/badges/335056/4fe8199c-3cf9-44f9-b6d5-65dc2c5b4a92\" loading=\"lazy\" alt=\"idealo - Deutschlands beliebtester Echtzeit-Preisvergleich für Produkte von 50.000 Händlern\"/>\n</a>",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 200,
+        "scss": false,
+        "fullWidth": true
+      },
+      "voltimaxPartnerAmazonActive": {
+        "label": {
+          "en-GB": "Show Amazon Widget",
+          "de-DE": "Amazon Widget anzeigen"
+        },
+        "type": "switch",
+        "value": false,
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 310,
+        "fullWidth": true
+      },
+      "voltimaxPartnerAmazonScript": {
+        "label": {
+          "en-GB": "Amazon Script/Widget",
+          "de-DE": "Amazon Skript/Widget"
+        },
+        "helpText": {
+          "en-GB": "Paste the complete Amazon widget or script code here",
+          "de-DE": "Fügen Sie hier den vollständigen Amazon Widget- oder Skriptcode ein"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 300,
+        "scss": false,
+        "fullWidth": true
+      },
+      "voltimaxPartnerEbayActive": {
+        "label": {
+          "en-GB": "Show eBay Widget",
+          "de-DE": "eBay Widget anzeigen"
+        },
+        "type": "switch",
+        "value": false,
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 410,
+        "fullWidth": true
+      },
+      "voltimaxPartnerEbayScript": {
+        "label": {
+          "en-GB": "eBay Script/Widget",
+          "de-DE": "eBay Skript/Widget"
+        },
+        "helpText": {
+          "en-GB": "Paste the complete eBay widget or script code here",
+          "de-DE": "Fügen Sie hier den vollständigen eBay Widget- oder Skriptcode ein"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 400,
+        "scss": false,
+        "fullWidth": true
+      },
+      "voltimaxPartnerCustom1Active": {
+        "label": {
+          "en-GB": "Show Custom Partner 1",
+          "de-DE": "Benutzerdefinierten Partner 1 anzeigen"
+        },
+        "type": "switch",
+        "value": false,
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 520,
+        "fullWidth": true
+      },
+      "voltimaxPartnerCustom1Name": {
+        "label": {
+          "en-GB": "Custom Partner 1 Name",
+          "de-DE": "Benutzerdefinierter Partner 1 Name"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 500,
+        "fullWidth": true
+      },
+      "voltimaxPartnerCustom1Script": {
+        "label": {
+          "en-GB": "Custom Partner 1 Script",
+          "de-DE": "Benutzerdefinierter Partner 1 Skript"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 510,
+        "scss": false,
+        "fullWidth": true
+      },
+      "voltimaxPartnerCustom2Active": {
+        "label": {
+          "en-GB": "Show Custom Partner 2",
+          "de-DE": "Benutzerdefinierten Partner 2 anzeigen"
+        },
+        "type": "switch",
+        "value": false,
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 620,
+        "fullWidth": true
+      },
+      "voltimaxPartnerCustom2Name": {
+        "label": {
+          "en-GB": "Custom Partner 2 Name",
+          "de-DE": "Benutzerdefinierter Partner 2 Name"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 600,
+        "fullWidth": true
+      },
+      "voltimaxPartnerCustom2Script": {
+        "label": {
+          "en-GB": "Custom Partner 2 Script",
+          "de-DE": "Benutzerdefinierter Partner 2 Skript"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "tab": "footer",
+        "block": "footerPartnerScripts",
+        "order": 610,
+        "scss": false,
+        "fullWidth": true
       }
     }
   }
