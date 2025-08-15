@@ -1,0 +1,42 @@
+{
+  "VoltimaxTheme": {
+    "marketing": {
+      "scripts": {
+        "title": "Marketing Skripte",
+        "description": "Verwalten Sie Ihre Marketing-Skripte mit Prioritätsreihenfolge für optimale Leistung",
+        "script1": {
+          "label": "Marketing Skript 1 (Höchste Priorität)",
+          "description": "Ihr wichtigstes Marketing-Skript (z.B. Google Tag Manager)",
+          "placeholder": "Fügen Sie hier Ihr Marketing-Skript ein..."
+        },
+        "script2": {
+          "label": "Marketing Skript 2 (Hohe Priorität)",
+          "description": "Ihr zweitwichtigstes Marketing-Skript (z.B. Facebook Pixel)",
+          "placeholder": "Fügen Sie hier Ihr Marketing-Skript ein..."
+        },
+        "script3": {
+          "label": "Marketing Skript 3 (Mittlere Priorität)",
+          "description": "Ihr drittwichtigstes Marketing-Skript (z.B. Analytics-Tracking)",
+          "placeholder": "Fügen Sie hier Ihr Marketing-Skript ein..."
+        },
+        "script4": {
+          "label": "Marketing Skript 4 (Niedrige Priorität)",
+          "description": "Ihr viertwichtigstes Marketing-Skript (z.B. Zusätzliches Tracking)",
+          "placeholder": "Fügen Sie hier Ihr Marketing-Skript ein..."
+        },
+        "script5": {
+          "label": "Marketing Skript 5 (Niedrigste Priorität)",
+          "description": "Ihr niedrigste Priorität Marketing-Skript",
+          "placeholder": "Fügen Sie hier Ihr Marketing-Skript ein..."
+        },
+        "enable": "Skript aktivieren",
+        "async": "Asynchron laden",
+        "warning": {
+          "security": "⚠️ Sicherheitswarnung: Stellen Sie sicher, dass alle Skripte aus vertrauenswürdigen Quellen stammen.",
+          "performance": "💡 Performance-Tipp: Verwenden Sie die Async-Option für bessere Ladezeiten.",
+          "testing": "🧪 Test-Modus: Testen Sie Ihre Skripte immer in einer Staging-Umgebung."
+        }
+      }
+    }
+  }
+}

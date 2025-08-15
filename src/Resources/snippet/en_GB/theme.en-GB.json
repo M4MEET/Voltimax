@@ -24,9 +24,38 @@
         "third": "Secure Shopping",
         "fourth": "200,000+ Customers"
       }
+    },
+    "topbar": {
+      "header": {
+        "left": "Free Shipping Over €50",
+        "middle": "24/7 Customer Support",
+        "right": "Best Prices Guaranteed", 
+        "rightend": "Free Returns"
+      }
     }
   },
+  "footer": {
+    "serviceHotlineHeadline": "Service Hotline",
+    "serviceHotline": "Do you have questions about our products? We are happy to advise you:",
+    "serviceContactLink": "<a href=\"%url%\" class=\"text-white text-decoration-none\">Contact Form</a>",
+    "includeVat": "All prices incl. statutory VAT plus <a href=\"%url%\" class=\"text-white-50\">shipping costs</a>",
+    "excludeVat": "All prices excl. statutory VAT plus <a href=\"%url%\" class=\"text-white-50\">shipping costs</a>",
+    "copyrightInfo": "© 2024 Voltimax - All rights reserved"
+  },
   "VoltimaxTheme": {
+    "topbar": {
+      "header": {
+        "left": "Free Shipping Over €50",
+        "middle": "24/7 Customer Support",
+        "right": "Best Prices Guaranteed",
+        "rightend": "Free Returns",
+        "trustpilot": "★★★★★ Trustpilot"
+      }
+    },
+    "footer": {
+      "services": "Our Services",
+      "partners": "Our Partners"
+    },
     "config": {
       "taxInfoText": "0% VAT. The VAT exemption only applies to components if they are used according to § 12 para. 3 UstG.",
       "taxInfoTextDetail": " The sale is subject to differential taxation according to § 25a UStG (used items/special regulation). A separate identification of the sales tax for used or reprocessed items is not permitted"

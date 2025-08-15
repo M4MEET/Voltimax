@@ -1,0 +1,32 @@
+{
+  "VoltimaxTheme": {
+    "topbar": {
+      "header": {
+        "trustpilot": "Trustpilot Bewertungen"
+      },
+      "left": "QUALITÄTSVERSPRECHEN",
+      "middle": "☎ 0895 419 6384 (8:00 - 12:00)",
+      "right": "📦 Kostenloser Versand ab 49 Euro",
+      "rightend": "⭐ ÜBER 200.000 ZUFRIEDENE KUNDEN"
+    },
+    "footer": {
+      "services": "Unsere Services",
+      "partners": "Partner & Bewertungen"
+    }
+  },
+  "battron": {
+    "footer": {
+      "usp": {
+        "first": "Schnelle Lieferung",
+        "second": "30 Tage Rückgabe",
+        "third": "Sicher Einkaufen",
+        "fourth": "Zufriedene Kunden"
+      }
+    }
+  },
+  "footer": {
+    "includeVat": "* Alle Preise inkl. gesetzl. Mehrwertsteuer zzgl. <a data-ajax-modal=\"true\" href=\"%url%\" data-url=\"%url%\" class=\"text-primary\">Versandkosten</a> und ggf. Nachnahmegebühren, wenn nicht anders angegeben.",
+    "excludeVat": "* Alle Preise zzgl. gesetzl. Mehrwertsteuer zzgl. <a data-ajax-modal=\"true\" href=\"%url%\" data-url=\"%url%\" class=\"text-primary\">Versandkosten</a> und ggf. Nachnahmegebühren, wenn nicht anders angegeben.",
+    "copyrightInfo": "%year% - Alle Rechte vorbehalten - voltimax.de"
+  }
+}

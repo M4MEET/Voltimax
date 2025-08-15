@@ -8,7 +8,7 @@
     "listing": {
       "product": {
         "showStock": "Auf Lager",
-        "limitedStock": "Nur noch %product.stock% Stück auf Lager",
+        "limitedStock": "Nur noch %product.availableStock% Stück auf Lager",
         "outOfStock": "Bald wieder da"
       }
     },
@@ -28,9 +28,38 @@
         "third": "Sicher Einkaufen",
         "fourth": "200,000+ Kunden"
       }
+    },
+    "topbar": {
+      "header": {
+        "left": "Kostenloser Versand ab €50",
+        "middle": "24/7 Kundenservice", 
+        "right": "Beste Preise garantiert",
+        "rightend": "Kostenlose Rücksendung"
+      }
     }
   },
+  "footer": {
+    "serviceHotlineHeadline": "Service Hotline",
+    "serviceHotline": "Haben Sie Fragen zu unserem Sortiment? Wir beraten Sie gerne:",
+    "serviceContactLink": "<a href=\"%url%\" class=\"text-white text-decoration-none\">Zum Kontaktformular</a>",
+    "includeVat": "Alle Preise inkl. gesetzl. MwSt. zzgl. <a href=\"%url%\" class=\"text-white-50\">Versandkosten</a>",
+    "excludeVat": "Alle Preise zzgl. gesetzl. MwSt. zzgl. <a href=\"%url%\" class=\"text-white-50\">Versandkosten</a>",
+    "copyrightInfo": "© 2024 Voltimax - Alle Rechte vorbehalten"
+  },
   "VoltimaxTheme": {
+    "topbar": {
+      "header": {
+        "left": "Kostenloser Versand ab €50",
+        "middle": "24/7 Kundenservice",
+        "right": "Beste Preise garantiert", 
+        "rightend": "Kostenlose Rücksendung",
+        "trustpilot": "★★★★★ Trustpilot"
+      }
+    },
+    "footer": {
+      "services": "Unsere Services",
+      "partners": "Unsere Partner"
+    },
     "config": {
       "taxInfoText": "0%-MwSt Die MwSt-Befreiung gilt nur für Komponenten, wenn sie gemäß des § 12 Abs. 3 UstG verwendet werden",
       "taxInfoTextDetail": "Der Verkauf unterliegt der Differenzbesteuerung gem. § 25a UStG (Gebrauchtgegenstände/Sonderregelung). Ein gesonderter Ausweis der Umsatzsteuer für gebrauchte oder wiederaufbereitete Gegenstände ist nicht zulässig."
