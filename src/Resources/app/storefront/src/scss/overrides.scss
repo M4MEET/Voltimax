@@ -1,17 +1,79 @@
 /*
-Override variable defaults
-==================================================
-This file is used to override default SCSS variables from the Shopware Storefront or Bootstrap.
+ * Voltimax Theme - Variable Overrides
+ * ========================================
+ * Override default SCSS variables from Shopware Storefront and Bootstrap.
+ * 
+ * Because of the !default flags, theme variable overrides have to be 
+ * declared beforehand.
+ * https://getbootstrap.com/docs/4.0/getting-started/theming/#variable-defaults
+ */
 
-Because of the !default flags, theme variable overrides have to be declared beforehand.
-https://getbootstrap.com/docs/4.0/getting-started/theming/#variable-defaults
-*/
+// Shopware 6.6 already sets $enable-important-utilities: false
+// This allows themes to override utilities without !important
+
+// ==============================================
+// ASSET PATHS
+// ==============================================
+
+$my-asset-path: '#{$sw-asset-theme-url}/bundles/voltimaxtheme/assets' !default;
+
+// ==============================================
+// LAYOUT & SPACING
+// ==============================================
 
 $border-radius: 15px;
-$background-dark-sb: #474747;
-$enable-shadows: true;
-$enable-gradients: true;
+
+// ==============================================
+// TYPOGRAPHY
+// ==============================================
+
 $sw-font-family-base: 'TT Mussels', Helvetica, Arial, sans-serif;
 $sw-headings-font-family: 'TT Mussels', Helvetica, Arial, sans-serif;
 
-$my-asset-path: '#{$sw-asset-theme-url}/bundles/voltimaxtheme/assets' !default;
+// ==============================================
+// VOLTIMAX THEME COLORS
+// ==============================================
+
+// Primary brand colors
+$voltimax-brand-primary: #F3B664 !default;
+$voltimax-brand-secondary: #f0f0f0 !default;
+
+// Background colors
+$voltimax-bg-primary: #ffffff !default;
+$voltimax-bg-secondary: #f0f0f0 !default;
+$voltimax-bg-secondary-dark: #474747 !default;
+$voltimax-bg-footer: #474747 !default;
+
+// Text colors
+$voltimax-text-primary: #474747 !default;
+$voltimax-text-secondary: #6c757d !default;
+$voltimax-text-on-dark: #ffffff !default;
+$voltimax-text-on-primary: #474747 !default;
+$voltimax-text-muted: #868e96 !default;
+
+// Interactive colors
+$voltimax-hover-primary: #F3B664 !default;
+$voltimax-hover-secondary: #e8ecef !default;
+$voltimax-link-color: #474747 !default;
+$voltimax-link-hover: #F3B664 !default;
+
+// Border colors
+$voltimax-border-light: #dee2e6 !default;
+$voltimax-border-dark: #6c757d !default;
+$voltimax-border-primary: #f0f0f0 !default;
+
+// Status colors
+$voltimax-success: #3cc261 !default;
+$voltimax-info: #26b6cf !default;
+$voltimax-warning: #ffbd5d !default;
+$voltimax-danger: #e52427 !default;
+
+// Legacy variable mapping for backward compatibility
+$background-dark-sb: $voltimax-bg-secondary-dark;
+
+// ==============================================
+// BOOTSTRAP FEATURES
+// ==============================================
+
+$enable-shadows: true;
+$enable-gradients: true;
