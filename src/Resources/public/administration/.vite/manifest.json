@@ -1,0 +1,11 @@
+{
+  "main.js": {
+    "file": "js/voltimax-theme.js",
+    "name": "voltimax-theme",
+    "src": "main.js",
+    "isEntry": true,
+    "css": [
+      "css/voltimax-theme.css"
+    ]
+  }
+}
