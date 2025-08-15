@@ -6,11 +6,11 @@
 {% set name = item.category.translated.name %}
 
 {% block layout_navigation_offcanvas_navigation_category_item_link %}
-    <li class="navigation-offcanvas-list-item voltimax-nav-item mb-1{% if hasChildren %} has-children{% endif %}">
+    <li class="navigation-offcanvas-list-item voltimax-nav-item{% if hasChildren %} has-children{% endif %}">
         {% block layout_navigation_offcanvas_navigation_categories_list_category_item_link %}
             <div class="voltimax-nav-item-wrapper d-flex align-items-stretch rounded-pill border">
                 {# Main link - always navigates to category page #}
-                <a class="navigation-offcanvas-link nav-item nav-link voltimax-nav-link flex-fill d-flex align-items-center px-3 py-2 text-decoration-none rounded-start{% if isActive %} active bg-primary text-white{% else %} text-dark{% endif %}"
+                <a class="navigation-offcanvas-link nav-item nav-link voltimax-nav-link flex-fill d-flex align-items-center px-2 py-1 text-decoration-none rounded-start{% if isActive %} active bg-primary text-white{% else %} text-dark{% endif %}"
                    href="{{ url }}"
                    itemprop="url"
                    {% if category_linknewtab(item.category) %}target="_blank"{% endif %}
@@ -24,7 +24,7 @@
                 {% if hasChildren %}
                     {% block layout_navigation_offcanvas_navigation_categories_list_category_item_link_icon %}
                         <button type="button" 
-                                class="btn navigation-offcanvas-arrow-btn js-navigation-offcanvas-link voltimax-nav-arrow-btn border-0 rounded-end px-3{% if isActive %} btn-primary{% else %} btn-outline-primary{% endif %}"
+                                class="btn navigation-offcanvas-arrow-btn js-navigation-offcanvas-link voltimax-nav-arrow-btn border-0 rounded-end px-2{% if isActive %} btn-primary{% else %} btn-outline-primary{% endif %}"
                                 data-href="{{ path('frontend.menu.offcanvas', {navigationId: item.category.id}) }}"
                                 aria-label="Show subcategories for {{ name }}">
                             <span class="navigation-offcanvas-link-icon js-navigation-offcanvas-loading-icon voltimax-nav-arrow">

@@ -16,7 +16,7 @@
             {% sw_include '@Storefront/storefront/layout/navigation/offcanvas/back-link.html.twig' with { item: active } %}
         {% else %}
             {# Custom headline for root level #}
-            <div class="navigation-offcanvas-headline voltimax-nav-headline p-3 mb-2 bg-light rounded">
+            <div class="navigation-offcanvas-headline voltimax-nav-headline p-2 mb-1 bg-light rounded">
                 <span class="navigation-offcanvas-headline-icon text-primary me-2">
                     {% sw_icon 'stack' style { 'pack': 'solid' } %}
                 </span>
@@ -31,7 +31,7 @@
 
             {# Add home link at root level #}
             {% if isRoot %}
-                <li class="navigation-offcanvas-list-item voltimax-nav-item mb-2">
+                <li class="navigation-offcanvas-list-item voltimax-nav-item mb-1">
                     <a class="navigation-offcanvas-link nav-item nav-link voltimax-nav-home btn btn-outline-primary rounded-pill d-flex align-items-center"
                        href="{{ path('frontend.home.page') }}"
                        itemprop="url"
