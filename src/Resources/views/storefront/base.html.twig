@@ -1,9 +1,256 @@
 {% sw_extends '@Storefront/storefront/base.html.twig' %}
-{#
-{% block base_main %}
- Using asset function to display our custom asset
 
-    <img src="{{ asset('bundles/themebattrongmbh/sb24-mainLogo.png', 'asset') }}">
-         <h1>hello</h1>
+{% block base_head %}
     {{ parent() }}
-{% endblock %} #}
+    
+    {# Voltimax Theme CSS Variables from Configuration #}
+    <style>
+        :root {
+            /* Topbar Extended */
+            --voltimax-topbar-background: {{ theme_config('voltimaxTopbarBackground') }};
+            --voltimax-topbar-text-color: {{ theme_config('voltimaxTopbarTextColor') }};
+            --voltimax-topbar-font-size: {{ theme_config('voltimaxTopbarFontSize') }}rem;
+            --voltimax-topbar-height: {{ theme_config('voltimaxTopbarHeight') }}px;
+            --voltimax-topbar-border-color: {{ theme_config('voltimaxTopbarBorderColor') }};
+            --voltimax-topbar-border-width: {{ theme_config('voltimaxTopbarBorderWidth') }}px;
+            --voltimax-topbar-padding: {{ theme_config('voltimaxTopbarPadding') }}rem;
+            --voltimax-topbar-text-weight: {{ theme_config('voltimaxTopbarTextWeight') }};
+        }
+    </style>
+    
+    {% block voltimax_marketing_scripts %}
+        {# Voltimax Marketing & Analytics Scripts - Loaded in priority order #}
+        
+        {# Script 1 - Highest Priority (e.g., Google Tag Manager) #}
+        {% if theme_config('voltimaxMarketingScript1Active') and theme_config('voltimaxMarketingScript1') %}
+            {% set script1 = theme_config('voltimaxMarketingScript1') %}
+            {% if theme_config('voltimaxMarketingScript1Async') == true and '<script async' not in script1 %}
+                {{ script1|replace({'<script>': '<script async>', '<script ': '<script async '})|raw }}
+            {% else %}
+                {{ script1|raw }}
+            {% endif %}
+        {% endif %}
+        
+        {# Script 2 - High Priority (e.g., Facebook Pixel) #}
+        {% if theme_config('voltimaxMarketingScript2Active') and theme_config('voltimaxMarketingScript2') %}
+            {% set script2 = theme_config('voltimaxMarketingScript2') %}
+            {% if theme_config('voltimaxMarketingScript2Async') and '<script async' not in script2 %}
+                {{ script2|replace({'<script>': '<script async>', '<script ': '<script async '})|raw }}
+            {% else %}
+                {{ script2|raw }}
+            {% endif %}
+        {% endif %}
+        
+        {# Script 3 - Medium Priority (e.g., Google Analytics) #}
+        {% if theme_config('voltimaxMarketingScript3Active') and theme_config('voltimaxMarketingScript3') %}
+            {% set script3 = theme_config('voltimaxMarketingScript3') %}
+            {% if theme_config('voltimaxMarketingScript3Async') and '<script async' not in script3 %}
+                {{ script3|replace({'<script>': '<script async>', '<script ': '<script async '})|raw }}
+            {% else %}
+                {{ script3|raw }}
+            {% endif %}
+        {% endif %}
+        
+        {# Script 4 - Low Priority (e.g., Chat Widgets) #}
+        {% if theme_config('voltimaxMarketingScript4Active') and theme_config('voltimaxMarketingScript4') %}
+            {% set script4 = theme_config('voltimaxMarketingScript4') %}
+            {% if theme_config('voltimaxMarketingScript4Async') and '<script async' not in script4 %}
+                {{ script4|replace({'<script>': '<script async>', '<script ': '<script async '})|raw }}
+            {% else %}
+                {{ script4|raw }}
+            {% endif %}
+        {% endif %}
+        
+        {# Script 5 - Lowest Priority (Additional Scripts) #}
+        {% if theme_config('voltimaxMarketingScript5Active') and theme_config('voltimaxMarketingScript5') %}
+            {% set script5 = theme_config('voltimaxMarketingScript5') %}
+            {% if theme_config('voltimaxMarketingScript5Async') and '<script async' not in script5 %}
+                {{ script5|replace({'<script>': '<script async>', '<script ': '<script async '})|raw }}
+            {% else %}
+                {{ script5|raw }}
+            {% endif %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}
+
+
+{% block base_body_inner %}
+    {{ parent() }}
+{% endblock %}
+
+{% block base_header %}
+    {# Sticky wrapper for all header elements #}
+    <div class="voltimax-sticky-container sticky-top" style="z-index: 1000;">
+        {# Topbar is always enabled #}
+        {% block voltimax_topbar_header %}
+                {# Apply theme configuration as CSS variables #}
+                <style>
+                    :root {
+                        {% if theme_config('voltimaxTopbarBackground') %}
+                            --voltimax-topbar-background: {{ theme_config('voltimaxTopbarBackground') }};
+                        {% endif %}
+                        {% if theme_config('voltimaxTopbarTextColor') %}
+                            --voltimax-topbar-text-color: {{ theme_config('voltimaxTopbarTextColor') }};
+                        {% endif %}
+                        {% if theme_config('voltimaxTopbarHeight') %}
+                            --voltimax-topbar-height: {{ theme_config('voltimaxTopbarHeight') }}px;
+                        {% endif %}
+                        {% if theme_config('voltimaxTopbarFontSize') %}
+                            --voltimax-topbar-font-size: {{ theme_config('voltimaxTopbarFontSize') }}px;
+                        {% endif %}
+                    }
+                </style>
+                <div class="voltimax-topbar-header">
+                <div class="container">
+                    <div class="row align-items-center">
+                        {# Get topbar texts from theme configuration or use snippets #}
+                        {% set leftText = theme_config('voltimaxCustomHeaderTextLeft') ?: 'VoltimaxTheme.topbar.left'|trans %}
+                        {% set middleText = theme_config('voltimaxCustomHeaderTextMiddle') ?: 'VoltimaxTheme.topbar.middle'|trans %}
+                        {% set rightText = theme_config('voltimaxCustomHeaderTextRight') ?: 'VoltimaxTheme.topbar.right'|trans %}
+                        {% set rightendText = theme_config('voltimaxCustomHeaderTextRightEnd') ?: 'VoltimaxTheme.topbar.rightend'|trans %}
+                        
+                        {# Trustpilot widget - 30% width #}
+                        {# Trustpilot Section - Configurable widget #}
+                        {% if theme_config('voltimaxTrustpilotWidget') %}
+                            {% set hideMobile = theme_config('voltimaxTopbarTrustpilotHideMobile') %}
+                            {% set hideTablet = theme_config('voltimaxTopbarTrustpilotHideTablet') %}
+                            {% set trustpilotDisplay = '' %}
+                            
+                            {% if hideMobile and hideTablet %}
+                                {% set trustpilotDisplay = 'd-none d-lg-block' %}
+                            {% elseif hideMobile %}
+                                {% set trustpilotDisplay = 'd-none d-md-block' %}
+                            {% elseif hideTablet %}
+                                {% set trustpilotDisplay = 'd-block d-md-none d-lg-block' %}
+                            {% endif %}
+                            
+                            <div class="col-12 col-md-4 col-lg-3 topbar-item {{ trustpilotDisplay }}">
+                                {{ theme_config('voltimaxTrustpilotWidget')|raw }}
+                            </div>
+                        {% endif %}
+                        
+                        {# Remaining 70% divided among 4 sections = ~17.5% each #}
+                        {# Left Section #}
+                        {% if leftText %}
+                            {% set hideMobile = theme_config('voltimaxTopbarLeftHideMobile') %}
+                            {% set hideTablet = theme_config('voltimaxTopbarLeftHideTablet') %}
+                            {% set leftDisplay = '' %}
+                            
+                            {% if hideMobile and hideTablet %}
+                                {% set leftDisplay = 'd-none d-lg-block' %}
+                            {% elseif hideMobile %}
+                                {% set leftDisplay = 'd-none d-md-block' %}
+                            {% elseif hideTablet %}
+                                {% set leftDisplay = 'd-block d-md-none d-lg-block' %}
+                            {% endif %}
+                            
+                            <div class="col-12 col-md-2 topbar-item {{ leftDisplay }}">
+                                <span class="topbar-text">{{ leftText }}</span>
+                            </div>
+                        {% endif %}
+                        
+                        {# Middle Section #}
+                        {% if middleText %}
+                            {% set hideMobile = theme_config('voltimaxTopbarMiddleHideMobile') %}
+                            {% set hideTablet = theme_config('voltimaxTopbarMiddleHideTablet') %}
+                            {% set middleDisplay = '' %}
+                            
+                            {% if hideMobile and hideTablet %}
+                                {% set middleDisplay = 'd-none d-lg-block' %}
+                            {% elseif hideMobile %}
+                                {% set middleDisplay = 'd-none d-md-block' %}
+                            {% elseif hideTablet %}
+                                {% set middleDisplay = 'd-block d-md-none d-lg-block' %}
+                            {% endif %}
+                            
+                            <div class="col-12 col-md-2 topbar-item {{ middleDisplay }}">
+                                <span class="topbar-text">{{ middleText }}</span>
+                            </div>
+                        {% endif %}
+                        
+                        {# Right Section #}
+                        {% if rightText %}
+                            {% set hideMobile = theme_config('voltimaxTopbarRightHideMobile') %}
+                            {% set hideTablet = theme_config('voltimaxTopbarRightHideTablet') %}
+                            {% set rightDisplay = '' %}
+                            
+                            {% if hideMobile and hideTablet %}
+                                {% set rightDisplay = 'd-none d-lg-block' %}
+                            {% elseif hideMobile %}
+                                {% set rightDisplay = 'd-none d-md-block' %}
+                            {% elseif hideTablet %}
+                                {% set rightDisplay = 'd-block d-md-none d-lg-block' %}
+                            {% endif %}
+                            
+                            <div class="col-12 col-md-2 topbar-item {{ rightDisplay }}">
+                                <span class="topbar-text">{{ rightText }}</span>
+                            </div>
+                        {% endif %}
+                        
+                        {# Right End Section #}
+                        {% if rightendText %}
+                            {% set hideMobile = theme_config('voltimaxTopbarRightEndHideMobile') %}
+                            {% set hideTablet = theme_config('voltimaxTopbarRightEndHideTablet') %}
+                            {% set rightEndDisplay = '' %}
+                            
+                            {% if hideMobile and hideTablet %}
+                                {% set rightEndDisplay = 'd-none d-lg-block' %}
+                            {% elseif hideMobile %}
+                                {% set rightEndDisplay = 'd-none d-md-block' %}
+                            {% elseif hideTablet %}
+                                {% set rightEndDisplay = 'd-block d-md-none d-lg-block' %}
+                            {% endif %}
+                            
+                            <div class="col-12 col-md-2 topbar-item {{ rightEndDisplay }}">
+                                <span class="topbar-text">{{ rightendText }}</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+        
+        <header class="header-main">
+            {% block base_header_inner %}
+                {{ parent() }}
+            {% endblock %}
+        </header>
+        
+        {# Navigation inside sticky container #}
+        <div class="nav-main bg-secondary">
+            {% sw_include '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block base_navigation %}
+    {# Empty - navigation is rendered inside sticky container above #}
+{% endblock %}
+
+{% block base_body_script %}
+    {{ parent() }}
+    
+    {# Minimal mega menu handlers #}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close button handler
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.megamenu-close, .js-close-megamenu')) {
+                    e.preventDefault();
+                    document.querySelectorAll('.is-open').forEach(el => el.classList.remove('is-open'));
+                }
+            });
+            
+            // Auto-close on mouse leave
+            document.querySelectorAll('.megamenu-foldout').forEach(function(dropdown) {
+                dropdown.addEventListener('mouseleave', function(e) {
+                    const item = dropdown.closest('.megamenu-item');
+                    if (!item || !item.contains(e.relatedTarget)) {
+                        dropdown.classList.remove('is-open');
+                        item && item.classList.remove('is-open');
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
