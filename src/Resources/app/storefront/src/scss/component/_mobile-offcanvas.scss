@@ -125,6 +125,10 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
     
     // Main navigation items - glass card style from mega menu
     .navigation-offcanvas-list-item {
+      // Remove default Shopware background and border
+      background-color: transparent !important;
+      border-top: none !important;
+      
       // Wrapper with enhanced glass morphism and animations
       .voltimax-nav-item-wrapper {
         position: relative;
