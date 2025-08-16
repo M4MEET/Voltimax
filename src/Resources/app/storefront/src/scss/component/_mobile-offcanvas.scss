@@ -61,9 +61,6 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
 
 .voltimax-mobile-categories {
   padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   
   // Custom headline styling with enhanced glass effect - more compact
   .voltimax-nav-headline {
@@ -133,12 +130,8 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
   }
   
   .voltimax-nav-list {
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
     
     // Main navigation items - glass card style from mega menu
     .navigation-offcanvas-list-item {
@@ -146,9 +139,6 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
       background-color: transparent !important;
       border-top: none !important;
       margin-bottom: 0.25rem !important;
-      width: 100% !important;
-      display: flex !important;
-      justify-content: center !important;
       
       // Wrapper with enhanced glass morphism and animations - compact
       .voltimax-nav-item-wrapper {
@@ -159,10 +149,9 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
         border-left: 2px solid rgba($voltimax-brand-primary, 0.3) !important;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
         overflow: hidden;
-        min-height: 36px;
+        min-height: 32px;
         display: flex;
         align-items: center;
-        justify-content: center;
         
         // Gradient overlay on hover (from mega menu)
         &::before {
@@ -201,9 +190,8 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      text-align: center !important;
+      text-align: center;
       min-height: 36px;
-      width: 100% !important;
       
       // Animated underline effect from mega menu
       &::after {
