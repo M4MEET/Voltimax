@@ -22,22 +22,21 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   
-  // Header styling with gradient - more compact
+  // Header styling - clean and minimal
   .offcanvas-header {
-    background: linear-gradient(135deg, $voltimax-bg-secondary-dark, darken($voltimax-bg-secondary-dark, 5%));
-    border-bottom: 2px solid $voltimax-brand-primary;
+    background: transparent;
+    border-bottom: 1px solid rgba($voltimax-brand-primary, 0.2);
     padding: 0.5rem 0.75rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     
     .offcanvas-title {
-      color: $voltimax-text-on-dark;
+      color: $dark;
       font-weight: 600;
       font-size: 0.95rem;
     }
     
     .btn-close {
-      color: $voltimax-text-on-dark;
-      opacity: 0.8;
+      color: $dark;
+      opacity: 0.7;
       
       &:hover {
         opacity: 1;
