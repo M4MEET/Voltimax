@@ -10,7 +10,7 @@
         {% block layout_navigation_offcanvas_navigation_categories_list_category_item_link %}
             <div class="voltimax-nav-item-wrapper d-flex align-items-stretch rounded-pill border">
                 {# Main link - always navigates to category page #}
-                <a class="navigation-offcanvas-link nav-item nav-link voltimax-nav-link flex-fill d-flex align-items-center px-2 py-1 text-decoration-none rounded-start{% if isActive %} active bg-primary text-white{% else %} text-dark{% endif %}"
+                <a class="navigation-offcanvas-link nav-item nav-link voltimax-nav-link flex-fill text-center px-2 py-1 text-decoration-none rounded-start{% if isActive %} active bg-primary text-white{% else %} text-dark{% endif %}"
                    href="{{ url }}"
                    itemprop="url"
                    {% if category_linknewtab(item.category) %}target="_blank"{% endif %}
