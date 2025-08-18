@@ -61,6 +61,7 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
 
 .voltimax-mobile-categories {
   padding: 0.5rem;
+  width: 100%;
   
   // Custom headline styling with enhanced glass effect - more compact
   .voltimax-nav-headline {
@@ -132,6 +133,7 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
   .voltimax-nav-list {
     margin: 0;
     padding: 0;
+    width: 100%;
     
     // Main navigation items - glass card style from mega menu
     .navigation-offcanvas-list-item {
@@ -139,8 +141,9 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
       background-color: transparent !important;
       border-top: none !important;
       margin-bottom: 0.25rem !important;
+      width: 100% !important;
       
-      // Wrapper with enhanced glass morphism and animations - compact
+      // Wrapper with enhanced glass morphism and animations - full width
       .voltimax-nav-item-wrapper {
         position: relative;
         transition: all 0.15s ease;
@@ -152,6 +155,7 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
         min-height: 32px;
         display: flex;
         align-items: center;
+        width: 100%;
         
         // Gradient overlay on hover (from mega menu)
         &::before {
@@ -189,9 +193,10 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
       overflow: hidden;
       display: flex !important;
       align-items: center !important;
-      justify-content: center !important;
-      text-align: center;
+      justify-content: flex-start !important;
+      text-align: left;
       min-height: 36px;
+      width: 100%;
       
       // Animated underline effect from mega menu
       &::after {
@@ -320,11 +325,11 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
         position: relative;
         overflow: hidden;
         min-height: 36px;
-        display: inline-flex !important;
+        display: flex !important;
         align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-        padding: 0.5rem 1.5rem !important;
+        justify-content: flex-start !important;
+        text-align: left !important;
+        padding: 0.5rem 1rem !important;
         width: 100%;
         
         // Shine effect on hover
