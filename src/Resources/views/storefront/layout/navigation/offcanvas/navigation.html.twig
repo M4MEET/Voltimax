@@ -2,14 +2,14 @@
 
 {# Override header to add language widget and reorganize layout #}
 {% block utilities_offcanvas_header %}
-    <div class="offcanvas-header voltimax-custom-header d-flex align-items-center justify-content-between p-3 bg-transparent border-0">
+    <div class="offcanvas-header d-flex align-items-center justify-content-between gap-2 p-3 bg-transparent border-0 border-bottom">
         {# Language widget - flex item #}
-        <div class="voltimax-language-widget">
+        <div class="d-flex align-items-center">
             {% sw_include '@Storefront/storefront/layout/header/actions/language-widget.html.twig' with {position: 'offcanvas'} %}
         </div>
         
         {# Home button - centered item #}
-        <div class="voltimax-home-wrapper mx-2">
+        <div class="d-flex align-items-center">
             <a href="{{ path('frontend.home.page') }}" 
                class="btn btn-outline-secondary btn-sm rounded d-inline-flex align-items-center justify-content-center px-3 py-2"
                title="{{ "general.homeLink"|trans|striptags }}">
@@ -19,7 +19,7 @@
         </div>
         
         {# Close button - right aligned #}
-        <div class="voltimax-close-wrapper">
+        <div class="d-flex align-items-center">
             <button class="btn btn-outline-secondary btn-sm rounded d-inline-flex align-items-center justify-content-center px-3 py-2 offcanvas-close js-offcanvas-close"
                     type="button"
                     data-bs-dismiss="offcanvas"
