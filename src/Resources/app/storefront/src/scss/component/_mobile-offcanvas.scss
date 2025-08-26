@@ -46,18 +46,15 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
       }
     }
     
-    // Language widget - ensure proper button sizing
+    // Language widget - minimal styling, use Bootstrap classes
     .voltimax-language-widget {
       .dropdown-toggle {
         min-height: 38px;
-        padding: 0.5rem 0.75rem;
-        font-size: 0.875rem;
-        border: 1px solid rgba($gray-600, 0.3);
-        border-radius: 0.25rem;
-        background: transparent;
+        transition: all 0.2s ease;
         
         &:hover {
-          background: rgba($voltimax-brand-primary, 0.1);
+          background-color: rgba($voltimax-brand-primary, 0.1);
+          border-color: $voltimax-brand-primary;
         }
       }
     }
