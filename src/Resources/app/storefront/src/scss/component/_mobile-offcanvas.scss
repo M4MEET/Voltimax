@@ -43,6 +43,31 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
       }
     }
     
+    // Home button styling in header
+    .voltimax-home-wrapper {
+      .btn {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.85rem;
+        border-radius: 0.25rem;
+        transition: all 0.2s ease;
+        
+        .icon {
+          width: 16px;
+          height: 16px;
+        }
+        
+        &:hover {
+          background: $voltimax-brand-primary;
+          border-color: $voltimax-brand-primary;
+          color: white;
+          
+          .icon {
+            color: white;
+          }
+        }
+      }
+    }
+    
     // Close button wrapper
     .voltimax-close-wrapper {
       .offcanvas-close {
