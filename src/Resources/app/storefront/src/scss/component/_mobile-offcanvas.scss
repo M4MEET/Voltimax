@@ -26,6 +26,12 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
   .offcanvas-header {
     border-color: rgba($voltimax-brand-primary, 0.1) !important;
     
+    // Override the default offcanvas-close styles that force border-radius: 0
+    .offcanvas-close {
+      width: auto !important;
+      border-radius: $border-radius !important; // Use theme's border-radius variable
+    }
+    
     // Simple hover effect for all buttons
     .btn:hover {
       background-color: $voltimax-brand-primary !important;
