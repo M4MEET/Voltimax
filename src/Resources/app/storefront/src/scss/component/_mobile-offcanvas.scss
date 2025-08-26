@@ -34,15 +34,18 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
       min-height: 38px;
       font-size: 0.875rem;
       transition: all 0.2s ease;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
       
-      // Ensure icons are visible
+      // Ensure icons are visible and properly aligned
       .icon {
         display: inline-flex !important;
         align-items: center;
         justify-content: center;
         width: 16px;
         height: 16px;
-        color: $gray-600;
+        flex-shrink: 0;
         
         svg {
           width: 100% !important;
