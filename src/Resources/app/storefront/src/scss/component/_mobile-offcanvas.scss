@@ -22,9 +22,10 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   
-  // Minimal header styling - rely on Bootstrap
+  // Header styling with dark background like footer
   .offcanvas-header {
-    border-color: rgba($voltimax-brand-primary, 0.1) !important;
+    background: linear-gradient(135deg, $voltimax-bg-secondary-dark, darken($voltimax-bg-secondary-dark, 5%)) !important;
+    border-bottom: 2px solid $voltimax-brand-primary !important;
     
     // Override the default offcanvas-close styles that force border-radius: 0
     .offcanvas-close {
@@ -32,14 +33,41 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
       border-radius: $border-radius !important; // Use theme's border-radius variable
     }
     
-    // Simple hover effect for all buttons
-    .btn:hover {
-      background-color: $voltimax-brand-primary !important;
-      border-color: $voltimax-brand-primary !important;
+    // Adjust button styles for dark background
+    .btn {
+      &.btn-outline-secondary {
+        border-color: rgba(white, 0.3) !important;
+        color: white !important;
+        
+        &:hover {
+          background-color: $voltimax-brand-primary !important;
+          border-color: $voltimax-brand-primary !important;
+          color: white !important;
+          
+          svg {
+            fill: white !important;
+          }
+        }
+        
+        svg {
+          fill: white !important;
+        }
+      }
+    }
+    
+    // Language dropdown for dark background
+    .dropdown-toggle {
+      background: transparent !important;
+      border-color: rgba(white, 0.3) !important;
       color: white !important;
       
-      svg {
-        fill: white !important;
+      &:hover {
+        background: rgba($voltimax-brand-primary, 0.2) !important;
+        border-color: $voltimax-brand-primary !important;
+      }
+      
+      .language-flag {
+        filter: brightness(1.2);
       }
     }
   }
