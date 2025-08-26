@@ -2,19 +2,14 @@
 
 {# Override header to add language widget and reorganize layout #}
 {% block utilities_offcanvas_header %}
-    <div class="offcanvas-header voltimax-custom-header d-flex align-items-center">
-        {# Language widget - 30% width #}
-        <div class="voltimax-language-widget" style="width: 30%;">
+    <div class="offcanvas-header voltimax-custom-header d-flex align-items-center justify-content-between">
+        {# Language widget - 40% width #}
+        <div class="voltimax-language-widget" style="width: 40%;">
             {% sw_include '@Storefront/storefront/layout/header/actions/language-widget.html.twig' with {position: 'offcanvas'} %}
         </div>
         
-        {# Title - 20% width (spacer) #}
-        <div class="offcanvas-title flex-grow-1 text-center" style="width: 20%;">
-            <span class="fw-bold">{{ "general.menuLink"|trans|sw_sanitize }}</span>
-        </div>
-        
-        {# Close button - 50% width #}
-        <div class="voltimax-close-wrapper d-flex justify-content-end" style="width: 50%;">
+        {# Close button - 60% width #}
+        <div class="voltimax-close-wrapper d-flex justify-content-end" style="width: 60%;">
             <button class="btn btn-light offcanvas-close js-offcanvas-close"
                     type="button"
                     data-bs-dismiss="offcanvas"

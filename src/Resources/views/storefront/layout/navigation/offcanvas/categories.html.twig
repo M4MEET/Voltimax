@@ -15,28 +15,12 @@
             {% sw_include '@Storefront/storefront/layout/navigation/offcanvas/active-item-link.html.twig' with { item: active } %}
             {% sw_include '@Storefront/storefront/layout/navigation/offcanvas/back-link.html.twig' with { item: active } %}
         {% else %}
-            {# Headline and Home button side by side #}
-            <div class="d-flex gap-2 mb-2">
-                {# Custom headline - 50% width #}
-                <div class="navigation-offcanvas-headline voltimax-nav-headline bg-light rounded" style="width: 50%;">
-                    <span class="navigation-offcanvas-headline-icon text-primary">
-                        {% sw_icon 'stack' style { 'pack': 'solid' } %}
-                    </span>
-                    <span class="text-dark fw-semibold">{{ "general.categories"|trans|sw_sanitize }}</span>
-                </div>
-                
-                {# Home link - 50% width #}
-                <div style="width: 50%;">
-                    <a class="navigation-offcanvas-link nav-item nav-link voltimax-nav-home btn btn-outline-primary rounded-pill d-flex align-items-center justify-content-center h-100"
-                       href="{{ path('frontend.home.page') }}"
-                       itemprop="url"
-                       title="{{ "general.homeLink"|trans|striptags }}">
-                        <span class="navigation-offcanvas-link-icon text-primary me-1">
-                            {% sw_icon 'house' style { 'pack': 'solid' } %}
-                        </span>
-                        <span itemprop="name" class="text-dark">{{ "general.homeLink"|trans|sw_sanitize }}</span>
-                    </a>
-                </div>
+            {# Custom headline for root level #}
+            <div class="navigation-offcanvas-headline voltimax-nav-headline mb-2 bg-light rounded">
+                <span class="navigation-offcanvas-headline-icon text-primary">
+                    {% sw_icon 'stack' style { 'pack': 'solid' } %}
+                </span>
+                <span class="text-dark fw-semibold">{{ "general.categories"|trans|sw_sanitize }}</span>
             </div>
         {% endif %}
 
