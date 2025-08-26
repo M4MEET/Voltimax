@@ -55,11 +55,16 @@ $glass-content: rgba($voltimax-bg-secondary, 0.7);
       }
     }
     
-    // Language dropdown for dark background
+    // Language dropdown for dark background - match button sizing
     .dropdown-toggle {
+      min-height: 38px !important;
       background: transparent !important;
       border-color: rgba(white, 0.3) !important;
       color: white !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
       
       &:hover {
         background: rgba($voltimax-brand-primary, 0.2) !important;
