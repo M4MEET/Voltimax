@@ -11,10 +11,10 @@
         {# Home button - 20% width #}
         <div class="voltimax-home-wrapper" style="width: 20%;">
             <a href="{{ path('frontend.home.page') }}" 
-               class="btn btn-outline-primary btn-sm d-flex align-items-center justify-content-center"
+               class="btn btn-sm rounded-pill border border-primary bg-white bg-opacity-75 text-primary d-flex align-items-center justify-content-center shadow-sm"
                title="{{ "general.homeLink"|trans|striptags }}">
                 {% sw_icon 'house' style { 'pack': 'solid', 'size': 'sm' } %}
-                <span class="ms-1 d-none d-sm-inline">{{ "general.homeLink"|trans|sw_sanitize }}</span>
+                <span class="ms-1 d-none d-md-inline small">{{ "general.homeLink"|trans|sw_sanitize }}</span>
             </a>
         </div>
         
