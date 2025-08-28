@@ -172,12 +172,15 @@ Voltimax-3.0.0/
 │   │   ├── TaxInfoAlertSubscriber.php
 │   │   └── ManufacturerMediaSubscriber.php
 │   └── VoltimaxTheme.php              # Main theme class
+├── changelog/                         # Shopware standard changelog
+│   └── _unreleased/                  # Pending release notes
+├── changelogs/                        # Major feature documentation
 ├── composer.json                      # PHP dependencies & metadata
 ├── package.json                       # Node dependencies
 ├── README.md                          # Main documentation
-├── README-MOBILE-NAVIGATION.md       # Mobile nav documentation (v3.1.0)
-├── CHANGELOG-FEATURE-2.md            # Feature 2 changelog (v3.1.0)
-└── FEATURE-2-SUMMARY.md              # Feature 2 summary (v3.1.0)
+├── README-MOBILE-NAVIGATION.md       # Mobile nav guide (v3.1.0)
+├── CHANGELOG.md                       # Version history
+└── THEME-VARIABLES.md                # Theme variable reference
 ```
 
 ## 🏗️ Technical Architecture
@@ -207,8 +210,7 @@ All integrated components use the unified Shopware theme variable system for con
 
 ### Feature 2 - Mobile Navigation (v3.1.0)
 - [README-MOBILE-NAVIGATION.md](README-MOBILE-NAVIGATION.md) - Complete mobile navigation guide
-- [CHANGELOG-FEATURE-2.md](CHANGELOG-FEATURE-2.md) - Feature 2 changelog and migration guide
-- [FEATURE-2-SUMMARY.md](FEATURE-2-SUMMARY.md) - Executive summary and metrics
+- See `changelogs/2025-01-28-mobile-navigation-feature-2.md` for detailed feature documentation
 
 ## Support
 For issues or questions:
