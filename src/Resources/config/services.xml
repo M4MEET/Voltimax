@@ -84,12 +84,6 @@
             <tag name="console.command"/>
         </service>
         
-        <!-- Test marketing script command -->
-        <service id="VoltimaxTheme\Command\TestMarketingScriptCommand">
-            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
-            <tag name="console.command"/>
-        </service>
-        
         <!-- Update theme config command -->
         <service id="VoltimaxTheme\Command\UpdateThemeConfigCommand">
             <argument type="service" id="Doctrine\DBAL\Connection"/>
