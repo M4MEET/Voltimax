@@ -1,0 +1,18 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/offcanvas/back-link.html.twig' %}
+
+{% if item.parentId == context.salesChannel.navigationCategoryId %}
+    {% set url = path('frontend.menu.offcanvas') %}
+{% else %}
+    {% set url = path('frontend.menu.offcanvas', { navigationId: item.parentId }) %}
+{% endif %}
+
+{% block layout_navigation_offcanvas_navigation_category_back_link %}
+    <a class="nav-item nav-link is-back-link navigation-offcanvas-link bg-white mb-2 rounded text-primary px-3 js-navigation-offcanvas-link"
+       href="{{ url }}"
+       itemprop="url"
+       title="{{ 'general.back'|trans|striptags }}">
+        {% block layout_navigation_offcanvas_navigation_category_back_link_text %}
+            {{ parent() }}
+        {% endblock %}
+    </a>
+{% endblock %}
