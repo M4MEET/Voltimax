@@ -1,14 +1,26 @@
-# Voltimax Theme v3.0.0 - Unified Shopware 6.6 Theme
+# Voltimax Theme v3.1.0 - Unified Shopware 6.6 Theme
 
 A modern, unified theme for Shopware 6.6.x that combines all Battron plugin functionality in a single, elegant solution. Designed for the German market with full responsive design and plugin compatibility.
 
+## 🚀 Latest Updates (v3.1.0)
+
+### Feature 2: Mobile Sidebar Navigation & Header
+- **3-Button Header Layout** - Language switcher, home, and close buttons with equal spacing
+- **Separated Navigation Design** - Clean distinction between navigation links and arrow buttons  
+- **Optimized Mobile UX** - 44px consistent touch targets for better mobile interaction
+- **80% CSS Reduction** - From 635 to 120 lines of SCSS for better performance
+- **Bootstrap-First Approach** - Minimal custom CSS with Bootstrap utilities
+
+[📖 Full Feature 2 Documentation](README-MOBILE-NAVIGATION.md) | [📝 Changelog](CHANGELOG-FEATURE-2.md)
+
 ## ✨ Integrated Features
+- ✅ **Mobile Navigation System** - Completely redesigned offcanvas navigation (v3.1.0)
 - ✅ **Custom Header System** - Configurable header panel with up to 4 icon/text sections (left, middle, right, rightend)
 - ✅ **Payment & Shipping Icons** - Collapsible footer sections with customizable payment and shipping logos
 - ✅ **Manufacturer Logos** - Automatic display of manufacturer logos in product listings
 - ✅ **Shopware 6.6.10.4 Compatible** - Full compatibility with latest Shopware version
 - ✅ **Modern Build System** - Webpack-based asset compilation
-- ✅ **CheaperAd Plugin Integration** - Seamless integration with CheaperAd plugin
+- ✅ **CheaperAd Plugin Integration** - Seamless integration with CheaperAd plugin v2.0
 - ✅ **Custom Typography** - TT Mussels font with elegant styling
 - ✅ **Fully Responsive** - Mobile-first design across all viewports
 - ✅ **Theme Customization** - Complete admin interface for all settings
@@ -134,7 +146,8 @@ Voltimax-3.0.0/
 │   │   │       │   ├── _custom-header.scss
 │   │   │       │   ├── _footer-icons.scss
 │   │   │       │   ├── _manufacturer-logo.scss
-│   │   │       │   └── _cheaper-ad.scss
+│   │   │       │   ├── _cheaper-ad.scss
+│   │   │       │   └── _mobile-offcanvas.scss  # v3.1.0 Mobile navigation
 │   │   │       ├── fonts/
 │   │   │       ├── base.scss          # Main stylesheet
 │   │   │       └── overrides.scss     # Variable overrides
@@ -143,7 +156,16 @@ Voltimax-3.0.0/
 │   │   │   └── services.xml           # Service definitions
 │   │   ├── views/storefront/
 │   │   │   ├── base.html.twig         # Custom header integration
-│   │   │   ├── layout/footer/         # Footer icons integration
+│   │   │   ├── layout/
+│   │   │   │   ├── header/            # Mobile header improvements (v3.1.0)
+│   │   │   │   ├── footer/            # Footer icons integration
+│   │   │   │   └── navigation/offcanvas/  # Mobile navigation (v3.1.0)
+│   │   │   │       ├── navigation.html.twig
+│   │   │   │       ├── categories.html.twig
+│   │   │   │       ├── item-link.html.twig
+│   │   │   │       ├── back-link.html.twig
+│   │   │   │       ├── show-all-link.html.twig
+│   │   │   │       └── show-active-link.html.twig
 │   │   │   └── component/product/     # Manufacturer logo integration
 │   │   └── theme.json                 # Unified theme configuration
 │   ├── Subscriber/
@@ -152,7 +174,10 @@ Voltimax-3.0.0/
 │   └── VoltimaxTheme.php              # Main theme class
 ├── composer.json                      # PHP dependencies & metadata
 ├── package.json                       # Node dependencies
-└── README.md                          # This documentation
+├── README.md                          # Main documentation
+├── README-MOBILE-NAVIGATION.md       # Mobile nav documentation (v3.1.0)
+├── CHANGELOG-FEATURE-2.md            # Feature 2 changelog (v3.1.0)
+└── FEATURE-2-SUMMARY.md              # Feature 2 summary (v3.1.0)
 ```
 
 ## 🏗️ Technical Architecture
@@ -173,9 +198,17 @@ The unified theme follows a **component-based architecture** that consolidates:
 All integrated components use the unified Shopware theme variable system for consistent styling and easy customization.
 
 ## Documentation
+
+### General Documentation
 - [CHANGELOG.md](CHANGELOG.md) - Version history
 - [UPGRADE.md](UPGRADE.md) - Upgrade guide from v2.2.3
 - [TECHNICAL_DOCUMENTATION.md](TECHNICAL_DOCUMENTATION.md) - Technical details
+- [THEME-VARIABLES.md](THEME-VARIABLES.md) - Theme variables reference
+
+### Feature 2 - Mobile Navigation (v3.1.0)
+- [README-MOBILE-NAVIGATION.md](README-MOBILE-NAVIGATION.md) - Complete mobile navigation guide
+- [CHANGELOG-FEATURE-2.md](CHANGELOG-FEATURE-2.md) - Feature 2 changelog and migration guide
+- [FEATURE-2-SUMMARY.md](FEATURE-2-SUMMARY.md) - Executive summary and metrics
 
 ## Support
 For issues or questions:
