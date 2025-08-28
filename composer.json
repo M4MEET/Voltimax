@@ -3,7 +3,7 @@
   "description": "Modern, unified Shopware 6.6 theme with integrated custom header, footer icons, and manufacturer logo display. Combines all Battron plugin functionality in a single elegant theme.",
   "type": "shopware-platform-plugin",
   "license": "MIT",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "authors": [
     {
       "name": "Meet Joshi",
