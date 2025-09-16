@@ -1,0 +1,70 @@
+{% sw_extends "@Storefront/storefront/component/product/card/price-unit.html.twig" %}
+
+{#
+    Voltimax Theme - Enhanced Product Price Unit Template
+    
+    Features:
+    - Prominent price display with Bootstrap typography
+    - Tax information with modal integration
+    - Comprehensive delivery status handling
+    - Stock information with proper badges
+    - List price and regulation price support
+#}
+
+{% block component_product_box_price_info %}
+    {# ========== PRICE CALCULATION VARIABLES ========== #}
+    {% set cheapest = product.calculatedCheapestPrice %}
+    {% set real = product.calculatedPrice %}
+    
+    {# Use last calculated price if multiple prices exist #}
+    {% if product.calculatedPrices.count > 0 %}
+        {% set real = product.calculatedPrices.last %}
+    {% endif %}
+    
+    {% set referencePrice = real.referencePrice %}
+    {% set displayFrom = product.calculatedPrices.count > 1 %}
+    {% set displayParent = product.variantListingConfig.displayParent and product.parentId === null %}
+    
+    {# Handle parent/variant display logic #}
+    {% if displayParent %}
+        {% set displayFromVariants = displayParent and real.unitPrice !== cheapest.unitPrice %}
+        {% set real = cheapest %}
+    {% endif %}
+
+    <div class="product-price-info">
+        {# ========== MAIN PRICE DISPLAY ========== #}
+        {% block component_product_box_price %}
+            {% include '@VoltimaxTheme/storefront/component/product/card/partials/price-display.html.twig' with {
+                price: real,
+                cheapest: cheapest,
+                displayFrom: displayFrom,
+                displayParent: displayParent,
+                displayFromVariants: displayFromVariants
+            } %}
+        {% endblock %}
+
+        {# ========== PRICE UNIT INFORMATION ========== #}
+        {% block component_product_box_price_unit %}
+            {% if referencePrice %}
+                {% include '@VoltimaxTheme/storefront/component/product/card/partials/price-unit-info.html.twig' with {
+                    referencePrice: referencePrice
+                } %}
+            {% endif %}
+        {% endblock %}
+    </div>
+
+    {# ========== TAX INFORMATION ========== #}
+    {% block page_product_detail_tax %}
+        {% include '@VoltimaxTheme/storefront/component/product/card/partials/tax-information.html.twig' %}
+    {% endblock %}
+
+    {# ========== DELIVERY INFORMATION ========== #}
+    {% block component_delivery_information %}
+        {% include '@VoltimaxTheme/storefront/component/product/card/partials/delivery-information.html.twig' %}
+    {% endblock %}
+
+    {# ========== STOCK INFORMATION ========== #}
+    {% block battron_component_product_box_stock_info %}
+        {% include '@VoltimaxTheme/storefront/component/product/card/partials/stock-information.html.twig' %}
+    {% endblock %}
+{% endblock %}
