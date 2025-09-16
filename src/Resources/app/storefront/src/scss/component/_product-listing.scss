@@ -1,0 +1,60 @@
+/*
+ * Voltimax Theme - Product Listing Styles
+ * ========================================
+ * Minimal custom CSS - mostly Bootstrap utilities
+ */
+
+// ==============================================
+// PRODUCT CARD WISHLIST OVERRIDE
+// ==============================================
+
+// Override wishlist action button to restore proper button styles
+.voltimax-wishlist-action.product-wishlist-action {
+    // Counteract the unwanted styles from product-wishlist-action
+    background: inherit !important;  // Let it inherit from btn classes
+    border-style: solid !important;  // Restore solid border for btn-outline
+    padding: 0.375rem 0.75rem !important;  // Bootstrap default button padding
+    display: inline-block !important;  // Normal button display, not inline-flex
+}
+
+// ==============================================
+// PRODUCT PRICE STYLING
+// ==============================================
+
+// Set product price to 2rem font size
+.product-price {
+    font-size: 2rem !important;
+}
+
+// Also ensure it works within the price action box
+.product-price-action-box .product-price {
+    font-size: 2rem !important;
+}
+
+// ==============================================
+// PRODUCT FEATURES OVERRIDE
+// ==============================================
+
+// Override the plugin's default padding for feature list items
+.special-features-wrapper ul li {
+    padding: 0 0 0.25rem 1.5rem !important; // Reduce bottom padding and adjust left padding
+
+    // Limit icon width to prevent overflow
+    .icon {
+        width: 1rem !important;
+        max-width: 1rem !important;
+    }
+}
+
+// ==============================================
+// DELIVERY INFORMATION STYLING
+// ==============================================
+
+// Override Bootstrap's default paragraph margins with higher specificity
+.product-price-action-box .delivery-section .product-delivery-information p,
+.product-price-action-box .delivery-section .delivery-information,
+.delivery-section .product-delivery-information p,
+.delivery-section .delivery-information {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
