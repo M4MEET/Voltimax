@@ -13,9 +13,42 @@
 // ==============================================
 
 @import 'fonts/typography';
+@import 'component/product-listing';
 
 // ==============================================
-// 2. LAYOUT & CONTAINER STYLES
+// 2. PRODUCT CARD ACTIONS STYLING
+// ==============================================
+
+// Override compare and wishlist buttons to have consistent styling
+.component_product_box_secondary_actions {
+    .compare-button, .wishlist-button {
+        .btn {
+            @extend .btn-outline-secondary;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+
+            // Override default plugin button classes
+            &.btn-compare, &.btn-light, &.product-wishlist-btn {
+                @extend .btn-outline-secondary;
+                border: 1px solid var(--bs-gray-400);
+                background-color: transparent;
+                color: var(--bs-gray-600);
+
+                &:hover {
+                    background-color: var(--bs-gray-600);
+                    border-color: var(--bs-gray-600);
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+// ==============================================
+// 3. LAYOUT & CONTAINER STYLES
 // ==============================================
 
 .container {
@@ -171,3 +204,4 @@
 
 // Import plugin compatibility styles
 @import 'component/cheaper-ad';
+

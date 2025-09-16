@@ -35,6 +35,19 @@
                             {% endblock %}
                         {% endif %}
                         
+                        {# Compare button for desktop #}
+                        {% if config('FroshProductCompare.config.showInHeader') %}
+                            {% block frosh_product_compare_widget_button_desktop %}
+                                <div class="col-auto">
+                                    {% sw_include '@Storefront/storefront/component/compare/compare-float.html.twig' with {
+                                        buttonClasses: 'compare-menu-btn header-actions-btn',
+                                        floatingButtonClasses: '',
+                                        badgeClasses: 'badge-primary'
+                                    } %}
+                                </div>
+                            {% endblock %}
+                        {% endif %}
+                        
                         {% block layout_header_actions_account_desktop %}
                             <div class="col-auto">
                                 <div class="account-menu">
@@ -117,6 +130,19 @@
                                             {% sw_include '@Storefront/storefront/layout/header/actions/wishlist-widget.html.twig' %}
                                         </a>
                                     </div>
+                                </div>
+                            {% endblock %}
+                        {% endif %}
+                        
+                        {# Compare button for mobile #}
+                        {% if config('FroshProductCompare.config.showInHeader') %}
+                            {% block frosh_product_compare_widget_button_mobile %}
+                                <div class="col-auto d-none d-sm-block">
+                                    {% sw_include '@Storefront/storefront/component/compare/compare-float.html.twig' with {
+                                        buttonClasses: 'compare-menu-btn header-actions-btn p-1',
+                                        floatingButtonClasses: '',
+                                        badgeClasses: 'badge-primary'
+                                    } %}
                                 </div>
                             {% endblock %}
                         {% endif %}
