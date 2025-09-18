@@ -65,7 +65,7 @@
                     {# Product Rating (Bottom area of image) #}
                     {% block component_product_box_rating %}
                         {% if config('core.listing.showReview') %}
-                            <div class="product-rating">
+                            <div class="product-rating text-center">
                                 {% if product.ratingAverage %}
                                     {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
                                         points: product.ratingAverage,
