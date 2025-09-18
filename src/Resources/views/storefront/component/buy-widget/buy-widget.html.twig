@@ -1,5 +1,44 @@
 {% sw_extends "@Storefront/storefront/component/buy-widget/buy-widget.html.twig" %}
 
+{% block page_product_detail_buy_inner %}
+    {# Add missing rich snippets for SEO #}
+    {% block page_product_detail_rich_snippets %}
+        {{ parent() }}
+    {% endblock %}
+
+    {# Add missing product order number container #}
+    {% block page_product_detail_ordernumber_container %}
+        {% if page.product.productNumber %}
+            <div class="product-detail-ordernumber-container mb-2">
+                {% block page_product_detail_ordernumber_label %}
+                    <span class="product-detail-ordernumber-label text-muted small">
+                        {{ 'detail.productNumberLabel'|trans|sw_sanitize }}
+                    </span>
+                {% endblock %}
+
+                {% block page_product_detail_ordernumber %}
+                    <meta itemprop="productID" content="{{ page.product.id }}">
+                    <span class="product-detail-ordernumber fw-medium" itemprop="sku">
+                        {{ page.product.productNumber }}
+                    </span>
+                {% endblock %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {# Add missing wishlist functionality #}
+    {% if config('core.cart.wishlistEnabled') %}
+        {% block page_product_detail_wishlist %}
+            <div class="product-detail-wishlist-container mb-3">
+                {% sw_include '@Storefront/storefront/component/product/card/wishlist.html.twig' with {
+                    showText: true,
+                    size: 'sm',
+                    productId: page.product.id
+                } %}
+            </div>
+        {% endblock %}
+    {% endif %}
+
 {% block buy_widget %}
     {% block page_product_detail_headline_inner %}
         {% block page_product_detail_name_container %}
@@ -14,17 +53,18 @@
         {% endblock %}
     {% endblock %}
 
-    {% block buy_widget_buy_container %}
+    {% block page_product_detail_buy_container %}
         <div itemprop="offers"
              itemscope
              itemtype="{% if product.calculatedPrices|length > 1 %}https://schema.org/AggregateOffer{% else %}https://schema.org/Offer{% endif %}">
-            {% block buy_widget_data %}
-                {% block buy_widget_data_rich_snippet_url %}
+
+            {% block page_product_detail_data %}
+                {% block page_product_detail_data_rich_snippet_url %}
                     <meta itemprop="url"
                           content="{{ seoUrl('frontend.detail.page', { productId: product.id }) }}">
                 {% endblock %}
 
-                {% block buy_widget_data_rich_snippet_price_range %}
+                {% block page_product_detail_data_rich_snippet_price_range %}
                     {% if product.calculatedPrices|length > 1 %}
                         {% set lowestPrice = false %}
                         {% set highestPrice = false %}
@@ -44,13 +84,13 @@
                     {% endif %}
                 {% endblock %}
 
-                {% block buy_widget_data_rich_snippet_price_currency %}
+                {% block page_product_detail_data_rich_snippet_price_currency %}
                     <meta itemprop="priceCurrency"
                           content="{{ context.currency.translated.shortName }}">
                 {% endblock %}
 
                 <div class="row align-items-center justify-content-between">
-                    {% block buy_widget_price %}
+                    {% block page_product_detail_price %}
                         <div class="col-12 col-md-4">
                             {% sw_include '@Storefront/storefront/component/buy-widget/buy-widget-price.html.twig' %}
                         </div>
@@ -85,7 +125,7 @@
                     {% endblock %}
                 </div>
 
-                {% block buy_widget_tax %}
+                {% block page_product_detail_tax %}
                     <div class="product-detail-tax-container">
                         {% if context.taxState == "gross" %}
                             {% set taxText = "VoltimaxTheme.detail.product.grossTaxInformation"|trans({'%product.taxRate%':page.product.tax.taxRate}) |sw_sanitize %}
@@ -94,7 +134,7 @@
                         {% endif %}
 
                         <p class="product-detail-tax mt-3">
-                            {% block buy_widget_tax_link %}
+                            {% block page_product_detail_tax_link %}
                                 {% set cmsPath = path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) %}
 
                                 <a class="product-detail-tax-link text-primary text-decoration-underline font-weight-bold fs-5"
@@ -125,7 +165,7 @@
                     {% endif %}
                 {% endblock %}
 
-                {% block buy_widget_reviews %}
+                {% block page_product_detail_reviews %}
                     {% if product.ratingAverage > 0 and totalReviews > 0 and config('core.listing.showReview') %}
 
                         {% if remoteClickOptions is not defined %}
@@ -163,14 +203,14 @@
                     {% endif %}
                 {% endblock %}
 
-                {% block buy_widget_delivery_informations %}
+                {% block page_product_detail_delivery_informations %}
                     <div class="product-detail-delivery-information">
                         {% sw_include '@Storefront/storefront/component/delivery-information.html.twig' %}
                     </div>
                 {% endblock %}
             {% endblock %}
 
-            {% block buy_widget_configurator_include %}
+            {% block page_product_detail_configurator_include %}
                 {% if product.parentId and configuratorSettings|length > 0 %}
                     <div class="product-detail-configurator-container">
                         {% sw_include '@Storefront/storefront/component/buy-widget/configurator.html.twig' %}
@@ -178,7 +218,7 @@
                 {% endif %}
             {% endblock %}
 
-            {% block buy_widget_buy_form %}
+            {% block page_product_detail_buy_form %}
                 {% if product.active %}
                     <div class="product-detail-form-container">
                         {% sw_include '@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig' %}
