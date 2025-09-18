@@ -1,0 +1,72 @@
+{% sw_extends "@Storefront/storefront/page/content/detail.html.twig" %}
+
+{% block page_content_sections_inner %}
+    {# Include the custom banner block for the tax info alert before CMS sections #}
+    {% block voltimax_product_detail_custom_banner_text_info %}
+        {% if page.product %}
+            {% set taxInfoAlert = config('VoltimaxTheme.config.taxInfoAlert') %}
+            {% set configProductTaxId = config('VoltimaxTheme.config.taxEntity') %}
+            {% set productTaxId = page.product.taxId %}
+            {% set productTaxRate = page.product.tax.taxRate %}
+
+            {# If configProductTaxId is not set, automatically use products with 0% tax rate #}
+            {% if not configProductTaxId and productTaxRate == 0 %}
+                {% set configProductTaxId = productTaxId %}
+            {% endif %}
+
+            {# Only show banner for products with 0% tax rate #}
+            {% set showBanner = taxInfoAlert and productTaxId == configProductTaxId and productTaxRate == 0 %}
+
+            {% if showBanner %}
+                {% set taxInfoTextDetail = "VoltimaxTheme.config.taxInfoTextDetail" | trans | sw_sanitize %}
+                {% set cmsPageId = config('VoltimaxTheme.config.taxInfoCmsPage') %}
+
+                {# If no CMS page configured, use shipping/payment info page as fallback #}
+                {% if not cmsPageId %}
+                    {% set cmsPageId = config('core.basicInformation.shippingPaymentInfoPage') %}
+                {% endif %}
+
+                {% if cmsPageId %}
+                    {% set cmsPageUrl = path('frontend.cms.page', { id: cmsPageId }) %}
+                {% endif %}
+
+                {% block custom_banner %}
+                    <div class="custom-banner">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-12">
+                                    <div class="alert alert-info text-center d-flex align-items-center justify-content-center" role="alert" style="gap: 10px;">
+                                        {% sw_icon 'info' %}
+                                        <strong class="text-primary mb-0 d-inline-flex align-items-center">
+                                            {% if cmsPageId %}
+                                                <a href="{{ cmsPageUrl }}"
+                                                   title="{{ taxInfoTextDetail }}"
+                                                   data-ajax-modal="true"
+                                                   data-url="{{ cmsPageUrl }}"
+                                                   class="text-dark">
+                                                    {{ taxInfoTextDetail }}
+                                                </a>
+                                            {% else %}
+                                                {{ taxInfoTextDetail }}
+                                            {% endif %}
+                                        </strong>
+                                        {% if cmsPageId %}
+                                            <a href="{{ cmsPageUrl }}"
+                                               title="{{ taxInfoTextDetail }}"
+                                               data-ajax-modal="true"
+                                               data-url="{{ cmsPageUrl }}">
+                                                {% sw_icon 'help' style { 'size': 'sm', 'pack': 'solid', 'color' : 'dark' } %}
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endblock %}
+            {% endif %}
+        {% endif %}
+    {% endblock %}
+
+    {{ parent() }}
+{% endblock %}
