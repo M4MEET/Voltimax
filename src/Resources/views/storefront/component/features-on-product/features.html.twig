@@ -18,7 +18,22 @@
     {% if features %}
         {% block features_wrapper_inner %}
             <div class="special-features-wrapper">
-                <ul class="list-unstyled m-0 p-0">
+                {# Mobile Collapsible Header - Only visible on mobile #}
+                <div class="d-block d-md-none">
+                    <button class="btn btn-outline-primary w-100 mb-2 d-flex align-items-center justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#product-features-{{ product.id ?? 'default' }}" aria-expanded="false" aria-controls="product-features-{{ product.id ?? 'default' }}">
+                        <span class="d-flex align-items-center">
+                            <span class="me-2">
+                                {% sw_icon 'list' style { 'size': 'sm' } %}
+                            </span>
+                            {{ 'VoltimaxTheme.listing.features.toggleButton'|trans|sw_sanitize }}
+                        </span>
+                        {% sw_icon 'chevron-down' style { 'size': 'sm' } %}
+                    </button>
+                </div>
+
+                {# Features List - Collapsible on mobile, always visible on desktop #}
+                <div class="collapse collapse-mobile-only" id="product-features-{{ product.id ?? 'default' }}">
+                    <ul class="list-unstyled m-0 p-0">
                     {% for feature in features %}
                         {# Skip description features on listing pages if configured #}
                         {% if pageType == 'listing' and feature.label == 'description' and hideDescription %}
@@ -135,7 +150,8 @@
                             </li>
                         {% endif %}
                     {% endfor %}
-                </ul>
+                    </ul>
+                </div>
             </div>
         {% endblock %}
     {% endif %}
