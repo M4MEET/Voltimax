@@ -80,39 +80,44 @@
     .special-features-wrapper ul li {
         padding: 0.5rem 0 !important;
         border-bottom: 1px solid #e9ecef !important;
+        text-align: center !important;
 
         // Hide icon on mobile
         .icon {
             display: none !important;
         }
 
-        // Change flex layout to column (stacked)
+        // Change flex layout to column (stacked) and center
         .d-flex {
             flex-direction: column !important;
-            align-items: flex-start !important;
+            align-items: center !important;
         }
 
-        // Label row
+        // Label row - centered
         .feature-label-col {
             width: 100% !important;
             margin-bottom: 0.25rem !important;
+            text-align: center !important;
 
             .feature-label {
                 font-size: 0.625rem !important;
                 color: #6c757d !important;
                 display: block !important;
+                text-align: center !important;
             }
         }
 
-        // Value row
+        // Value row - centered
         .feature-values-col {
             width: 100% !important;
+            text-align: center !important;
 
             span {
                 font-size: 0.75rem !important;
                 font-weight: 500 !important;
                 color: #212529 !important;
                 display: block !important;
+                text-align: center !important;
             }
         }
 
