@@ -31,34 +31,22 @@
                 {% endif %}
 
                 {% block custom_banner %}
-                    <div class="custom-banner">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-12">
-                                    <div class="alert alert-info text-center d-flex align-items-center justify-content-center" role="alert" style="gap: 10px;">
-                                        {% sw_icon 'info' %}
-                                        <strong class="text-primary mb-0 d-inline-flex align-items-center">
-                                            {% if cmsPageId %}
-                                                <a href="{{ cmsPageUrl }}"
-                                                   title="{{ taxInfoTextDetail }}"
-                                                   data-ajax-modal="true"
-                                                   data-url="{{ cmsPageUrl }}"
-                                                   class="text-dark">
-                                                    {{ taxInfoTextDetail }}
-                                                </a>
-                                            {% else %}
-                                                {{ taxInfoTextDetail }}
-                                            {% endif %}
-                                        </strong>
-                                        {% if cmsPageId %}
-                                            <a href="{{ cmsPageUrl }}"
-                                               title="{{ taxInfoTextDetail }}"
-                                               data-ajax-modal="true"
-                                               data-url="{{ cmsPageUrl }}">
-                                                {% sw_icon 'help' style { 'size': 'sm', 'pack': 'solid', 'color' : 'dark' } %}
-                                            </a>
-                                        {% endif %}
-                                    </div>
+                    <div class="container mb-3">
+                        <div role="alert" aria-live="polite" class="alert alert-warning alert-has-icon">
+                            {% sw_icon 'warning' style { ariaHidden: true } %}
+                            <div class="alert-content-container">
+                                <div class="alert-content">
+                                    {% if cmsPageId %}
+                                        <a href="{{ cmsPageUrl }}"
+                                           title="{{ taxInfoTextDetail }}"
+                                           data-ajax-modal="true"
+                                           data-url="{{ cmsPageUrl }}"
+                                           class="alert-link">
+                                            {{ taxInfoTextDetail }}
+                                        </a>
+                                    {% else %}
+                                        {{ taxInfoTextDetail }}
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
