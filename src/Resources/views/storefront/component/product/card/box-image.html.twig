@@ -108,6 +108,7 @@
                                 {% endblock %}
                             </div>
                         </div>
+
                         <hr class="m-0"> <!-- Horizontal line -->
                         
                         {# Product Description and Features (v3.0.0 Enhancement) #}
@@ -231,7 +232,7 @@
                         {# Add to Cart Action - Original position below icons #}
                         {% block component_product_box_action_desktop %}
                             <div class="d-grid d-lg-block text-lg-center">
-                                {% sw_include '@VoltimaxTheme/storefront/component/product/card/action.html.twig' %}
+                                {% sw_include 'storefront/component/product/card/action.html.twig' %}
                             </div>
                         {% endblock %}
                     </div>
@@ -285,7 +286,7 @@
                         {# Add to Cart Action - Right side (flex-fill takes remaining space) #}
                         {% block component_product_box_action %}
                             <div class="flex-fill mobile-cart-action">
-                                {% sw_include '@VoltimaxTheme/storefront/component/product/card/action.html.twig' %}
+                                {% sw_include 'storefront/component/product/card/action.html.twig' %}
                             </div>
                         {% endblock %}
                     </div>
