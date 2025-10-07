@@ -1,0 +1,46 @@
+{% sw_extends "@Storefront/storefront/layout/header/header.html.twig" %}
+
+{#
+    Voltimax Theme v3.0.0 - Mobile Logo Repositioning
+    Step 1: Hide original logo block on mobile only
+    Step 2: Add mobile logo between menu and search buttons
+    Step 3: Optimize mobile menu button spacing
+#}
+
+{# Hide entire logo section on mobile, show on tablet and desktop #}
+{% block layout_header_logo %}
+    <div class="col-12 col-lg-auto header-logo-col pb-sm-2 my-3 m-lg-0 d-none d-sm-block">
+        {% sw_include '@Storefront/storefront/layout/header/logo.html.twig' %}
+    </div>
+{% endblock %}
+
+{# Override mobile menu button to use minimal space #}
+{% block layout_header_navigation_toggle %}
+    <div class="col-auto d-sm-none">
+        <div class="menu-button">
+            {% block layout_header_navigation_toggle_button %}
+                <button
+                    class="btn nav-main-toggle-btn header-actions-btn"
+                    type="button"
+                    data-off-canvas-menu="true"
+                    aria-label="{{ 'general.menuLink'|trans|striptags }}"
+                >
+                    {% block layout_header_navigation_toggle_button_icon %}
+                        {% sw_icon 'stack' %}
+                    {% endblock %}
+                </button>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{# Add mobile logo and preserve compare button functionality #}
+{% block layout_header_search_toggle %}
+    {# Mobile logo with flexible space - positioned first #}
+    <div class="col d-sm-none d-flex justify-content-center">
+        {% sw_include '@VoltimaxTheme/storefront/layout/header/actions/mobile-logo.html.twig' %}
+    </div>
+
+    {# Call parent to include original search toggle + compare button from FroshProductCompare #}
+    {{ parent() }}
+{% endblock %}

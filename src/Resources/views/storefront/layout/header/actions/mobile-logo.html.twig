@@ -1,0 +1,26 @@
+{#
+    Voltimax Theme v3.0.0 - Mobile Logo Widget
+    Small logo for mobile view positioned between menu and search buttons
+#}
+
+<div class="mobile-logo-widget d-sm-none d-flex align-items-start justify-content-center" style="height: 100%; min-height: 48px;">
+    <div class="mobile-logo-container d-flex align-items-start justify-content-center px-2" style="height: 100%;">
+        {% block mobile_logo_content %}
+            <a href="{{ path('frontend.home.page') }}"
+               title="{{ 'header.logoLink'|trans|striptags }}"
+               class="mobile-logo-link d-flex align-items-start justify-content-center" style="height: 100%;">
+                {% if theme_config('sw-logo-mobile') %}
+                    <img src="{{ theme_config('sw-logo-mobile')|sw_encode_url }}"
+                         alt="{{ 'header.logoLink'|trans|striptags }}"
+                         class="mobile-logo-image"
+                         style="height: 70%; width: auto; max-width: 90%; object-fit: contain;">
+                {% elseif theme_config('sw-logo-desktop') %}
+                    <img src="{{ theme_config('sw-logo-desktop')|sw_encode_url }}"
+                         alt="{{ 'header.logoLink'|trans|striptags }}"
+                         class="mobile-logo-image"
+                         style="height: 70%; width: auto; max-width: 90%; object-fit: contain;">
+                {% endif %}
+            </a>
+        {% endblock %}
+    </div>
+</div>
