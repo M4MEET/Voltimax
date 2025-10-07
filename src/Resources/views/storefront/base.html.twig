@@ -215,10 +215,39 @@
 
 {% block base_body_script %}
     {{ parent() }}
-    
+
     {# Minimal mega menu handlers #}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Set header-main height for nav-main sticky positioning
+            const headerMain = document.querySelector('.header-main');
+            const topbar = document.querySelector('.voltimax-topbar-header');
+
+            function updateHeights() {
+                if (headerMain) {
+                    const headerHeight = headerMain.offsetHeight;
+                    document.documentElement.style.setProperty('--header-main-height', headerHeight + 'px');
+                }
+
+                // Set topbar height for mobile sticky positioning
+                if (topbar) {
+                    const topbarHeight = topbar.offsetHeight;
+                    document.documentElement.style.setProperty('--topbar-height', topbarHeight + 'px');
+
+                    // On mobile, adjust nav-main position to account for both topbar and header
+                    if (window.innerWidth < 768) {
+                        const totalHeight = (topbar ? topbar.offsetHeight : 0) + (headerMain ? headerMain.offsetHeight : 0);
+                        document.documentElement.style.setProperty('--header-main-height', totalHeight + 'px');
+                    }
+                }
+            }
+
+            // Initial calculation
+            updateHeights();
+
+            // Update on window resize
+            window.addEventListener('resize', updateHeights);
+
             // Close button handler - be more specific to avoid conflicts
             document.addEventListener('click', function(e) {
                 // Only handle megamenu close buttons, don't interfere with other buttons
@@ -229,7 +258,7 @@
                     document.querySelectorAll('.is-open').forEach(el => el.classList.remove('is-open'));
                 }
             });
-            
+
             // Auto-close on mouse leave
             document.querySelectorAll('.megamenu-foldout').forEach(function(dropdown) {
                 dropdown.addEventListener('mouseleave', function(e) {
