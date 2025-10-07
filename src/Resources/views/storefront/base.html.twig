@@ -79,153 +79,139 @@
 {% endblock %}
 
 {% block base_header %}
-    {# Sticky wrapper for all header elements #}
-    <div class="voltimax-sticky-container sticky-top" style="z-index: 1000;">
-        {# Topbar is always enabled #}
-        {% block voltimax_topbar_header %}
-                {# Apply theme configuration as CSS variables #}
-                <style>
-                    :root {
-                        {% if theme_config('voltimaxTopbarBackground') %}
-                            --voltimax-topbar-background: {{ theme_config('voltimaxTopbarBackground') }};
+    {# Topbar before standard header #}
+    {% block voltimax_topbar_header %}
+            {# Apply theme configuration as CSS variables #}
+            <style>
+                :root {
+                    {% if theme_config('voltimaxTopbarBackground') %}
+                        --voltimax-topbar-background: {{ theme_config('voltimaxTopbarBackground') }};
+                    {% endif %}
+                    {% if theme_config('voltimaxTopbarTextColor') %}
+                        --voltimax-topbar-text-color: {{ theme_config('voltimaxTopbarTextColor') }};
+                    {% endif %}
+                    {% if theme_config('voltimaxTopbarHeight') %}
+                        --voltimax-topbar-height: {{ theme_config('voltimaxTopbarHeight') }}px;
+                    {% endif %}
+                    {% if theme_config('voltimaxTopbarFontSize') %}
+                        --voltimax-topbar-font-size: {{ theme_config('voltimaxTopbarFontSize') }}px;
+                    {% endif %}
+                }
+            </style>
+            <div class="voltimax-topbar-header">
+            <div class="container">
+                <div class="row align-items-center">
+                    {# Get topbar texts from theme configuration or use snippets #}
+                    {% set leftText = theme_config('voltimaxCustomHeaderTextLeft') ?: 'VoltimaxTheme.topbar.left'|trans %}
+                    {% set middleText = theme_config('voltimaxCustomHeaderTextMiddle') ?: 'VoltimaxTheme.topbar.middle'|trans %}
+                    {% set rightText = theme_config('voltimaxCustomHeaderTextRight') ?: 'VoltimaxTheme.topbar.right'|trans %}
+                    {% set rightendText = theme_config('voltimaxCustomHeaderTextRightEnd') ?: 'VoltimaxTheme.topbar.rightend'|trans %}
+
+                    {# Trustpilot widget - 30% width #}
+                    {# Trustpilot Section - Configurable widget #}
+                    {% if theme_config('voltimaxTrustpilotWidget') %}
+                        {% set hideMobile = theme_config('voltimaxTopbarTrustpilotHideMobile') %}
+                        {% set hideTablet = theme_config('voltimaxTopbarTrustpilotHideTablet') %}
+                        {% set trustpilotDisplay = '' %}
+
+                        {% if hideMobile and hideTablet %}
+                            {% set trustpilotDisplay = 'd-none d-lg-block' %}
+                        {% elseif hideMobile %}
+                            {% set trustpilotDisplay = 'd-none d-md-block' %}
+                        {% elseif hideTablet %}
+                            {% set trustpilotDisplay = 'd-block d-md-none d-lg-block' %}
                         {% endif %}
-                        {% if theme_config('voltimaxTopbarTextColor') %}
-                            --voltimax-topbar-text-color: {{ theme_config('voltimaxTopbarTextColor') }};
+
+                        <div class="col-12 col-md-4 col-lg-3 topbar-item {{ trustpilotDisplay }}">
+                            {{ theme_config('voltimaxTrustpilotWidget')|raw }}
+                        </div>
+                    {% endif %}
+
+                    {# Remaining 70% divided among 4 sections = ~17.5% each #}
+                    {# Left Section #}
+                    {% if leftText %}
+                        {% set hideMobile = theme_config('voltimaxTopbarLeftHideMobile') %}
+                        {% set hideTablet = theme_config('voltimaxTopbarLeftHideTablet') %}
+                        {% set leftDisplay = '' %}
+
+                        {% if hideMobile and hideTablet %}
+                            {% set leftDisplay = 'd-none d-lg-block' %}
+                        {% elseif hideMobile %}
+                            {% set leftDisplay = 'd-none d-md-block' %}
+                        {% elseif hideTablet %}
+                            {% set leftDisplay = 'd-block d-md-none d-lg-block' %}
                         {% endif %}
-                        {% if theme_config('voltimaxTopbarHeight') %}
-                            --voltimax-topbar-height: {{ theme_config('voltimaxTopbarHeight') }}px;
+
+                        <div class="col-12 col-md-2 topbar-item {{ leftDisplay }}">
+                            <span class="topbar-text">{{ leftText }}</span>
+                        </div>
+                    {% endif %}
+
+                    {# Middle Section #}
+                    {% if middleText %}
+                        {% set hideMobile = theme_config('voltimaxTopbarMiddleHideMobile') %}
+                        {% set hideTablet = theme_config('voltimaxTopbarMiddleHideTablet') %}
+                        {% set middleDisplay = '' %}
+
+                        {% if hideMobile and hideTablet %}
+                            {% set middleDisplay = 'd-none d-lg-block' %}
+                        {% elseif hideMobile %}
+                            {% set middleDisplay = 'd-none d-md-block' %}
+                        {% elseif hideTablet %}
+                            {% set middleDisplay = 'd-block d-md-none d-lg-block' %}
                         {% endif %}
-                        {% if theme_config('voltimaxTopbarFontSize') %}
-                            --voltimax-topbar-font-size: {{ theme_config('voltimaxTopbarFontSize') }}px;
+
+                        <div class="col-12 col-md-2 topbar-item {{ middleDisplay }}">
+                            <span class="topbar-text">{{ middleText }}</span>
+                        </div>
+                    {% endif %}
+
+                    {# Right Section #}
+                    {% if rightText %}
+                        {% set hideMobile = theme_config('voltimaxTopbarRightHideMobile') %}
+                        {% set hideTablet = theme_config('voltimaxTopbarRightHideTablet') %}
+                        {% set rightDisplay = '' %}
+
+                        {% if hideMobile and hideTablet %}
+                            {% set rightDisplay = 'd-none d-lg-block' %}
+                        {% elseif hideMobile %}
+                            {% set rightDisplay = 'd-none d-md-block' %}
+                        {% elseif hideTablet %}
+                            {% set rightDisplay = 'd-block d-md-none d-lg-block' %}
                         {% endif %}
-                    }
-                </style>
-                <div class="voltimax-topbar-header">
-                <div class="container">
-                    <div class="row align-items-center">
-                        {# Get topbar texts from theme configuration or use snippets #}
-                        {% set leftText = theme_config('voltimaxCustomHeaderTextLeft') ?: 'VoltimaxTheme.topbar.left'|trans %}
-                        {% set middleText = theme_config('voltimaxCustomHeaderTextMiddle') ?: 'VoltimaxTheme.topbar.middle'|trans %}
-                        {% set rightText = theme_config('voltimaxCustomHeaderTextRight') ?: 'VoltimaxTheme.topbar.right'|trans %}
-                        {% set rightendText = theme_config('voltimaxCustomHeaderTextRightEnd') ?: 'VoltimaxTheme.topbar.rightend'|trans %}
-                        
-                        {# Trustpilot widget - 30% width #}
-                        {# Trustpilot Section - Configurable widget #}
-                        {% if theme_config('voltimaxTrustpilotWidget') %}
-                            {% set hideMobile = theme_config('voltimaxTopbarTrustpilotHideMobile') %}
-                            {% set hideTablet = theme_config('voltimaxTopbarTrustpilotHideTablet') %}
-                            {% set trustpilotDisplay = '' %}
-                            
-                            {% if hideMobile and hideTablet %}
-                                {% set trustpilotDisplay = 'd-none d-lg-block' %}
-                            {% elseif hideMobile %}
-                                {% set trustpilotDisplay = 'd-none d-md-block' %}
-                            {% elseif hideTablet %}
-                                {% set trustpilotDisplay = 'd-block d-md-none d-lg-block' %}
-                            {% endif %}
-                            
-                            <div class="col-12 col-md-4 col-lg-3 topbar-item {{ trustpilotDisplay }}">
-                                {{ theme_config('voltimaxTrustpilotWidget')|raw }}
-                            </div>
+
+                        <div class="col-12 col-md-2 topbar-item {{ rightDisplay }}">
+                            <span class="topbar-text">{{ rightText }}</span>
+                        </div>
+                    {% endif %}
+
+                    {# Right End Section #}
+                    {% if rightendText %}
+                        {% set hideMobile = theme_config('voltimaxTopbarRightEndHideMobile') %}
+                        {% set hideTablet = theme_config('voltimaxTopbarRightEndHideTablet') %}
+                        {% set rightEndDisplay = '' %}
+
+                        {% if hideMobile and hideTablet %}
+                            {% set rightEndDisplay = 'd-none d-lg-block' %}
+                        {% elseif hideMobile %}
+                            {% set rightEndDisplay = 'd-none d-md-block' %}
+                        {% elseif hideTablet %}
+                            {% set rightEndDisplay = 'd-block d-md-none d-lg-block' %}
                         {% endif %}
-                        
-                        {# Remaining 70% divided among 4 sections = ~17.5% each #}
-                        {# Left Section #}
-                        {% if leftText %}
-                            {% set hideMobile = theme_config('voltimaxTopbarLeftHideMobile') %}
-                            {% set hideTablet = theme_config('voltimaxTopbarLeftHideTablet') %}
-                            {% set leftDisplay = '' %}
-                            
-                            {% if hideMobile and hideTablet %}
-                                {% set leftDisplay = 'd-none d-lg-block' %}
-                            {% elseif hideMobile %}
-                                {% set leftDisplay = 'd-none d-md-block' %}
-                            {% elseif hideTablet %}
-                                {% set leftDisplay = 'd-block d-md-none d-lg-block' %}
-                            {% endif %}
-                            
-                            <div class="col-12 col-md-2 topbar-item {{ leftDisplay }}">
-                                <span class="topbar-text">{{ leftText }}</span>
-                            </div>
-                        {% endif %}
-                        
-                        {# Middle Section #}
-                        {% if middleText %}
-                            {% set hideMobile = theme_config('voltimaxTopbarMiddleHideMobile') %}
-                            {% set hideTablet = theme_config('voltimaxTopbarMiddleHideTablet') %}
-                            {% set middleDisplay = '' %}
-                            
-                            {% if hideMobile and hideTablet %}
-                                {% set middleDisplay = 'd-none d-lg-block' %}
-                            {% elseif hideMobile %}
-                                {% set middleDisplay = 'd-none d-md-block' %}
-                            {% elseif hideTablet %}
-                                {% set middleDisplay = 'd-block d-md-none d-lg-block' %}
-                            {% endif %}
-                            
-                            <div class="col-12 col-md-2 topbar-item {{ middleDisplay }}">
-                                <span class="topbar-text">{{ middleText }}</span>
-                            </div>
-                        {% endif %}
-                        
-                        {# Right Section #}
-                        {% if rightText %}
-                            {% set hideMobile = theme_config('voltimaxTopbarRightHideMobile') %}
-                            {% set hideTablet = theme_config('voltimaxTopbarRightHideTablet') %}
-                            {% set rightDisplay = '' %}
-                            
-                            {% if hideMobile and hideTablet %}
-                                {% set rightDisplay = 'd-none d-lg-block' %}
-                            {% elseif hideMobile %}
-                                {% set rightDisplay = 'd-none d-md-block' %}
-                            {% elseif hideTablet %}
-                                {% set rightDisplay = 'd-block d-md-none d-lg-block' %}
-                            {% endif %}
-                            
-                            <div class="col-12 col-md-2 topbar-item {{ rightDisplay }}">
-                                <span class="topbar-text">{{ rightText }}</span>
-                            </div>
-                        {% endif %}
-                        
-                        {# Right End Section #}
-                        {% if rightendText %}
-                            {% set hideMobile = theme_config('voltimaxTopbarRightEndHideMobile') %}
-                            {% set hideTablet = theme_config('voltimaxTopbarRightEndHideTablet') %}
-                            {% set rightEndDisplay = '' %}
-                            
-                            {% if hideMobile and hideTablet %}
-                                {% set rightEndDisplay = 'd-none d-lg-block' %}
-                            {% elseif hideMobile %}
-                                {% set rightEndDisplay = 'd-none d-md-block' %}
-                            {% elseif hideTablet %}
-                                {% set rightEndDisplay = 'd-block d-md-none d-lg-block' %}
-                            {% endif %}
-                            
-                            <div class="col-12 col-md-2 topbar-item {{ rightEndDisplay }}">
-                                <span class="topbar-text">{{ rightendText }}</span>
-                            </div>
-                        {% endif %}
-                    </div>
+
+                        <div class="col-12 col-md-2 topbar-item {{ rightEndDisplay }}">
+                            <span class="topbar-text">{{ rightendText }}</span>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
-        {% endblock %}
-        
-        <header class="header-main">
-            {% block base_header_inner %}
-                {{ parent() }}
-            {% endblock %}
-        </header>
-        
-        {# Navigation inside sticky container #}
-        <div class="nav-main bg-secondary">
-            {% sw_include '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
         </div>
-    </div>
+    {% endblock %}
+
+    {# Standard Shopware header - no custom overrides #}
+    {{ parent() }}
 {% endblock %}
 
-{% block base_navigation %}
-    {# Empty - navigation is rendered inside sticky container above #}
-{% endblock %}
 
 {% block base_body_script %}
     {{ parent() }}
@@ -233,10 +219,13 @@
     {# Minimal mega menu handlers #}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Close button handler
+            // Close button handler - be more specific to avoid conflicts
             document.addEventListener('click', function(e) {
-                if (e.target.closest('.megamenu-close, .js-close-megamenu')) {
+                // Only handle megamenu close buttons, don't interfere with other buttons
+                const target = e.target.closest('.megamenu-close, .js-close-megamenu');
+                if (target) {
                     e.preventDefault();
+                    e.stopPropagation();
                     document.querySelectorAll('.is-open').forEach(el => el.classList.remove('is-open'));
                 }
             });
