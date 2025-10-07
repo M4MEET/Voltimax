@@ -88,23 +88,55 @@
 
 // Individual header sections
 .voltimax-topbar-header {
-  // No need for sticky-top as parent container handles it
-  position: relative;
+  // Sticky only on mobile (below md breakpoint)
+  @media (max-width: 767px) {
+    position: sticky !important;
+    position: -webkit-sticky !important;
+    top: 0;
+    z-index: 1022; // Higher than header-main to stay on top on mobile
+  }
+
+  // Not sticky on tablet and desktop
+  @media (min-width: 768px) {
+    position: relative;
+  }
 }
 
+// Make header-main sticky at top
 .header-main {
-  position: relative;
+  position: sticky !important;
+  position: -webkit-sticky !important;
+
+  // On mobile, position below the sticky topbar
+  @media (max-width: 767px) {
+    top: var(--topbar-height, 35px); // Default to topbar height
+    z-index: 1021;
+  }
+
+  // On tablet and desktop, stick to top
+  @media (min-width: 768px) {
+    top: 0;
+    z-index: 1021;
+  }
+
   background-color: $voltimax-bg-secondary !important;
 }
 
+// Make nav-main sticky but positioned to account for header-main height
+// We use a CSS variable so it can adapt to actual header height
 .nav-main {
-  position: relative;
-  border-bottom: 3px solid $voltimax-brand-primary; // Add primary border to nav container
-  
+  position: sticky !important;
+  position: -webkit-sticky !important;
+  top: var(--header-main-height, 100px); // Default to 100px, but can be set dynamically
+  z-index: 1020; // Lower than header-main so it slides under
+  background-color: white;
+  border-bottom: 3px solid $voltimax-brand-primary;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); // Stronger shadow when sticky
+
   // Mega menu specific fixes
   .megamenu {
     position: relative;
-    
+
     .megamenu-foldout {
       // Ensure dropdown works within sticky container
       position: absolute;
