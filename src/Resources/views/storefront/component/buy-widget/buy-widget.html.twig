@@ -4,11 +4,11 @@
 {% block buy_widget_data %}
     {# Add product heading before data section - following Shopware best practices #}
     {% block page_product_detail_name_container %}
-        <div class="product-detail-name-container mb-3">
+        <div class="product-detail-name-container mt-2">
             {% block page_product_detail_name %}
-                <h1 class="product-detail-name" itemprop="name">
+                <h2 class="product-detail-name" itemprop="name">
                     {{ page.product.translated.name }}
-                </h1>
+                </h2>
             {% endblock %}
         </div>
     {% endblock %}
