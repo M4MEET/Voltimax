@@ -1,19 +1,35 @@
 {
   "name": "voltimax/theme-voltimax",
-  "description": "Theme skeleton plugin",
+  "description": "Modern, unified Shopware 6.6 theme with integrated custom header, footer icons, and manufacturer logo display. Combines all Battron plugin functionality in a single elegant theme.",
   "type": "shopware-platform-plugin",
   "license": "MIT",
-  "version": "2.2.3",
+  "version": "3.0.0",
+  "authors": [
+    {
+      "name": "Meet Joshi",
+      "email": "imeetjoshi@gmail.com",
+      "role": "Developer"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "VoltimaxTheme\\": "src/"
     }
   },
+  "require": {
+    "shopware/core": "~6.6.0",
+    "shopware/storefront": "~6.6.0"
+  },
   "extra": {
     "shopware-plugin-class": "VoltimaxTheme\\VoltimaxTheme",
+    "copyright": "(c) Meet Joshi",
     "label": {
-      "de-DE": "Theme VoltimaxTheme plugin",
-      "en-GB": "Theme VoltimaxTheme plugin"
+      "de-DE": "Voltimax Theme - Unified Shopware 6.6 Design",
+      "en-GB": "Voltimax Theme - Unified Shopware 6.6 Design"
+    },
+    "description": {
+      "de-DE": "Modernes, vereinheitlichtes Shopware 6.6 Theme mit integrierten benutzerdefinierten Header-, Footer-Icons- und Herstellerlogo-Funktionen. Kombiniert alle Battron-Plugin-Funktionen in einem eleganten Theme.",
+      "en-GB": "Modern, unified Shopware 6.6 theme with integrated custom header, footer icons, and manufacturer logo display. Combines all Battron plugin functionality in a single elegant theme."
     }
   }
 }

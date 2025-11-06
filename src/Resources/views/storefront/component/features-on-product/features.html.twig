@@ -1,0 +1,158 @@
+<!-- VOLTIMAX THEME OVERRIDE WORKING -->
+{#
+    Voltimax Theme v3.0.0 - Bootstrap Enhanced Features
+    Maintains original plugin structure with Bootstrap enhancements
+    Clean table-like layout with fixed column alignment
+#}
+
+{% block features_wrapper %}
+    {% set features = features ?? page.product.extensions.features.all() %}
+    {% set pageType = pageType ?? 'product-page' %}
+    {% set listIcon = config('FaesslichFeaturesOnProducts.config.customIcon') ?: (config('FaesslichFeaturesOnProducts.config.icon') ?: 'checkmark-circle') %}
+    {% set listIconColor = config('FaesslichFeaturesOnProducts.config.iconColor') %}
+    {% set hideIcon = config('FaesslichFeaturesOnProducts.config.hideIcon') %}
+    {% set maxVisible = config('FaesslichFeaturesOnProducts.config.maxVisibleFeaturesOnDetailPage') %}
+    {% set hideDescription = config('FaesslichFeaturesOnProducts.config.hideDescription') %}
+    {% set showLabelDescriptionAsTooltip = config('FaesslichFeaturesOnProducts.config.showLabelDescriptionAsTooltip') %}
+
+    {% if features %}
+        {% block features_wrapper_inner %}
+            <div class="special-features-wrapper">
+                {# Mobile Collapsible Header - Only visible on mobile #}
+                <div class="d-block d-md-none">
+                    <button class="btn btn-outline-primary w-100 mb-2 d-flex align-items-center justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#product-features-{{ product.id ?? 'default' }}" aria-expanded="false" aria-controls="product-features-{{ product.id ?? 'default' }}">
+                        <span class="d-flex align-items-center">
+                            <span class="me-2">
+                                {% sw_icon 'list' style { 'size': 'sm' } %}
+                            </span>
+                            {{ 'VoltimaxTheme.listing.features.toggleButton'|trans|sw_sanitize }}
+                        </span>
+                        {% sw_icon 'chevron-down' style { 'size': 'sm' } %}
+                    </button>
+                </div>
+
+                {# Features List - Collapsible on mobile, always visible on desktop #}
+                <div class="collapse collapse-mobile-only" id="product-features-{{ product.id ?? 'default' }}">
+                    <ul class="list-unstyled m-0 p-0">
+                    {% for feature in features %}
+                        {# Skip description features on listing pages if configured #}
+                        {% if pageType == 'listing' and feature.label == 'description' and hideDescription %}
+                            {% set feature = [] %}
+                        {% endif %}
+
+                        {% if feature.value %}
+                            <li class="features-list-item{{ hideIcon ? ' icon-hidden' : '' }} d-flex align-items-center small">
+                                {# Feature Icon #}
+                                {% if not hideIcon %}
+                                    <span class="icon icon-{{ listIcon }} me-2 flex-shrink-0" style="{{ listIconColor ? 'color: ' ~ listIconColor ~ ';' }}">
+                                        {{ source('@Storefront/app/storefront/dist/assets/icon/default/'~ listIcon ~'.svg', ignore_missing = true) }}
+                                    </span>
+                                {% endif %}
+
+                                {# Two-column layout: Labels and Values #}
+                                <div class="d-flex w-100">
+                                    {# Label Column - Fixed width with wrapping #}
+                                    <div class="feature-label-col" style="width: 180px; flex-shrink: 0;">
+                                        {% if not config('FaesslichFeaturesOnProducts.config.hideAllLabels') %}
+                                            {% if feature.type in ['property', 'customField'] and feature.value.type != 'html' %}
+                                                <span class="feature-label text-muted d-block"
+                                                      {% if showLabelDescriptionAsTooltip and feature.description %}
+                                                          data-bs-toggle="tooltip"
+                                                          data-bs-placement="top"
+                                                          title="{{ feature.description }}"
+                                                      {% endif %}>
+                                                    {{ feature.label }}:
+                                                </span>
+                                            {% elseif feature.type == 'product' and (feature.label != 'description' or not config('FaesslichFeaturesOnProducts.config.hideDescriptionLabel')) %}
+                                                <span class="feature-label text-muted d-block"
+                                                      {% if showLabelDescriptionAsTooltip and feature.description %}
+                                                          data-bs-toggle="tooltip"
+                                                          data-bs-placement="top"
+                                                          title="{{ feature.description }}"
+                                                      {% endif %}>
+                                                    {{ 'component.product.feature.label.%s'|format(feature.label)|sw_sanitize|trans }}:
+                                                </span>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+
+                                    {# Value Column - Flexible width #}
+                                    <div class="feature-values-col flex-grow-1">
+                                        {% if feature.value is iterable and not feature.value.content %}
+                                            {# Multiple feature values (colors, options, etc.) #}
+                                            {% for featureValue in feature.value %}
+                                                <span class="text-dark fw-medium{% if not config('FaesslichFeaturesOnProducts.config.separateByComma') %} me-2{% else %} me-1{% endif %}">
+                                                    {# Media thumbnail #}
+                                                    {% if featureValue.mediaId %}
+                                                        {% set mediaCollection = searchMedia([featureValue.mediaId], context.context) %}
+                                                        {% set media = mediaCollection.get(featureValue.mediaId) %}
+                                                        {% if media %}
+                                                            <span class="feature-value-item-image-wrapper d-inline-block align-middle">
+                                                                {% sw_thumbnails 'feature-value-item-image' with {
+                                                                    media: media,
+                                                                    attributes: {
+                                                                        'class': 'feature-value-item-image',
+                                                                        'width': '12',
+                                                                        'height': '12'
+                                                                    }
+                                                                } %}
+                                                            </span>
+                                                        {% endif %}
+                                                    {% endif %}
+
+                                                    {# Color indicator #}
+                                                    {% if featureValue.colorHexCode %}
+                                                        <i class="feature-value-item-hex d-inline-block rounded-circle align-middle"
+                                                           style="background-color: {{ featureValue.colorHexCode }}; width: 10px; height: 10px;"></i>
+                                                    {% endif %}
+
+                                                    {# Value text #}
+                                                    <span class="feature-value-item-name">
+                                                        {{ featureValue.name }}
+                                                    </span>
+                                                </span>
+                                            {% endfor %}
+
+                                        {% elseif feature.value.content %}
+                                            {# Content-based values (prices, HTML, etc.) #}
+                                            {% if feature.value.type == 'price' %}
+                                                {% for featurePrice in feature.value.content %}
+                                                    <span class="text-success fw-medium">
+                                                        {{ featurePrice.gross|currency }}
+                                                    </span>
+                                                {% endfor %}
+                                            {% else %}
+                                                <span class="text-dark fw-medium">
+                                                    {{ feature.value.content|raw }}
+                                                </span>
+                                            {% endif %}
+
+                                        {% else %}
+                                            {# Simple values (text, dates, measurements, etc.) #}
+                                            {% if feature.label == 'releaseDate' %}
+                                                <span class="text-info fw-medium">
+                                                    {{ feature.value|raw|date("d.m.Y") }}
+                                                </span>
+                                            {% else %}
+                                                <span class="text-dark fw-medium">
+                                                    {% if feature.label in ['length', 'height', 'width'] %}
+                                                        {{ feature.value|raw }}{{ config('FaesslichFeaturesOnProducts.config.sizeUnit') }}
+                                                    {% elseif feature.label == 'weight' %}
+                                                        {{ feature.value|raw }}{{ config('FaesslichFeaturesOnProducts.config.weightUnit') }}
+                                                    {% else %}
+                                                        {{ feature.value|raw }}
+                                                    {% endif %}
+                                                </span>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

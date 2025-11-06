@@ -1,0 +1,50 @@
+/*
+ * CheaperAd Plugin Compatibility Styles
+ * ========================================
+ * Ensures the CheaperAd blocks integrate seamlessly with Voltimax theme
+ * by applying consistent colors, typography, and spacing
+ */
+
+.product-detail {
+  // ==============================================
+  // CHEAPER ALTERNATIVES SECTION
+  // ==============================================
+  
+  .cheaper-alternatives {
+    margin-top: 2rem;
+    
+    .card {
+      border-color: $sw-border-color;
+      
+      // Card Header Styling
+      .card-header {
+        background-color: $sw-color-brand-secondary;
+        border: none;
+        
+        h2 {
+          color: $sw-headline-color;
+          font-family: $sw-font-family-headline;
+        }
+      }
+      
+      // Secondary Button Styling
+      .btn-secondary {
+        background-color: $sw-color-brand-primary;
+        border-color: $sw-color-brand-primary;
+        color: $sw-color-buy-button-text;
+        
+        &:hover {
+          background-color: darken($sw-color-brand-primary, 10%);
+          border-color: darken($sw-color-brand-primary, 10%);
+        }
+      }
+      
+      // Primary Button Styling
+      .btn-primary {
+        background-color: $sw-color-buy-button;
+        border-color: $sw-color-buy-button;
+        color: $sw-color-buy-button-text;
+      }
+    }
+  }
+}

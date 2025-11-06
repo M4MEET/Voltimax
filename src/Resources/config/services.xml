@@ -19,5 +19,76 @@
             <argument type="service" id="monolog.logger.voltimax_theme"/>
             <tag name="kernel.event_subscriber"/>
         </service>
+
+        <!-- Define the ManufacturerMediaSubscriber service -->
+        <service id="VoltimaxTheme\Subscriber\ManufacturerMediaSubscriber">
+            <argument type="service" id="media.repository"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- Define the CustomHeaderSubscriber service -->
+        <service id="VoltimaxTheme\Subscriber\CustomHeaderSubscriber">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="media.repository"/>
+            <argument type="service" id="monolog.logger.voltimax_theme"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- Define the MarketingScriptsSubscriber service -->
+        <service id="VoltimaxTheme\Subscriber\MarketingScriptsSubscriber">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="monolog.logger.voltimax_theme"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        
+        <!-- Cleanup command for marketing scripts -->
+        <service id="VoltimaxTheme\Command\CleanupMarketingScriptsCommand">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <tag name="console.command"/>
+        </service>
+        
+        <!-- List all configs command -->
+        <service id="VoltimaxTheme\Command\ListAllConfigsCommand">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <tag name="console.command"/>
+        </service>
+        
+        <!-- Remove phantom configs command -->
+        <service id="VoltimaxTheme\Command\RemovePhantomConfigsCommand">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <tag name="console.command"/>
+        </service>
+        
+        <!-- Check theme database command -->
+        <service id="VoltimaxTheme\Command\CheckThemeDatabaseCommand">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <tag name="console.command"/>
+        </service>
+        
+        <!-- Search entire database command -->
+        <service id="VoltimaxTheme\Command\SearchEntireDatabaseCommand">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <tag name="console.command"/>
+        </service>
+        
+        <!-- Quick search database command -->
+        <service id="VoltimaxTheme\Command\QuickSearchDatabaseCommand">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <tag name="console.command"/>
+        </service>
+        
+        <!-- Clean theme config values command -->
+        <service id="VoltimaxTheme\Command\CleanThemeConfigValuesCommand">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <tag name="console.command"/>
+        </service>
+        
+        <!-- Update theme config command -->
+        <service id="VoltimaxTheme\Command\UpdateThemeConfigCommand">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <tag name="console.command"/>
+        </service>
+
     </services>
 </container>

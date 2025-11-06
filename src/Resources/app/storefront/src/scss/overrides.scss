@@ -1,17 +1,181 @@
 /*
-Override variable defaults
-==================================================
-This file is used to override default SCSS variables from the Shopware Storefront or Bootstrap.
+ * Voltimax Theme - Variable Overrides
+ * ========================================
+ * Override default SCSS variables from Shopware Storefront and Bootstrap.
+ * 
+ * Variable hierarchy:
+ * 1. Shopware core variables are loaded first
+ * 2. Voltimax custom variables override Shopware defaults
+ * 3. Bootstrap variables use the overridden values
+ * 
+ * Because of the !default flags, theme variable overrides have to be 
+ * declared beforehand.
+ * https://getbootstrap.com/docs/4.0/getting-started/theming/#variable-defaults
+ */
 
-Because of the !default flags, theme variable overrides have to be declared beforehand.
-https://getbootstrap.com/docs/4.0/getting-started/theming/#variable-defaults
-*/
+// ==============================================
+// SHOPWARE CORE VARIABLE MAPPING
+// ==============================================
+// These are Shopware's default colors that we'll override with Voltimax values
 
-$border-radius: 15px;
-$background-dark-sb: #474747;
-$enable-shadows: true;
-$enable-gradients: true;
-$sw-font-family-base: 'TT Mussels', Helvetica, Arial, sans-serif;
-$sw-headings-font-family: 'TT Mussels', Helvetica, Arial, sans-serif;
+// Primary brand colors
+$sw-color-brand-primary: #F3B664 !default;  // Voltimax yellow
+$sw-color-brand-secondary: #f0f0f0 !default;  // Voltimax light gray
 
+// Status colors - using Shopware defaults (no override needed)
+
+// Background colors - keeping default white
+$sw-background-color-dark: #474747 !default;  // Voltimax dark gray
+
+// Text colors
+$sw-text-color: #474747 !default;  // Voltimax primary text
+$sw-headline-color: #474747 !default;  // Voltimax headline color
+// Light and muted text colors - using Shopware defaults
+
+// Border colors
+$sw-border-color: #f0f0f0 !default;  // Voltimax border
+$sw-border-radius-default: 15px !default;  // Voltimax rounded corners
+$sw-border-radius-sm: 10px !default;
+$sw-border-radius-lg: 20px !default;
+
+// E-Commerce specific
+$sw-color-price: #474747 !default;  // Voltimax price color
+$sw-color-buy-button: #F3B664 !default;  // Voltimax primary
+$sw-color-buy-button-text: #474747 !default;  // Voltimax text on primary
+
+// Typography - TT Mussels as primary font
+$sw-font-family-base: 'TT Mussels', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
+$sw-font-family-headline: 'TT Mussels', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
+
+// ==============================================
+// VOLTIMAX CUSTOM VARIABLES
+// ==============================================
+// These are additional variables specific to the Voltimax theme
+
+// Asset paths
 $my-asset-path: '#{$sw-asset-theme-url}/bundles/voltimaxtheme/assets' !default;
+
+// Primary brand colors
+$voltimax-brand-primary: #F3B664 !default;
+$voltimax-brand-secondary: #f0f0f0 !default;
+
+// Background colors
+$voltimax-bg-secondary: #f0f0f0 !default;
+$voltimax-bg-secondary-dark: #474747 !default;
+$voltimax-bg-footer: #474747 !default;  // Same as secondary-dark but explicit for footer
+
+// Text colors
+$voltimax-text-primary: #474747 !default;
+$voltimax-text-secondary: #6c757d !default;
+$voltimax-text-on-dark: #ffffff !default;
+$voltimax-text-on-primary: #474747 !default;
+$voltimax-text-muted: #868e96 !default;
+$voltimax-text-color-light: #ffffff !default;
+$voltimax-text-color-primary: #474747 !default;
+$voltimax-text-color-secondary: #6c757d !default;
+$voltimax-text-color-dark: #1a1a1a !default;
+$voltimax-text-color-muted: #95a5a6 !default;
+
+// Interactive colors
+$voltimax-hover-primary: #F3B664 !default;
+$voltimax-hover-secondary: #e8ecef !default;
+$voltimax-link-color: #474747 !default;
+$voltimax-link-hover: #F3B664 !default;
+
+// Border colors
+$voltimax-border-light: #dee2e6 !default;
+$voltimax-border-dark: #6c757d !default;
+$voltimax-border-primary: #f0f0f0 !default;
+$voltimax-border-color: #dee2e6 !default;
+$voltimax-border-radius: 0.375rem !default;
+$voltimax-border-radius-lg: 0.75rem !default;
+$voltimax-border-radius-sm: 0.25rem !default;
+
+// Shadows
+$voltimax-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !default;
+$voltimax-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175) !default;
+
+// Status colors - inherit from Shopware defaults (no custom override needed)
+
+// Typography
+$voltimax-font-family-base: 'TT Mussels', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
+$voltimax-font-family-headings: 'TT Mussels', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
+$voltimax-font-size-base: 1rem !default;
+$voltimax-font-size-sm: 0.875rem !default;
+$voltimax-font-size-lg: 1.125rem !default;
+$voltimax-font-weight-normal: 400 !default;
+$voltimax-font-weight-medium: 500 !default;
+$voltimax-font-weight-bold: 700 !default;
+$voltimax-line-height-base: 1.5 !default;
+
+// Spacing
+$voltimax-spacing-xs: 0.25rem !default;
+$voltimax-spacing-sm: 0.5rem !default;
+$voltimax-spacing-md: 1rem !default;
+$voltimax-spacing-lg: 1.5rem !default;
+$voltimax-spacing-xl: 2rem !default;
+$voltimax-spacing-xxl: 3rem !default;
+
+// Topbar specific variables (from theme.json)
+$voltimax-topbar-background: #474747 !default;
+$voltimax-topbar-text-color: #ffffff !default;
+$voltimax-topbar-text-hover-color: #F3B664 !default;
+$voltimax-topbar-border-color: #e0e0e0 !default;
+$voltimax-topbar-border-width: 1px !default;
+$voltimax-topbar-height: 35px !default;
+$voltimax-topbar-font-size: 13px !default;
+$voltimax-topbar-padding: 0.5rem 0 !default;
+$voltimax-topbar-text-weight: 500 !default;
+
+// Legacy variable mapping for backward compatibility
+$background-dark-sb: $voltimax-bg-secondary-dark;
+
+// ==============================================
+// BOOTSTRAP VARIABLE OVERRIDES
+// ==============================================
+// Override Bootstrap variables with our theme values
+
+// Theme colors for Bootstrap
+$primary: $voltimax-brand-primary !default;
+$secondary: $voltimax-brand-secondary !default;
+// Success, info, warning, danger - inherit from Shopware defaults
+$dark: $voltimax-bg-secondary-dark !default;
+// Light, white, black - using Bootstrap defaults
+
+// Typography for Bootstrap
+$font-family-base: $voltimax-font-family-base !default;
+$headings-font-family: $voltimax-font-family-headings !default;
+$font-size-base: $voltimax-font-size-base !default;
+
+// Text colors
+$body-color: $voltimax-text-primary !default;
+$headings-color: $voltimax-text-primary !default;
+$text-muted: $voltimax-text-muted !default;
+
+// Links
+$link-color: $voltimax-link-color !default;
+$link-hover-color: $voltimax-link-hover !default;
+
+// Borders
+$border-color: $voltimax-border-color !default;
+$border-radius: $voltimax-border-radius !default;
+$border-radius-lg: $voltimax-border-radius-lg !default;
+$border-radius-sm: $voltimax-border-radius-sm !default;
+
+// ==============================================
+// BOOTSTRAP FEATURES
+// ==============================================
+
+$enable-shadows: true !default;
+$enable-gradients: true !default;
+
+// Spacers for Bootstrap utilities
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+) !default;

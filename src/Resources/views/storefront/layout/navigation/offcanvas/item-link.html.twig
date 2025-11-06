@@ -1,0 +1,39 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/offcanvas/item-link.html.twig' %}
+
+{% set isActive = item.category.id == activeId %}
+{% set hasChildren = item.category.visibleChildCount > 0 %}
+{% set url = category_url(item.category) %}
+{% set name = item.category.translated.name %}
+
+{% block layout_navigation_offcanvas_navigation_category_item_link %}
+    <li class="navigation-offcanvas-list-item mb-2">
+        {% block layout_navigation_offcanvas_navigation_categories_list_category_item_link %}
+            <div class="d-flex gap-2">
+                {# Main link - always navigates to category page #}
+                <a class="navigation-offcanvas-link nav-item nav-link flex-grow-1 px-3 rounded bg-white{% if isActive %} active{% endif %}"
+                   href="{{ url }}"
+                   itemprop="url"
+                   {% if category_linknewtab(item.category) %}target="_blank"{% endif %}
+                   title="{{ name }}">
+                    {% block layout_navigation_offcanvas_navigation_categories_list_category_item_link_text %}
+                        <span itemprop="name">{{ name }}</span>
+                    {% endblock %}
+                </a>
+                
+                {# Separate arrow button for loading children #}
+                {% if hasChildren %}
+                    {% block layout_navigation_offcanvas_navigation_categories_list_category_item_link_icon %}
+                        <button type="button" 
+                                class="btn navigation-offcanvas-arrow-btn js-navigation-offcanvas-link bg-white rounded{% if isActive %} active{% endif %}"
+                                data-href="{{ path('frontend.menu.offcanvas', {navigationId: item.category.id}) }}"
+                                aria-label="Show subcategories for {{ name }}">
+                            <span class="navigation-offcanvas-link-icon js-navigation-offcanvas-loading-icon">
+                                {% sw_icon 'arrow-medium-right' style { 'pack': 'solid' } %}
+                            </span>
+                        </button>
+                    {% endblock %}
+                {% endif %}
+            </div>
+        {% endblock %}
+    </li>
+{% endblock %}

@@ -1,0 +1,134 @@
+/* Voltimax Marketing Scripts - Enhanced Admin Styling */
+
+.sw-theme-manager-detail {
+    // Marketing tab enhancements
+    .sw-tabs-content__content-item[name="marketing"] {
+        
+        // Style each card/block
+        .sw-card {
+            margin-bottom: 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            overflow: visible;
+            
+            .sw-card__title {
+                font-size: 18px;
+                font-weight: 600;
+                padding: 20px 24px;
+                background: linear-gradient(135deg, #f8fafc, #ffffff);
+                border-bottom: 2px solid #e2e8f0;
+                color: #1e293b;
+            }
+            
+            .sw-card__content {
+                padding: 24px;
+            }
+        }
+        
+        // Style script textareas
+        .voltimax-script-textarea {
+            .sw-field__label {
+                font-size: 15px;
+                font-weight: 600;
+                color: #1e293b;
+                margin-bottom: 12px;
+            }
+            
+            .sw-help-text,
+            .sw-field__help-text {
+                background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+                padding: 14px 16px;
+                border-radius: 6px;
+                margin-bottom: 16px;
+                border-left: 4px solid #189eff;
+                font-size: 13px;
+                line-height: 1.6;
+                color: #475569;
+                white-space: pre-line;
+            }
+            
+            textarea,
+            .sw-text-editor__content-editor {
+                font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+                font-size: 13px;
+                line-height: 1.6;
+                background: #fafbfc;
+                border: 2px solid #e2e8f0;
+                border-radius: 6px;
+                padding: 16px;
+                min-height: 140px;
+                
+                &:hover {
+                    background: #ffffff;
+                    border-color: #cbd5e1;
+                }
+                
+                &:focus {
+                    background: #ffffff;
+                    border-color: #189eff;
+                    box-shadow: 0 0 0 4px rgba(24, 158, 255, 0.1);
+                    outline: none;
+                }
+            }
+        }
+        
+        // Style checkbox groups
+        .voltimax-checkbox-group {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+            
+            .voltimax-script-checkbox {
+                flex: 1;
+                padding: 16px;
+                background: linear-gradient(135deg, #f8f9fa, #ffffff);
+                border: 1px solid #e2e8f0;
+                border-radius: 6px;
+                transition: all 0.3s ease;
+                
+                &:hover {
+                    border-color: #189eff;
+                    box-shadow: 0 2px 8px rgba(24, 158, 255, 0.1);
+                    transform: translateY(-1px);
+                }
+                
+                .sw-field__label {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #2d3e50;
+                    margin-bottom: 8px;
+                    
+                    label {
+                        cursor: pointer;
+                    }
+                }
+                
+                .sw-help-text,
+                .sw-field__help-text {
+                    font-size: 12px;
+                    line-height: 1.5;
+                    color: #64748b;
+                    margin-top: 8px;
+                }
+                
+                input[type="checkbox"] {
+                    width: 20px;
+                    height: 20px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+// Add block-specific styling based on block names
+.sw-card {
+    &[data-block="marketingScript1"] .sw-card__title:before { content: "🥇 "; font-size: 24px; }
+    &[data-block="marketingScript2"] .sw-card__title:before { content: "🥈 "; font-size: 24px; }
+    &[data-block="marketingScript3"] .sw-card__title:before { content: "🥉 "; font-size: 24px; }
+    &[data-block="marketingScript4"] .sw-card__title:before { content: "💬 "; font-size: 24px; }
+    &[data-block="marketingScript5"] .sw-card__title:before { content: "🔧 "; font-size: 24px; }
+    &[data-block="checkoutScript1"] .sw-card__title:before { content: "🎯 "; font-size: 24px; }
+    &[data-block="checkoutScript2"] .sw-card__title:before { content: "📊 "; font-size: 24px; }
+    &[data-block="checkoutScript3"] .sw-card__title:before { content: "✅ "; font-size: 24px; }
+}

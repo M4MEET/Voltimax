@@ -1,0 +1,74 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/offcanvas/navigation.html.twig' %}
+
+{# Override header with pure Bootstrap approach #}
+{% block utilities_offcanvas_header %}
+    {% block utilities_offcanvas_header_wrapper %}
+        <div class="offcanvas-header voltimax-offcanvas-header py-2">
+            {% block utilities_offcanvas_header_container %}
+                <div class="container-fluid">
+                    {% block utilities_offcanvas_header_row %}
+                        <div class="row align-items-center gx-2">
+                            
+                            {% block utilities_offcanvas_header_language_column %}
+                                <div class="col-4">
+                                    {% block utilities_offcanvas_header_language_wrapper %}
+                                        <div class="d-flex justify-content-start">
+                                            {% block utilities_offcanvas_header_language_content %}
+                                                {% sw_include '@Storefront/storefront/layout/header/actions/language-widget.html.twig' with {
+                                                    position: 'offcanvas'
+                                                } %}
+                                            {% endblock %}
+                                        </div>
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
+                            
+                            {% block utilities_offcanvas_header_home_column %}
+                                <div class="col-4">
+                                    {% block utilities_offcanvas_header_home_wrapper %}
+                                        <div class="d-flex justify-content-center">
+                                            {% block utilities_offcanvas_header_home_button %}
+                                                <a href="{{ path('frontend.home.page') }}" 
+                                                   class="btn btn-light btn-sm rounded"
+                                                   title="{{ "general.homeLink"|trans|striptags }}">
+                                                    {% block utilities_offcanvas_header_home_icon %}
+                                                        {% sw_icon 'home' %}
+                                                    {% endblock %}
+                                                </a>
+                                            {% endblock %}
+                                        </div>
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
+                            
+                            {% block utilities_offcanvas_header_close_column %}
+                                <div class="col-4">
+                                    {% block utilities_offcanvas_header_close_wrapper %}
+                                        <div class="d-flex justify-content-end">
+                                            {% block utilities_offcanvas_header_close_button %}
+                                                <button type="button" 
+                                                        class="btn btn-light btn-sm rounded js-offcanvas-close"
+                                                        data-bs-dismiss="offcanvas"
+                                                        aria-label="{{ "general.offcanvasCloseMenu"|trans|striptags }}">
+                                                    {% block utilities_offcanvas_header_close_icon %}
+                                                        {% sw_icon 'x' %}
+                                                    {% endblock %}
+                                                </button>
+                                            {% endblock %}
+                                        </div>
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
+                            
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}
+
+{# Remove duplicate language widget from default position #}
+{% block layout_navigation_offcanvas_navigation_action_language %}
+    {# Language widget is now in header #}
+{% endblock %}

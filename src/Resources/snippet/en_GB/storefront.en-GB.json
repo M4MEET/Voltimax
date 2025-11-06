@@ -1,0 +1,32 @@
+{
+  "VoltimaxTheme": {
+    "topbar": {
+      "header": {
+        "trustpilot": "Trustpilot Reviews"
+      },
+      "left": "QUALITY PROMISE",
+      "middle": "☎ 0895 419 6384 (8:00 AM - 12:00 PM)",
+      "right": "📦 Free Shipping from €49",
+      "rightend": "⭐ OVER 200,000 SATISFIED CUSTOMERS"
+    },
+    "footer": {
+      "services": "Our Services",
+      "partners": "Partners & Reviews"
+    }
+  },
+  "battron": {
+    "footer": {
+      "usp": {
+        "first": "Fast Delivery",
+        "second": "30 Days Return",
+        "third": "Secure Shopping",
+        "fourth": "Satisfied Customers"
+      }
+    }
+  },
+  "footer": {
+    "includeVat": "* All prices incl. VAT plus <a data-ajax-modal=\"true\" href=\"%url%\" data-url=\"%url%\" class=\"text-primary\">shipping costs</a> and possibly COD fees, unless otherwise stated.",
+    "excludeVat": "* All prices excl. VAT plus <a data-ajax-modal=\"true\" href=\"%url%\" data-url=\"%url%\" class=\"text-primary\">shipping costs</a> and possibly COD fees, unless otherwise stated.",
+    "copyrightInfo": "%year% - All rights reserved - voltimax.de"
+  }
+}

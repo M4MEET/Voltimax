@@ -1,0 +1,14 @@
+{% sw_extends "@Storefront/storefront/component/delivery-information.html.twig" %}
+
+{# Override the restock block to use bg-danger instead of bg-warning #}
+{% block component_delivery_information_restock %}
+    <link itemprop="availability" href="https://schema.org/LimitedAvailability">
+    <p class="delivery-information delivery-restock">
+        <span class="delivery-status-indicator bg-danger"></span>
+        {{ 'detail.deliveryTimeRestock'|trans({
+            '%count%': product.restockTime,
+            '%restockTime%': product.restockTime,
+            '%name%': product.deliveryTime.translation('name')
+        })|sw_sanitize }}
+    </p>
+{% endblock %}

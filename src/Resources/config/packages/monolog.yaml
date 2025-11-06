@@ -5,5 +5,5 @@ monolog:
     voltimaxThemeLogHandler:
       type: rotating_file
       path: "%kernel.logs_dir%/voltimax_theme_%kernel.environment%.log"
-      level: error
+      level: debug
       channels: ["voltimax_theme"]

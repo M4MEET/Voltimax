@@ -1,0 +1,42 @@
+{
+  "VoltimaxTheme": {
+    "marketing": {
+      "scripts": {
+        "title": "Marketing Scripts",
+        "description": "Manage your marketing scripts with priority ordering for optimal performance",
+        "script1": {
+          "label": "Marketing Script 1 (Highest Priority)",
+          "description": "Your most important marketing script (e.g., Google Tag Manager)",
+          "placeholder": "Add your marketing script here..."
+        },
+        "script2": {
+          "label": "Marketing Script 2 (High Priority)",
+          "description": "Your second priority marketing script (e.g., Facebook Pixel)",
+          "placeholder": "Add your marketing script here..."
+        },
+        "script3": {
+          "label": "Marketing Script 3 (Medium Priority)",
+          "description": "Your third priority marketing script (e.g., Analytics tracking)",
+          "placeholder": "Add your marketing script here..."
+        },
+        "script4": {
+          "label": "Marketing Script 4 (Low Priority)",
+          "description": "Your fourth priority marketing script (e.g., Additional tracking)",
+          "placeholder": "Add your marketing script here..."
+        },
+        "script5": {
+          "label": "Marketing Script 5 (Lowest Priority)",
+          "description": "Your lowest priority marketing script",
+          "placeholder": "Add your marketing script here..."
+        },
+        "enable": "Enable script",
+        "async": "Load asynchronously",
+        "warning": {
+          "security": "⚠️ Security Warning: Ensure all scripts come from trusted sources.",
+          "performance": "💡 Performance Tip: Use the async option for better loading times.",
+          "testing": "🧪 Testing Mode: Always test your scripts in a staging environment first."
+        }
+      }
+    }
+  }
+}

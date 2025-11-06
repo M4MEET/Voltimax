@@ -1,0 +1,268 @@
+/*
+ * Voltimax Theme - Product Listing Styles
+ * ========================================
+ * Minimal custom CSS - mostly Bootstrap utilities
+ */
+
+// ==============================================
+// PRODUCT CARD WISHLIST OVERRIDE
+// ==============================================
+
+// Override wishlist action button to restore proper button styles
+.voltimax-wishlist-action.product-wishlist-action {
+    // Counteract the unwanted styles from product-wishlist-action
+    background: inherit !important;  // Let it inherit from btn classes
+    border-style: solid !important;  // Restore solid border for btn-outline
+    padding: 0.375rem 0.75rem !important;  // Bootstrap default button padding
+    display: inline-block !important;  // Normal button display, not inline-flex
+}
+
+// ==============================================
+// PRODUCT PRICE STYLING
+// ==============================================
+
+// Set product price to 2rem font size
+.product-price {
+    font-size: 2rem !important;
+}
+
+// Also ensure it works within the price action box
+.product-price-action-box .product-price {
+    font-size: 2rem !important;
+}
+
+// ==============================================
+// PRODUCT FEATURES OVERRIDE
+// ==============================================
+
+// Override the plugin's default padding for feature list items
+.special-features-wrapper ul li {
+    padding: 0 0 0.25rem 1.5rem !important; // Reduce bottom padding and adjust left padding
+
+    // Limit icon width to prevent overflow
+    .icon {
+        width: 1rem !important;
+        max-width: 1rem !important;
+    }
+}
+
+// ==============================================
+// DELIVERY INFORMATION STYLING
+// ==============================================
+
+// Override Bootstrap's default paragraph margins with higher specificity
+.product-price-action-box .delivery-section .product-delivery-information p,
+.product-price-action-box .delivery-section .delivery-information,
+.delivery-section .product-delivery-information p,
+.delivery-section .delivery-information {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+// ==============================================
+// MOBILE COLLAPSE FEATURES OVERRIDE
+// ==============================================
+
+// Make collapse work only on mobile, always visible on desktop
+.collapse-mobile-only {
+    @media (min-width: 768px) {
+        display: block !important;
+        height: auto !important;
+    }
+}
+
+// ==============================================
+// MOBILE FEATURES STACKED LAYOUT
+// ==============================================
+
+// Stack features vertically on mobile devices
+@media (max-width: 767.98px) {
+    .special-features-wrapper ul li {
+        padding: 0.5rem 0 !important;
+        border-bottom: 1px solid #e9ecef !important;
+        text-align: center !important;
+
+        // Hide icon on mobile
+        .icon {
+            display: none !important;
+        }
+
+        // Change flex layout to column (stacked) and center
+        .d-flex {
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+
+        // Label row - centered
+        .feature-label-col {
+            width: 100% !important;
+            margin-bottom: 0.25rem !important;
+            text-align: center !important;
+
+            .feature-label {
+                font-size: 0.625rem !important;
+                color: #6c757d !important;
+                display: block !important;
+                text-align: center !important;
+            }
+        }
+
+        // Value row - centered
+        .feature-values-col {
+            width: 100% !important;
+            text-align: center !important;
+
+            span {
+                font-size: 0.75rem !important;
+                font-weight: 500 !important;
+                color: #212529 !important;
+                display: block !important;
+                text-align: center !important;
+            }
+        }
+
+        // Remove last border
+        &:last-child {
+            border-bottom: none !important;
+        }
+    }
+}
+
+// ==============================================
+// PRODUCT DESCRIPTION RESPONSIVE OVERRIDE
+// ==============================================
+
+// Override global product-description display for responsive hiding
+.product-description {
+    // Hide on mobile and tablet (up to lg breakpoint)
+    @media (max-width: 1199.98px) {
+        display: none !important;
+    }
+
+    // Show only on xl screens and up
+    @media (min-width: 1200px) {
+        display: -webkit-box !important;
+    }
+}
+
+// ==============================================
+// MOBILE/TABLET PRICE ACTION BOX SIZING
+// ==============================================
+
+// Make delivery and price sections smaller on mobile/tablet
+.product-price-action-box {
+    @media (max-width: 991.98px) {
+        // Reduce padding in price action box
+        padding: 0.5rem !important;
+
+        .delivery-section,
+        .price-tax-section {
+            font-size: 0.75rem;
+
+            // Make delivery info text smaller
+            .delivery-information,
+            .product-delivery-information p {
+                font-size: 0.7rem;
+                margin-bottom: 0.25rem !important;
+            }
+
+            // Make price smaller on mobile/tablet
+            .product-price {
+                font-size: 1.2rem !important;
+            }
+        }
+
+        // Reduce margins in the flex container
+        .d-flex.mb-2 {
+            margin-bottom: 0.5rem !important;
+        }
+
+        // Reduce gaps between action buttons
+        .gap-2 {
+            gap: 0.5rem !important;
+        }
+
+        // Reduce button padding
+        .btn {
+            padding: 0.25rem 0.5rem !important;
+        }
+
+        // Ensure all buttons have same height and alignment on mobile
+        .btn-buy,
+        .btn-outline-secondary {
+            height: 38px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            margin: 0 !important;
+        }
+
+        // Remove any margins/padding from cart button wrapper on mobile
+        .d-grid {
+            margin: 0 !important;
+        }
+
+        // Override global .product-action margin only for mobile/tablet
+        // Target .product-action specifically within mobile layout
+        .d-flex.d-lg-none .mobile-cart-action .product-action,
+        .d-flex.d-lg-none .product-action {
+            margin-top: 0 !important;
+        }
+
+        // Remove margin from product-price-info on mobile
+        .product-price-info {
+            margin-top: 0 !important;
+        }
+
+    }
+}
+
+// ==============================================
+// PRODUCT IMAGE SIZE OVERRIDE FOR MOBILE/TABLET
+// ==============================================
+
+// Override global product image heights for mobile and tablet
+@media (max-width: 991.98px) {
+    .product-image-wrapper {
+        height: 150px !important; // Reduced from 200px
+    }
+
+    .product-box.box-image .product-image-wrapper {
+        height: 200px !important; // Reduced from 332px
+    }
+}
+
+// ==============================================
+// MOBILE PRODUCT CARD OVERALL SPACING
+// ==============================================
+
+// Reduce overall spacing in product cards on mobile
+@media (max-width: 991.98px) {
+    .card.align-items-center {
+        .row.g-0.g-lg-2 {
+            margin: 0 !important;
+        }
+
+        // Reduce padding in all product sections
+        .product-image-wrapper,
+        .product-info {
+            padding: 0.75rem !important;
+        }
+
+        // Reduce margins in product info section
+        .product-info {
+            .card-body {
+                padding: 0 !important;
+            }
+
+            .mb-3 {
+                margin-bottom: 0.5rem !important;
+            }
+
+            hr {
+                margin: 0.5rem 0 !important;
+            }
+        }
+    }
+}
+

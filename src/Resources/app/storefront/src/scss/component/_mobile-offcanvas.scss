@@ -1,0 +1,128 @@
+/*
+ * Voltimax Mobile Offcanvas Navigation
+ * =====================================
+ * Minimal overrides using Bootstrap and theme variables
+ */
+
+// ==============================================
+// OFFCANVAS STYLING
+// ==============================================
+
+.navigation-offcanvas {
+  
+  // Voltimax offcanvas header with theme colors
+  .voltimax-offcanvas-header {
+    background-color: $voltimax-bg-secondary-dark;
+    border-bottom: 3px solid $voltimax-brand-primary;
+  }
+  
+  // Simple hover effect for all buttons in header
+  .offcanvas-header {
+    .btn-light {
+      border-radius: $voltimax-border-radius-lg;
+      
+      &:hover, &:focus {
+        background-color: $voltimax-brand-primary;
+        border-color: $voltimax-brand-primary;
+        color: $white;
+      }
+    }
+    
+    // Make language dropdown look consistent
+    .dropdown-toggle {
+      @extend .btn;
+      @extend .btn-light;
+      @extend .btn-sm;
+      @extend .rounded;
+      
+      &:hover, &:focus {
+        background-color: $voltimax-brand-primary;
+        border-color: $voltimax-brand-primary;
+        color: $white;
+      }
+    }
+  }
+  
+  // Clean body with subtle background
+  .offcanvas-body {
+    background: $voltimax-bg-secondary;
+    padding: $voltimax-spacing-sm * 1.5;
+  }
+}
+
+// ==============================================
+// NAVIGATION LIST
+// ==============================================
+
+.navigation-offcanvas-list {
+  padding: 0;
+  list-style: none;
+  
+  // Remove any default list item styles
+  .navigation-offcanvas-list-item {
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    border-top: none !important;
+  }
+  
+  // Navigation links and arrow buttons - same height
+  .navigation-offcanvas-link,
+  .navigation-offcanvas-arrow-btn {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  
+  // Navigation links - hover effects
+  .navigation-offcanvas-link {
+    &:hover {
+      background-color: $voltimax-bg-secondary !important;
+      color: $voltimax-brand-primary;
+    }
+    
+    &.active {
+      background-color: $voltimax-brand-primary !important;
+      color: $white;
+      
+      &:hover {
+        background-color: darken($voltimax-brand-primary, 5%) !important;
+      }
+    }
+  }
+  
+  // Arrow button specific
+  .navigation-offcanvas-arrow-btn {
+    width: 44px;
+    justify-content: center;
+    
+    &:hover {
+      background-color: $voltimax-brand-primary !important;
+      color: $white;
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+// ==============================================
+// CATEGORIES HEADING
+// ==============================================
+
+.navigation-offcanvas-headline {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: $voltimax-text-primary;
+  padding: 0.75rem 0;
+  margin: 0 0 0.5rem 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  text-transform: none;
+}
+
+// ==============================================
+// REMOVE UNWANTED INHERITED STYLES
+// ==============================================
+
+.navigation-offcanvas-link.is-back-link {
+  border-top: none !important;
+  border: none !important;
+}

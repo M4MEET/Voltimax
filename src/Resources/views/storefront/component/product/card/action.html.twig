@@ -1,10 +1,16 @@
 {% sw_extends "@Storefront/storefront/component/product/card/action.html.twig" %}
 
-{% block page_product_detail_product_buy_button %}
-    <div class="d-grid">
-        <button class="btn btn-buy rounded"
-                title="{{ "listing.boxAddProduct"|trans|striptags }}">
-            {{ "listing.boxAddProduct"|trans|sw_sanitize }}
-        </button>
-    </div>
+{#
+    Voltimax Theme v3.0.0 - Product Card Action Override
+    Prevents FroshProductCompare from adding buttons in the action area
+    The compare buttons are handled in our secondary actions row instead
+#}
+
+{# Override ONLY the compare button blocks with empty content #}
+{% block component_product_box_action_add_to_compare_button %}
+    {# Compare button disabled - handled in secondary actions row #}
+{% endblock %}
+
+{% block component_product_box_action_detail_add_to_compare_button %}
+    {# Compare button disabled - handled in secondary actions row #}
 {% endblock %}

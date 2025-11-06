@@ -1,0 +1,65 @@
+{% sw_extends "@Storefront/storefront/component/buy-widget/buy-widget.html.twig" %}
+
+{# Override only the missing blocks that we need to add #}
+{% block buy_widget_data %}
+    {# Add product heading before data section - following Shopware best practices #}
+    {% block page_product_detail_name_container %}
+        <div class="product-detail-name-container mt-2">
+            {% block page_product_detail_name %}
+                <h2 class="product-detail-name" itemprop="name">
+                    {{ page.product.translated.name }}
+                </h2>
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {# Call parent to include all original data blocks (price, tax, reviews, etc.) #}
+    {{ parent() }}
+{% endblock %}
+{% block page_product_detail_ordernumber_container %}
+    {% if page.product.productNumber %}
+        <div class="product-detail-ordernumber-container mb-2">
+            <span class="product-detail-ordernumber-label text-muted small">
+                {{ 'detail.productNumberLabel'|trans|sw_sanitize }}
+            </span>
+            <meta itemprop="productID" content="{{ page.product.id }}">
+            <span class="product-detail-ordernumber fw-medium" itemprop="sku">
+                {{ page.product.productNumber }}
+            </span>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block page_product_detail_wishlist %}
+    {% if config('core.cart.wishlistEnabled') %}
+        <div class="product-detail-wishlist-container mb-3">
+            {% sw_include '@Storefront/storefront/component/product/card/wishlist.html.twig' with {
+                showText: true,
+                size: 'sm',
+                productId: page.product.id
+            } %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{# Override the correct buy_widget_tax block that's actually being used #}
+{% block buy_widget_tax %}
+    <div class="product-detail-tax-container">
+        {% if context.taxState == "gross" %}
+            {% set taxText = "VoltimaxTheme.detail.product.grossTaxInformation"|trans({'%product.taxRate%':page.product.tax.taxRate}) |sw_sanitize %}
+        {% else %}
+            {% set taxText = "VoltimaxTheme.detail.product.netTaxInformation"|trans({'%product.taxRate%':page.product.tax.taxRate}) |sw_sanitize %}
+        {% endif %}
+
+        <p class="product-detail-tax mt-3">
+            <a class="product-detail-tax-link text-primary text-decoration-underline font-weight-bold fs-5"
+               href="{{ path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) }}"
+               title="{{ taxText }}"
+               data-ajax-modal="true"
+               data-url="{{ path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) }}">
+                {{ taxText }}
+            </a>
+        </p>
+    </div>
+
+{% endblock %}

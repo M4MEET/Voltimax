@@ -1,0 +1,18 @@
+{
+  "name": "voltimax-theme",
+  "version": "3.1.0",
+  "description": "Voltimax Theme for Shopware 6",
+  "private": true,
+  "scripts": {
+    "build": "shopware-cli extension build",
+    "build:js": "shopware-cli extension build-js",
+    "watch": "shopware-cli extension watch"
+  },
+  "keywords": [
+    "shopware",
+    "theme",
+    "voltimax"
+  ],
+  "author": "Meet Joshi",
+  "license": "MIT"
+}

@@ -1,0 +1,120 @@
+/*
+ * Voltimax Footer Icons Component Styles
+ * ========================================
+ * Styles for the integrated footer payment and shipping icons functionality
+ * originally from BattronFooterIcons plugin
+ */
+
+// ==============================================
+// FOOTER PAYMENT & SHIPPING LOGOS
+// ==============================================
+
+.footer-payment,
+.footer-shipping {
+  .payment-logo,
+  .shipping-logo {
+    max-width: 60px;
+    max-height: 40px;
+    width: auto;
+    height: auto;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    
+    &:hover {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+  
+  .payment-logo {
+    filter: brightness(0.9);
+  }
+  
+  .shipping-logo {
+    filter: grayscale(0.1);
+  }
+  
+  .row {
+    margin-bottom: 0.5rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  .col {
+    padding: 0.25rem;
+    min-height: 50px;
+    
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem;
+      border-radius: $border-radius-sm;
+      transition: background-color 0.2s ease;
+      
+      &:hover {
+        background-color: rgba($voltimax-brand-primary, 0.1);
+      }
+    }
+  }
+}
+
+// ==============================================
+// RESPONSIVE DESIGN
+// ==============================================
+
+@include media-breakpoint-down(md) {
+  .footer-payment,
+  .footer-shipping {
+    .payment-logo,
+    .shipping-logo {
+      max-width: 50px;
+      max-height: 35px;
+    }
+    
+    .col {
+      min-height: 45px;
+      padding: 0.15rem;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .footer-payment,
+  .footer-shipping {
+    .payment-logo,
+    .shipping-logo {
+      max-width: 45px;
+      max-height: 30px;
+    }
+    
+    .col {
+      min-height: 40px;
+      padding: 0.1rem;
+    }
+  }
+}
+
+// ==============================================
+// FOOTER COLUMN ENHANCEMENTS
+// ==============================================
+
+.footer-column {
+  .footer-payment,
+  .footer-shipping {
+    padding-top: 0.5rem;
+  }
+  
+  .footer-column-headline {
+    &[aria-controls="collapseFooterPayment"],
+    &[aria-controls="collapseFooterShipping"] {
+      cursor: pointer;
+      user-select: none;
+      
+      &:hover {
+        color: $voltimax-brand-primary !important;
+      }
+    }
+  }
+}

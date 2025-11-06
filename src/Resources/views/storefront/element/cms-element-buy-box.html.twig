@@ -1,0 +1,16 @@
+{% sw_extends "@Storefront/storefront/element/cms-element-buy-box.html.twig" %}
+
+{% block element_buy_box %}
+    {# Inherit all Shopware blocks while adding Voltimax styling #}
+    {% if element.data.product %}
+        {% set product = element.data.product %}
+        {% set configuratorSettings = product.configuratorSettings %}
+
+        {# Add custom styling to buy box #}
+        <div class="cms-element-buy-box">
+            {% block element_buy_box_inner %}
+                {{ parent() }}
+            {% endblock %}
+        </div>
+    {% endif %}
+{% endblock %}

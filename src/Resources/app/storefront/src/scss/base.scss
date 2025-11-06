@@ -1,69 +1,55 @@
-@font-face {
-  font-family: 'TT Mussels';
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  src: url('#{$my-asset-path}/fonts/TTMussels-Regular.woff') format('woff'),
-  url('#{$my-asset-path}/fonts/TTMussels-Regular.woff2') format('woff2'),
-  url('#{$my-asset-path}/fonts/TTMussels-Regular.ttf') format('truetype'),
-  url('#{$my-asset-path}/fonts/TTMussels-Regular.eot') format('eot');
+/*
+ * Voltimax Theme - Base Styles
+ * ========================================
+ * Main stylesheet containing core theme customizations
+ * organized by component and functionality
+ * 
+ * Note: Shopware 6.6 includes Bootstrap utilities without !important
+ * per ADR decision, allowing themes to override utilities easily
+ */
+
+// ==============================================
+// 1. TYPOGRAPHY & FONT IMPORTS
+// ==============================================
+
+@import 'fonts/typography';
+@import 'component/product-listing';
+
+// ==============================================
+// 2. PRODUCT CARD ACTIONS STYLING
+// ==============================================
+
+// Override compare and wishlist buttons to have consistent styling
+.component_product_box_secondary_actions {
+    .compare-button, .wishlist-button {
+        .btn {
+            @extend .btn-outline-secondary;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+
+            // Override default plugin button classes
+            &.btn-compare, &.btn-light, &.product-wishlist-btn {
+                @extend .btn-outline-secondary;
+                border: 1px solid var(--bs-gray-400);
+                background-color: transparent;
+                color: var(--bs-gray-600);
+
+                &:hover {
+                    background-color: var(--bs-gray-600);
+                    border-color: var(--bs-gray-600);
+                    color: white;
+                }
+            }
+        }
+    }
 }
 
-@font-face {
-  font-family: 'TT Mussels';
-  font-weight: 500;
-  font-style: normal;
-  src: url('#{$my-asset-path}/fonts/TTMussels-Medium.woff') format('woff'),
-  url('#{$my-asset-path}/fonts/TTMussels-Medium.woff2') format('woff2'),
-  url('#{$my-asset-path}/fonts/TTMussels-Medium.ttf') format('truetype'),
-  url('#{$my-asset-path}/fonts/TTMussels-Medium.eot') format('eot');
-}
-
-@font-face {
-  font-family: 'TT Mussels';
-  font-weight: bold;
-  font-style: normal;
-  src: url('#{$my-asset-path}/fonts/TTMussels-Bold.woff') format('woff'),
-  url('#{$my-asset-path}/fonts/TTMussels-Bold.woff2') format('woff2'),
-  url('#{$my-asset-path}/fonts/TTMussels-Bold.ttf') format('truetype'),
-  url('#{$my-asset-path}/fonts/TTMussels-Bold.eot') format('eot');
-}
-
-@font-face {
-  font-family: 'TT Mussels';
-  font-weight: 800;
-  font-style: normal;
-  src: url('#{$my-asset-path}/fonts/TTMussels-ExtraBold.woff') format('woff'),
-  url('#{$my-asset-path}/fonts/TTMussels-ExtraBold.woff2') format('woff2'),
-  url('#{$my-asset-path}/fonts/TTMussels-ExtraBold.ttf') format('truetype'),
-  url('#{$my-asset-path}/fonts/TTMussels-ExtraBold.eot') format('eot');
-}
-
-@font-face {
-  font-family: 'TT Mussels';
-  font-weight: normal;
-  font-style: italic;
-  src: url('#{$my-asset-path}/fonts/TTMussels-Italic.woff') format('woff'),
-  url('#{$my-asset-path}/fonts/TTMussels-Italic.woff2') format('woff2'),
-  url('#{$my-asset-path}/fonts/TTMussels-Italic.ttf') format('truetype'),
-  url('#{$my-asset-path}/fonts/TTMussels-Italic.eot') format('eot');
-}
-
-.header-main {
-  background-color: $gray-200;
-}
-
-.product-box:hover {
-  border-color: $sw-color-brand-primary;
-}
-
-.is-act-home .breadcrumb.container {
-  display: none;
-}
-
-.footer-main, .footer-bottom {
-  background: $background-dark-sb;
-}
+// ==============================================
+// 3. LAYOUT & CONTAINER STYLES
+// ==============================================
 
 .container {
   max-width: 1400px;
@@ -73,25 +59,149 @@
   padding: 0;
 }
 
-.category-navigation {
-  &.level-0 > {
-    .category-navigation-entry {
-      border-bottom: none;
-    }
+// ==============================================
+// 3. HEADER COMPONENTS
+// ==============================================
+
+.header-main {
+  background-color: $voltimax-bg-secondary;
+}
+
+// Search Bar Styles
+.form-control.header-search-input,
+.header-search-btn {
+  border: 1px solid $voltimax-brand-primary;
+}
+
+.form-control.header-search-input {
+  border-radius: $border-radius 0 0 $border-radius;
+}
+
+.header-search-btn {
+  border-top-right-radius: $border-radius !important;
+  border-bottom-right-radius: $border-radius !important;
+
+  &:hover {
+    border-color: $voltimax-brand-primary;
+    border-left: 0;
   }
 }
 
+// ==============================================
+// 4. NAVIGATION STYLES
+// ==============================================
 
-.payment-method-description > p {
-  color: $background-dark-sb;
+.category-navigation.level-0 .category-navigation-entry {
+  border-bottom: none;
 }
 
+// Breadcrumb customizations
+.is-act-home .breadcrumb.container {
+  display: none;
+}
+
+// ==============================================
+// 5. PRODUCT & CATALOG STYLES
+// ==============================================
+
+.product-box:hover {
+  border-color: $voltimax-brand-primary;
+}
+
+// ==============================================
+// 6. BUTTON & FORM STYLES
+// ==============================================
+
+.btn-buy {
+  border-radius: $border-radius;
+}
+
+// Form description styles
+.payment-method-description > p,
 .shipping-method-description > p {
-  color: $background-dark-sb;
+  color: $voltimax-text-primary;
 }
 
-@include media-breakpoint-up(md) {
-  .footer-column {
-    border-bottom: 1px solid $border-color;
-  }
+// ==============================================
+// 7. FOOTER STYLES
+// ==============================================
+
+.footer-main {
+  background: $voltimax-bg-footer;
+  border-top: 5px solid $voltimax-brand-primary;
 }
+
+.footer-bottom {
+  background: $voltimax-bg-footer;
+}
+
+// ==============================================
+// 8. MODAL STYLES
+// ==============================================
+
+// Apply rounded borders to all modals with higher specificity
+.modal .modal-dialog .modal-content,
+.modal-dialog .modal-content {
+  border-radius: $border-radius;
+  overflow: hidden;
+  border: none;
+}
+
+.modal .modal-dialog .modal-header,
+.modal-dialog .modal-header {
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.modal .modal-dialog .modal-footer,
+.modal-dialog .modal-footer {
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+// Shopware specific modal classes with proper specificity
+.ajax-modal .modal-dialog .modal-content,
+.js-ajax-modal .modal-dialog .modal-content,
+.pseudo-modal.modal-content {
+  border-radius: $border-radius;
+}
+
+// Product detail modal (quick view)
+.product-quick-view-modal .modal-dialog .modal-content {
+  border-radius: $border-radius;
+}
+
+// Offcanvas cart modal
+.offcanvas-cart .modal-dialog .modal-content {
+  border-radius: $border-radius;
+}
+
+// ==============================================
+// 9. RESPONSIVE DESIGN
+// ==============================================
+
+// Let Shopware's default responsive system handle viewport adjustments
+// Custom viewport styles removed to comply with Shopware storefront defaults
+
+.footer-column {
+  border-bottom: 1px solid $voltimax-border-light;
+}
+
+// ==============================================
+// 10. COMPONENT IMPORTS
+// ==============================================
+
+// Import Voltimax integrated components
+@import 'component/topbar-header';
+@import 'component/footer-icons';
+@import 'component/footer-layout';
+@import 'component/manufacturer-logo';
+@import 'component/modal';
+@import 'component/mega-menu';
+@import 'component/mobile-offcanvas';
+
+// Import plugin compatibility styles
+@import 'component/cheaper-ad';
+

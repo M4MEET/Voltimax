@@ -1,117 +1,297 @@
 {% sw_extends "@Storefront/storefront/component/product/card/box-image.html.twig" %}
-    {% block component_product_box_content %}
-        <div class="card align-items-center border rounded shadow-sm">
-            <div class="row g-0">
-                {% block component_product_box_badges %}
-                    {% sw_include '@Storefront/storefront/component/product/card/badges.html.twig' %}
-                {% endblock %}
 
-                {% block component_product_box_rich_snippets %}
-                    {{ parent() }}
-                {% endblock %}
+{#
+    Voltimax Theme v3.0.0 - Horizontal Product Card Layout
+    Based on proven v2.2.3 structure with v3.0.0 enhancements
+    
+    Structure:
+    - col-4: Product image with badges, rating, and wishlist
+    - col-5: Product information with manufacturer logo  
+    - col-3: Price, tax, delivery, stock, and actions
+#}
 
-                {% block component_product_box_image %}
-                    <div class="product-image-wrapper col-md-4 m-2">
-                        {# fallback if display mode is not set #}
-                        {% set displayMode = displayMode ?: 'standard' %}
+{% block component_product_box_content %}
+    <div class="card align-items-center border rounded shadow-sm">
+        <div class="row g-0 g-lg-2">
+            
+            {# Product Badges - at card level like v2.2.3 #}
+            {% block component_product_box_badges %}
+                {% sw_include '@Storefront/storefront/component/product/card/badges.html.twig' %}
+            {% endblock %}
 
-                        {# set display mode 'cover' for box-image with standard display mode #}
-                        {% if layout == 'image' and displayMode == 'standard' %}
-                            {% set displayMode = 'contain' %}
-                        {% endif %}
+            {% block component_product_box_rich_snippets %}
+                {# Rich snippets for SEO - handled by Shopware core #}
+            {% endblock %}
 
-                        <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
-                           title="{{ name }}"
-                           class="product-image-link is-{{ displayMode }}">
-                            {% if cover.url %}
-                                {% set attributes = {
-                                    'class': 'product-image is-'~displayMode,
-                                    'alt': (cover.translated.alt ?: name),
-                                    'title': (cover.translated.title ?: name)
-                                } %}
+            {# ========== IMAGE SECTION - Responsive columns ========== #}
+            {% block component_product_box_image %}
+                <div class="product-image-wrapper col-12 col-md-6 col-lg-4 p-3 p-lg-2">
+                    {# fallback if display mode is not set #}
+                    {% set displayMode = displayMode ?: 'standard' %}
 
-                                {% if displayMode == 'cover' or displayMode == 'contain' %}
-                                    {% set attributes = attributes|merge({ 'data-object-fit': displayMode }) %}
-                                {% endif %}
+                    {# set display mode 'contain' for box-image with standard display mode #}
+                    {% if layout == 'image' and displayMode == 'standard' %}
+                        {% set displayMode = 'contain' %}
+                    {% endif %}
 
-                                {% sw_thumbnails 'product-image-thumbnails' with {
-                                    media: cover,
-                                    sizes: sizes
-                                } %}
-                            {% else %}
-                                <div class="product-image-placeholder">
-                                    {% sw_icon 'placeholder' style {
-                                        'size': 'fluid'
-                                    } %}
-                                </div>
+                    <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
+                       title="{{ name }}"
+                       class="product-image-link is-{{ displayMode }}">
+                        {% if cover.url %}
+                            {% set attributes = {
+                                'class': 'product-image is-'~displayMode,
+                                'alt': (cover.translated.alt ?: name),
+                                'title': (cover.translated.title ?: name)
+                            } %}
+
+                            {% if displayMode == 'cover' or displayMode == 'contain' %}
+                                {% set attributes = attributes|merge({ 'data-object-fit': displayMode }) %}
                             {% endif %}
-                        </a>
-                        {% block component_product_box_rating %}
-                            {% if config('core.listing.showReview') %}
-                                <div class="product-rating">
-                                    {% if product.ratingAverage %}
-                                        {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
-                                            points: product.ratingAverage,
-                                            style: 'text-primary'
-                                        } %}
+
+                            {% sw_thumbnails 'product-image-thumbnails' with {
+                                media: cover,
+                                sizes: sizes,
+                                attributes: attributes
+                            } %}
+                        {% else %}
+                            <div class="product-image-placeholder">
+                                {% sw_icon 'placeholder' style {
+                                    'size': 'fluid'
+                                } %}
+                            </div>
+                        {% endif %}
+                    </a>
+                    
+                    {# Product Rating (Bottom area of image) #}
+                    {% block component_product_box_rating %}
+                        {% if config('core.listing.showReview') %}
+                            <div class="product-rating text-center">
+                                {% if product.ratingAverage %}
+                                    {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
+                                        points: product.ratingAverage,
+                                        style: 'text-primary'
+                                    } %}
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+
+                    {# Wishlist Button removed from image section - now only in secondary actions row #}
+                </div>
+            {% endblock %}
+
+            {# ========== PRODUCT INFO SECTION - Responsive columns ========== #}
+            {% block component_product_box_info %}
+                <div class="product-info col-12 col-md-6 col-lg-5 p-3 p-lg-2">
+                    <div class="card-body align-items-center p-0">
+                        <div class="row g-0">
+                            {# Manufacturer Logo Integration - Responsive #}
+                            {% block voltimax_product_listing_manufacturer_logo %}
+                                <div class="col-12 col-md-3 d-flex justify-content-center justify-content-md-start align-items-center mb-3 mb-md-0">
+                                    {% if product.extensions.manufacturerMedia %}
+                                        <img src="{{ product.extensions.manufacturerMedia.url }}"
+                                             alt="{{ product.manufacturer.translated.name ?? 'Manufacturer Logo' }}"
+                                             class="img-fluid manufacturer-logo"
+                                             style="height: 30px; max-width: 80px;">
                                     {% endif %}
                                 </div>
-                            {% endif %}
-                        {% endblock %}
-                        {% if config('core.cart.wishlistEnabled') %}
-                            {% block component_product_box_wishlist_action %}
-                                {% sw_include '@Storefront/storefront/component/product/card/wishlist.html.twig' with {
-                                    appearance: 'circle',
-                                    productId: id
-                                } %}
                             {% endblock %}
-                        {% endif %}
-                    </div>
-                {% endblock %}
 
-                {% block component_product_box_info %}
-                    <div class="product-info col-md-5 m-2">
-                        <div class="card-body align-items-center p-0">
-                            <div class="row g-0">
+                            {# Product Name - Responsive width #}
+                            <div class="col-12 col-md-9 text-center text-md-start">
                                 {% block component_product_box_name %}
-                                    {{ parent() }}
+                                    <a href="{{ seoUrl('frontend.detail.page', { productId: id }) }}"
+                                       class="product-name text-decoration-none text-dark fw-bold{% if feature('ACCESSIBILITY_TWEAKS') %} stretched-link{% endif %}"
+                                       title="{{ name }}">
+                                        {{ name }}
+                                    </a>
                                 {% endblock %}
                             </div>
-                            <hr class="my-2"> <!-- Horizontal line -->
                         </div>
 
-                        {# temp fix in the template using plugin called essential characteristics for the listing view #}
+                        <hr class="m-0"> <!-- Horizontal line -->
+                        
+                        {# Product Description and Features (v3.0.0 Enhancement) #}
                         {% block component_product_box_description %}
-                            <div class="product-description text-dark">
-                                {{ product.translated.description|striptags|raw }}
-                            </div>
-                            {{ parent() }}
-                        {% endblock %}
-                        {# this block ends here: temp fix in the template using plugin called essential characteristics for the listing view #}
+                            {% if product.translated.description %}
+                                <div class="product-description text-dark d-none d-xl-block">
+                                    {{ product.translated.description|striptags|raw }}
+                                </div>
+                            {% endif %}
 
+                            {# Product Features Integration - FaesslichFeaturesOnProducts Plugin #}
+                            {% if product.extensions.features is defined %}
+                                {# Use the plugin's own template directly #}
+                                {% sw_include '@Storefront/storefront/component/features-on-product/features.html.twig' with {
+                                    features: product.extensions.features.all(),
+                                    pageType: 'listing'
+                                } only %}
+                            {% endif %}
+                        {% endblock %}
                     </div>
-                {% endblock %}
 
+                </div>
+            {% endblock %}
 
-                <div class="col-md-3 m-2 text-end">
-                    {# added condition to display own confTemp @include custom-price-unit.html.twig for imageLayout #}
-                    {% if layout == 'image' %}
-                        {% block component_product_box_custom_price %}
-                            {% sw_include '@Storefront/storefront/component/product/card/custom-price-unit.html.twig' %}
+            {# ========== PRICE & ACTION SECTION - Responsive columns ========== #}
+            <div class="product-price-action-box col-12 col-lg-3 p-3 p-lg-2 d-flex flex-column">
+                {# Mobile/Tablet: Price left, Delivery right in one row, Desktop: Stacked #}
+                <div class="row g-2 d-lg-block mb-2">
+                    {# Price and Tax Information #}
+                    <div class="col-6 col-lg-12">
+                        <div class="price-tax-section">
+                            {% block component_product_box_custom_price %}
+                                {% sw_include '@VoltimaxTheme/storefront/component/product/card/custom-price-unit.html.twig' %}
+                            {% endblock %}
+                        </div>
+                    </div>
+
+                    {# Delivery & Stock Information #}
+                    <div class="col-6 col-lg-12">
+                        {% block component_delivery_information %}
+                            <div class="delivery-section">
+                            <div class="product-delivery-information">
+                                {# Delivery Information from Shopware Core #}
+                                {% sw_include '@Storefront/storefront/component/delivery-information.html.twig' %}
+
+                                {# Stock Information with same styling #}
+                                {% if product.availableStock is defined %}
+                                    {% if product.availableStock >= 3 %}
+                                        <p class="delivery-information stock-available mb-0">
+                                            <span class="delivery-status-indicator bg-success"></span>
+                                            {{ 'battron.listing.product.showStock' | trans }}
+                                        </p>
+                                    {% elseif product.availableStock > 0 and product.availableStock <= 2 %}
+                                        <p class="delivery-information stock-limited mb-0">
+                                            <span class="delivery-status-indicator bg-warning"></span>
+                                            {{ "battron.listing.product.limitedStock"|trans ({'%product.availableStock%': product.availableStock}) }}
+                                        </p>
+                                    {% elseif  product.availableStock <=0 %}
+                                        <p class="delivery-information stock-out mb-0">
+                                            <span class="delivery-status-indicator bg-danger"></span>
+                                            {{ "battron.listing.product.outOfStock"|trans }}
+                                        </p>
+                                    {% endif %}
+                                {% endif %}
+                                </div>
+                            </div>
                         {% endblock %}
-                    {% else %}
-                        {# default shopware template #}
-                        {% block component_product_box_price %}
-                            {% sw_include '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
-                        {% endblock %}
-                    {% endif %}
-                    {# end of the condition #}
+                    </div>
+                </div>
 
-                    {% block component_product_box_action %}
-                        {% sw_include '@Storefront/storefront/component/product/card/action.html.twig' %}
-                    {% endblock %}
+                {# Bottom Section: Everything else (pushed to bottom with flex-grow) #}
+                <div class="mt-auto">
+                    {# Desktop: Keep original stacked layout #}
+                    <div class="d-none d-lg-block">
+                        {# Secondary Actions - Original position above cart #}
+                        {% block component_product_box_secondary_actions_desktop %}
+                            <div class="mb-2 d-flex justify-content-center justify-content-lg-end gap-2">
+                                {# Compare Button - Icon only with rounded border #}
+                                {% set addToCompareOptions = {
+                                    productId: product.id,
+                                    showIconOnly: true,
+                                    defaultText: "froshProductCompare.general.addToCompare"|trans|sw_sanitize,
+                                    addedText: "froshProductCompare.general.removeFromCompare"|trans|sw_sanitize
+                                } %}
+                                <button data-add-to-compare-button="true"
+                                        data-add-to-compare-button-options="{{ addToCompareOptions|json_encode }}"
+                                        class="btn btn-outline-secondary rounded align-items-center justify-content-center"
+                                        title="{{ "froshProductCompare.general.addToCompare"|trans|striptags }}">
+                                    {% sw_icon 'bag-product' style { 'size': 'sm' } %}
+                                </button>
+
+                                {# Wishlist Button - Icon only with rounded border #}
+                                {% if config('core.cart.wishlistEnabled') %}
+                                    {% set addToWishlistOptions = {
+                                        productId: product.id,
+                                        router: {
+                                            add: {
+                                                afterLoginPath: path('frontend.wishlist.add.after.login', { productId: product.id }),
+                                                path: path('frontend.wishlist.product.add', { productId: product.id }),
+                                            },
+                                            remove: {
+                                                path: path('frontend.wishlist.product.remove', { productId: product.id }),
+                                            }
+                                        },
+                                        texts: {
+                                            add: 'listing.addToWishlist'|trans|sw_sanitize,
+                                            remove: 'listing.removeFromWishlist'|trans|sw_sanitize
+                                        },
+                                    } %}
+                                    <button class="btn btn-outline-secondary rounded align-items-center justify-content-center product-wishlist-{{ product.id }} product-wishlist-action voltimax-wishlist-action product-wishlist-not-added product-wishlist-loading"
+                                            title="{{ 'listing.addToWishlist'|trans|sw_sanitize }}"
+                                            data-add-to-wishlist="true"
+                                            data-add-to-wishlist-options="{{ addToWishlistOptions|json_encode }}">
+                                        {% sw_icon 'heart-fill' style { 'class': 'wishlist icon-wishlist-added', 'size': 'sm' } %}
+                                        {% sw_icon 'heart' style { 'class': 'wishlist icon-wishlist-not-added', 'size': 'sm' } %}
+                                    </button>
+                                {% endif %}
+                            </div>
+                        {% endblock %}
+
+                        {# Add to Cart Action - Original position below icons #}
+                        {% block component_product_box_action_desktop %}
+                            <div class="d-grid d-lg-block text-lg-center">
+                                {% sw_include 'storefront/component/product/card/action.html.twig' %}
+                            </div>
+                        {% endblock %}
+                    </div>
+
+                    {# Mobile/Tablet: All buttons in one row #}
+                    <div class="d-flex d-lg-none gap-2 align-items-stretch">
+                        {# Secondary Actions - Left side #}
+                        {% block component_product_box_secondary_actions %}
+                            {# Compare Button - Icon only with rounded border #}
+                            {% set addToCompareOptions = {
+                                productId: product.id,
+                                showIconOnly: true,
+                                defaultText: "froshProductCompare.general.addToCompare"|trans|sw_sanitize,
+                                addedText: "froshProductCompare.general.removeFromCompare"|trans|sw_sanitize
+                            } %}
+                            <button data-add-to-compare-button="true"
+                                    data-add-to-compare-button-options="{{ addToCompareOptions|json_encode }}"
+                                    class="btn btn-outline-secondary rounded d-flex align-items-center justify-content-center"
+                                    title="{{ "froshProductCompare.general.addToCompare"|trans|striptags }}">
+                                {% sw_icon 'bag-product' style { 'size': 'sm' } %}
+                            </button>
+
+                            {# Wishlist Button - Icon only with rounded border #}
+                            {% if config('core.cart.wishlistEnabled') %}
+                                {% set addToWishlistOptions = {
+                                    productId: product.id,
+                                    router: {
+                                        add: {
+                                            afterLoginPath: path('frontend.wishlist.add.after.login', { productId: product.id }),
+                                            path: path('frontend.wishlist.product.add', { productId: product.id }),
+                                        },
+                                        remove: {
+                                            path: path('frontend.wishlist.product.remove', { productId: product.id }),
+                                        }
+                                    },
+                                    texts: {
+                                        add: 'listing.addToWishlist'|trans|sw_sanitize,
+                                        remove: 'listing.removeFromWishlist'|trans|sw_sanitize
+                                    },
+                                } %}
+                                <button class="btn btn-outline-secondary rounded d-flex align-items-center justify-content-center product-wishlist-{{ product.id }} product-wishlist-action voltimax-wishlist-action product-wishlist-not-added product-wishlist-loading"
+                                        title="{{ 'listing.addToWishlist'|trans|sw_sanitize }}"
+                                        data-add-to-wishlist="true"
+                                        data-add-to-wishlist-options="{{ addToWishlistOptions|json_encode }}">
+                                    {% sw_icon 'heart-fill' style { 'class': 'wishlist icon-wishlist-added', 'size': 'sm' } %}
+                                    {% sw_icon 'heart' style { 'class': 'wishlist icon-wishlist-not-added', 'size': 'sm' } %}
+                                </button>
+                            {% endif %}
+                        {% endblock %}
+
+                        {# Add to Cart Action - Right side (flex-fill takes remaining space) #}
+                        {% block component_product_box_action %}
+                            <div class="flex-fill mobile-cart-action">
+                                {% sw_include 'storefront/component/product/card/action.html.twig' %}
+                            </div>
+                        {% endblock %}
+                    </div>
                 </div>
             </div>
         </div>
-    {% endblock %}
-
+    </div>
+{% endblock %}
